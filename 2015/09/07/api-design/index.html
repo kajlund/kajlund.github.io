@@ -1,0 +1,1256 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="api,architecture,rest," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="kajlund.net" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="The basics of API design picked up by watching the PluralSight API Design Courseby Shawn Wildermuth. See also: HTTP Response Codes are defined in W3C RFC2616. jsonapi.org has info on standard ways of">
+<meta name="keywords" content="api,architecture,rest">
+<meta property="og:type" content="article">
+<meta property="og:title" content="REST API Design">
+<meta property="og:url" content="http://kajlund.net/2015/09/07/api-design/index.html">
+<meta property="og:site_name" content="kajlund.net">
+<meta property="og:description" content="The basics of API design picked up by watching the PluralSight API Design Courseby Shawn Wildermuth. See also: HTTP Response Codes are defined in W3C RFC2616. jsonapi.org has info on standard ways of">
+<meta property="og:updated_time" content="2017-06-11T13:05:32.765Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="REST API Design">
+<meta name="twitter:description" content="The basics of API design picked up by watching the PluralSight API Design Courseby Shawn Wildermuth. See also: HTTP Response Codes are defined in W3C RFC2616. jsonapi.org has info on standard ways of">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kajlund.net/2015/09/07/api-design/"/>
+
+
+
+
+
+  <title>REST API Design | kajlund.net</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">kajlund.net</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Personal blog of Kaj Lund a.k.a. LuKa</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://kajlund.net/2015/09/07/api-design/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kaj Lund">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/luka.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kajlund.net">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">REST API Design</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-09-07T18:25:30+03:00">
+                2015-09-07
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-11T16:05:32+03:00">
+                2017-06-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/APIs/" itemprop="url" rel="index">
+                    <span itemprop="name">APIs</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>The basics of API design picked up by watching the PluralSight API Design Course<br>by Shawn Wildermuth.</p>
+<p><strong>See also</strong>: HTTP Response Codes are defined in <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html" target="_blank" rel="external">W3C RFC2616</a>. <a href="http://jsonapi.org/" target="_blank" rel="external">jsonapi.org</a> has info on standard ways of representing data.</p>
+<p>The way APIs are designed is important because:</p>
+<ul>
+<li>APIs are the UI layer to developers</li>
+<li>Easy to use APIs are more readily adopted</li>
+<li>Picking the right level of API is crucial to success</li>
+<li>Don’t surprise your users</li>
+<li>Balance what is good for the user with what is good for the server</li>
+<li>Ultimately, users are what make a successful API</li>
+</ul>
+<blockquote>
+<p>There is no real right or wrong way. Just avoid dogma and be pragmatic.</p>
+</blockquote>
+<h2 id="URIs"><a href="#URIs" class="headerlink" title="URIs"></a>URIs</h2><ul>
+<li>Nouns are good, verbs are bad.</li>
+<li>URIs should point at nouns (e.g. resources)</li>
+<li>Prefer plural form</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">http://api/Customers</div><div class="line">http://api/Invoices</div></pre></td></tr></table></figure>
+<p>Use identifiers to locate individual items in URIs. Doesn’t have to be internal key as long as it is unique.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">http://api/Customers/123</div><div class="line">http://api/Games/halo-3</div><div class="line">http://api/Invoices/2014-01-01</div></pre></td></tr></table></figure>
+<h2 id="HTTP-Verbs"><a href="#HTTP-Verbs" class="headerlink" title="HTTP Verbs"></a>HTTP Verbs</h2><table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>GET</th>
+<th>POST</th>
+<th>PUT</th>
+<th>DELETE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/customers</td>
+<td>Get list</td>
+<td>Create item</td>
+<td>Update batch</td>
+<td>Error</td>
+</tr>
+<tr>
+<td>/customers/123</td>
+<td>Get item</td>
+<td>Error</td>
+<td>Update item</td>
+<td>Delete item</td>
+</tr>
+</tbody>
+</table>
+<p><strong>What to Return</strong></p>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>GET</th>
+<th>POST</th>
+<th>PUT</th>
+<th>DELETE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/customers</td>
+<td>List</td>
+<td>New item</td>
+<td>Status code</td>
+<td>Error code</td>
+</tr>
+<tr>
+<td>/customers/123</td>
+<td>Item</td>
+<td>Error code</td>
+<td>Updated item</td>
+<td>Status code</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Status-Codes"><a href="#Status-Codes" class="headerlink" title="Status Codes"></a>Status Codes</h2><p>The HTTP specification defines the status codes. Below are some common ones:</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>201</td>
+<td>Created</td>
+</tr>
+<tr>
+<td>202</td>
+<td>Accepted</td>
+</tr>
+<tr>
+<td>302</td>
+<td>Found</td>
+</tr>
+<tr>
+<td>304</td>
+<td>Not Modified</td>
+</tr>
+<tr>
+<td>307</td>
+<td>Temp Redirect</td>
+</tr>
+<tr>
+<td>308</td>
+<td>Perm Redirect</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Not Authorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed</td>
+</tr>
+<tr>
+<td>409</td>
+<td>Conflict</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Error</td>
+</tr>
+</tbody>
+</table>
+<p>Limit the number of returned status codes to keep the API simple. <strong>Consider these as a bare minimum</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+<th>Real Story</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>It Worked</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+<td>Your Bad</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Error</td>
+<td>Our Bad</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The following could be useful for clients</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>201</td>
+<td>Created</td>
+</tr>
+<tr>
+<td>304</td>
+<td>Not Modified</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sample of Sensible Defaults:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200 OK</td>
+<td>Successful request</td>
+</tr>
+<tr>
+<td>204</td>
+<td>No Content    File contains no data</td>
+</tr>
+<tr>
+<td>301</td>
+<td>Moved Permanently    The requested resource has permanently moved to another address</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Not Authorized    Athorization needed to access resource</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found    The requested resource cannot be found</td>
+</tr>
+<tr>
+<td>408</td>
+<td>Request Timeout. The Request timed out</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Server Error</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Associations"><a href="#Associations" class="headerlink" title="Associations"></a>Associations</h2><p>Using URIs</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">http:<span class="comment">//api/Customers/123/Invoices</span></div><div class="line">http:<span class="comment">//api/Games/halo-3/Ratings</span></div><div class="line">http:<span class="comment">//api/Invoices/2014-01-01/Payments</span></div></pre></td></tr></table></figure>
+<p>Returns single object or list of objects. The format should be the same as when loading associated objects as when loading them as main resources. A resource may include multiple associations:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">http:<span class="comment">//api/Customers/123/Invoices</span></div><div class="line">http:<span class="comment">//api/Customers/123/Payments</span></div><div class="line">http:<span class="comment">//api/Customers/123/Shipments</span></div></pre></td></tr></table></figure>
+<p><strong>For more complex needs use query params</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http:<span class="comment">//api/Customers/123/Invoices?date=2014-0101&amp;type=credit</span></div></pre></td></tr></table></figure>
+<h2 id="Formatting-the-Results"><a href="#Formatting-the-Results" class="headerlink" title="Formatting the Results"></a>Formatting the Results</h2><ul>
+<li>Single Results should be simple objects</li>
+<li>Member names should not expose server details and be camelCased or at least be consistent.</li>
+<li>Collections typically use an object wrapping a simple collection to hold information about the collection and not just the items.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="string">"total"</span>: <span class="number">120</span>,</div><div class="line">    <span class="string">"results"</span>: [</div><div class="line">        &#123;<span class="string">"id"</span>: <span class="number">1</span>,...&#125;, ...</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Response-Formats"><a href="#Response-Formats" class="headerlink" title="Response Formats"></a>Response Formats</h3><ul>
+<li>Content negotiation is a best practice. Use Accept header to determine format. <code>Accept: application/json, text/xml</code></li>
+<li>Can use URIs to specify format but not recommended. Use only if you need to use clients that cannot use headers.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">http:<span class="comment">//api/Customers?format=json</span></div><div class="line">http:<span class="comment">//api/Customers.json</span></div><div class="line">http:<span class="comment">//api/Customers?format=json&amp;callback=foo</span></div></pre></td></tr></table></figure>
+<ul>
+<li>Not necessary to support lots of formats. Use a sane default, usually JSON.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>MIME Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JSON</td>
+<td>application/json</td>
+</tr>
+<tr>
+<td>XML</td>
+<td>text/xml</td>
+</tr>
+<tr>
+<td>JSONP</td>
+<td>application/javascript</td>
+</tr>
+<tr>
+<td>RSS</td>
+<td>application/xml+rss</td>
+</tr>
+<tr>
+<td>ATOM</td>
+<td>application/xml+atom</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Entity-Tags-ETags"><a href="#Entity-Tags-ETags" class="headerlink" title="Entity Tags (ETags)"></a>Entity Tags (ETags)</h3><ul>
+<li>ETags are used to support smart server caching</li>
+<li>Supports both strong and weak caching and are typically returned in the response header</li>
+<li>The ETag represents a version of the results returned</li>
+<li>Weak ETags means results are semantically the same whereas strong ETag suggests they are byte by byte identical. Weak ETags are prefixed with W/.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 200 OK</div><div class="line">Content-Type:application/json; charset=utf-8</div><div class="line">Date: 20-01-2014 16:46:52 GMT</div><div class="line">ETag: &quot;8934675928367085&quot;</div><div class="line">Content-Length: 1024</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 200 OK</div><div class="line">Content-Type:application/json; charset=utf-8</div><div class="line">Date: 20-01-2014 16:46:52 GMT</div><div class="line">ETag: W/&quot;8934675928367085&quot;</div><div class="line">Content-Length: 1024</div></pre></td></tr></table></figure>
+<ul>
+<li><p>Client sends along ETag with request to check for new data.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">GET /api/customers/123 HTTP/1.1</div><div class="line">Accept: application/json</div><div class="line">Host: localhost:8863</div><div class="line">If-None-Match: &quot;8934675928367085&quot;</div></pre></td></tr></table></figure>
+</li>
+<li><p>If the above request would result in the same object the server returns a 304 Not Modified with an empty body.</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 304 Not Modified</div></pre></td></tr></table></figure>
+<ul>
+<li>For PUTs you can use If-Match to check that the object you want to save hasn’t been modified.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">PUT /api/customers/123 HTTP/1.1</div><div class="line">Accept: application/json</div><div class="line">Host: localhost:8863</div><div class="line">If-Match: &quot;8934675928367085&quot;</div><div class="line">...</div></pre></td></tr></table></figure>
+<ul>
+<li>If server has matching ETag for object then PUT should be allowed otherwise the PUT should return <code>412 Precondition Failed</code> and client needs to GET a more recent version before trying to PUT again.</li>
+</ul>
+<h3 id="Paging"><a href="#Paging" class="headerlink" title="Paging"></a>Paging</h3><ul>
+<li>Lists should always support paging for restricting the amount of data sent over the network to the client and for reducing the amount of work the server does for a single request.</li>
+<li>Use query string parameters for paging information. For instance pageSize is typical for allowing the client to determine how many he wants/call.</li>
+<li>Commonly use the list object wrapper for next/prev links</li>
+<li>Return totalSize of the dataset so that the client can calculate how many pages there would be.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">http:<span class="comment">//api/games/?page=2&amp;pageSize=50</span></div><div class="line"></div><div class="line">&#123;</div><div class="line">    <span class="string">"total"</span>: <span class="number">1598</span>,</div><div class="line">    <span class="string">"next"</span>: <span class="string">"http://api/Invoices/?page=3"</span>,</div><div class="line">    <span class="string">"prev"</span>: <span class="string">"http://api/Invoices/?page=1"</span>,</div><div class="line">    <span class="string">"results"</span>: [...]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>Set an upper limit for pageSize to something reasonable for the server to process at any one time.</li>
+</ul>
+<h3 id="Partials"><a href="#Partials" class="headerlink" title="Partials"></a>Partials</h3><ul>
+<li>APIs should allow for requesting partial items. This can significantly reduce data traffic.</li>
+<li>Allowing the client to specify what fields it needs in a particular case.</li>
+<li>Using the query string is a common pattern <code>http://api/invoices/123?fields=id,invoiceDate,totalAmount</code></li>
+<li>Updating of partial items could be supported with the PATCH verb</li>
+<li>Updating partials would be safer if you implement ETag support</li>
+</ul>
+<h2 id="Non-Resource-APIs"><a href="#Non-Resource-APIs" class="headerlink" title="Non-Resource APIs"></a>Non-Resource APIs</h2><ul>
+<li>Handling of the functional parts of the API that cannot easily be solved by using resources and HTTP verbs.</li>
+<li>Be pragmatic and document these parts properly</li>
+<li>API user should be able to distingguish these types of operations from the normal usage of resources</li>
+<li>Usually handled by calling get requests and functional, not resource based</li>
+<li>Don’t use an an excuse to build RPC API</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http:/&amp;/api/calculateTax?state=GA&amp;total=149.90</div></pre></td></tr></table></figure>
+<h2 id="API-Versioning"><a href="#API-Versioning" class="headerlink" title="API Versioning"></a>API Versioning</h2><ul>
+<li>A published API is a contract and should not be changed. Client rely on a fix API or they will break.</li>
+<li>Versioning is a way of evolving the API without breaking existing clients</li>
+<li>Don’t tie API versioning to product versions</li>
+<li>No best way of versioning APIs but we can learn from existing ones</li>
+</ul>
+<h3 id="Versioning-Styles"><a href="#Versioning-Styles" class="headerlink" title="Versioning Styles"></a>Versioning Styles</h3><ul>
+<li>Using URI path <code>http://api.tumblr.com/v2/user/</code> like Tumblr.</li>
+<li>Using a Query param <code>http://api.netflix.com/catalog/titles/series/70023522?v=1.5</code> like Netflix</li>
+<li>Using content negotiation: <code>Content-Type: application/vnd.github.1.param+json</code> like GitHub</li>
+<li>Using a request header: <code>x-ms-version:2011-08-18</code> like Windows Azure</li>
+</ul>
+<h3 id="Versioning-using-the-URI-path"><a href="#Versioning-using-the-URI-path" class="headerlink" title="Versioning using the URI path"></a>Versioning using the URI path</h3><ul>
+<li>Everything after the version number is open to change</li>
+<li>Allows for drastic changes</li>
+<li>Simple to segregate old APIs for backwards compatibility</li>
+<li>Could require lots of client changes as you version</li>
+<li>Increases the size of the URI surface area you have to support</li>
+<li>Can expand reach but also icrease technical debt</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">http://api.attracs.com/v1/Customers?type=Current&amp;id=123</div><div class="line">http://api.attracs.com/v2/CurrentCustomers/123</div></pre></td></tr></table></figure>
+<h3 id="Versioning-using-Query-Param"><a href="#Versioning-using-Query-Param" class="headerlink" title="Versioning using Query Param"></a>Versioning using Query Param</h3><ul>
+<li>Version can be an optional parameter. Latest version by default</li>
+<li>Doesn’t impose huge client changes as versions mature.</li>
+<li>You can surprise developers with unexpected changes and break clients</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">http://api.attracs.com/Customers</div><div class="line">http://api.attracs.com/Customers?v=2.1</div></pre></td></tr></table></figure>
+<h3 id="Versioning-using-Content-Negotiation"><a href="#Versioning-using-Content-Negotiation" class="headerlink" title="Versioning using Content Negotiation"></a>Versioning using Content Negotiation</h3><ul>
+<li>Becoming increasingly popular because the versioning is separated from the API surface area.</li>
+<li>Packages API and Resource Versioning together. Versioning can be tied to specific resources</li>
+<li>Client don’t have to change URIs</li>
+<li>Adds complexity. Some clients may not be able to use headers</li>
+<li>Can encourage increased versioning and overall complexity</li>
+</ul>
+<p>Use custom MIME types in header. Standard indicates you should use “vnd.” (meaning vendor) as prefix to the MIME type</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">GET /Customers/123</div><div class="line">HOST:http://api.attracs.com</div><div class="line">Accept: application/vnd.amc.v1.customer</div><div class="line"></div><div class="line">Accept: application/vnd.amc.v1.customer.json</div></pre></td></tr></table></figure>
+<h3 id="Versioning-using-Custom-Header"><a href="#Versioning-using-Custom-Header" class="headerlink" title="Versioning using Custom Header"></a>Versioning using Custom Header</h3><ul>
+<li>Use a header value that is only recognised by the API</li>
+<li>Common to use date instead of a version number</li>
+<li>Separates versioning from API call signatures</li>
+<li>Not tied to resource versioning</li>
+<li>Adds complexity. Some clients may not be able to use headers</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">GET /Customers/123</div><div class="line">HOST:http://api.attracs.com</div><div class="line">x-AMC-Version: 2.1</div><div class="line"></div><div class="line">x-AMC-Version: 2014-01-01</div></pre></td></tr></table></figure>
+<p>It’s hard to generally say which style is best. Content Negotiation and Custom Header styles are popular but adds some complexity. Versioning with URI components are still more common. These are typically easier to implement but can add more technical debt.</p>
+<p>The API should support versioning from the first release.</p>
+<h3 id="Resource-Versioning"><a href="#Resource-Versioning" class="headerlink" title="Resource Versioning"></a>Resource Versioning</h3><ul>
+<li>Versioning API calls isn’t enough. The resources themselves should be versioned too because structures and constraints change over time.</li>
+<li>Versioning resources is easier using custom content types</li>
+<li>Including versioning data in the resource body is an option, but it pollutes the data</li>
+</ul>
+<h2 id="Securing-the-API"><a href="#Securing-the-API" class="headerlink" title="Securing the API"></a>Securing the API</h2><ul>
+<li>Security should be part of the original design. don’t patch it on as an afterthought.</li>
+<li>Should be secure by default. Don’t return sensitive information before authorized</li>
+</ul>
+<p><strong>You need to secure the API if:</strong></p>
+<ul>
+<li>You’re using personalized or private data</li>
+<li>Sending sensitive data across the wire</li>
+<li>Using credentials of any kind</li>
+<li>Protecting against overuse of servers</li>
+</ul>
+<p><strong>Threats:</strong></p>
+<ul>
+<li>Eavesdroppers (packet sniffers etc)</li>
+<li>Hackers or even personnel (Intrusion and physical security)</li>
+<li>Users/Hackers looking at source for accessing the API</li>
+</ul>
+<p>Securing the server infrastructure is another topic</p>
+<p>Secure In-Transit (protecting data when it goes across the wire). Using SSL is typically worth the expense</p>
+<p>Securing the API consists of Cross-Origin Security and Authorization/Authentication.</p>
+<h3 id="Cross-Domain-Security"><a href="#Cross-Domain-Security" class="headerlink" title="Cross Domain Security"></a>Cross Domain Security</h3><p>Should you allow calls from separate domains? If internal, probably not. If public facing you might need to support cross-domain.</p>
+<p>Two Approaches:</p>
+<ul>
+<li>Support JSONP format</li>
+<li>Enable Cross-Origin Resource Sharing (CORS)</li>
+</ul>
+<h5 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateUser</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">    <span class="comment">//use Data</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">GET /api/games?callback=updateGames HTTP/<span class="number">1.1</span></div><div class="line">Accept: application/javascript</div><div class="line">Host: localhost:<span class="number">8863</span></div><div class="line"></div><div class="line">-&gt; updateUser(&#123;total=<span class="number">1</span>, results=[...]&#125;);</div></pre></td></tr></table></figure>
+<p>The data sent back from the server will be the same. It will just be wrapped in a function call.</p>
+<h5 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h5><ul>
+<li>Allows Cross Site support from browser but requires handshake</li>
+<li>Implementing can be difficult but many platforms support it</li>
+<li>Rules implemented on server</li>
+</ul>
+<h3 id="Authentication"><a href="#Authentication" class="headerlink" title="Authentication"></a>Authentication</h3><p>Who is calling the API?</p>
+<ul>
+<li>Server-to-Server Authentication using API keys and shared secrets</li>
+<li>User Proxy Authenticaton using OAuth and similar</li>
+<li>Direct User Authentication using cookies or tokens. Common for private APIs</li>
+<li>Credential: A fact that can describe an identity like username and password</li>
+</ul>
+<blockquote>
+<p>Authentication: Validate a set of credentials to identify an entity (whether virtual or actual).</p>
+<p>Authorization: Verification that an entity has right to access a resource or action.</p>
+</blockquote>
+<h4 id="API-Keys"><a href="#API-Keys" class="headerlink" title="API Keys"></a>API Keys</h4><ul>
+<li>For non-user specific API usage like AWS, Google maps for monitoring usage</li>
+<li>Sign up for API key</li>
+<li>System returns API key and shared secret (usually for encryption)</li>
+<li>Developer creates a request providing the API key.</li>
+<li>A Signature is created for the requestusing the shared secret</li>
+<li>Request + Signature is sent to service</li>
+<li>Server looks up shared secret for user via API key and signs the request with it</li>
+<li>Server verifies same signatures and within timeout</li>
+<li>If all valid server executes request and returns data</li>
+</ul>
+<h4 id="User-Security-Authenticating-Users"><a href="#User-Security-Authenticating-Users" class="headerlink" title="User Security/Authenticating Users"></a>User Security/Authenticating Users</h4><p>If your system has users, how do you verify which user is calling the API?</p>
+<ul>
+<li>For 1st party solutions you could use what the web server provides like using Windows Authentication or ASP.NET forms authentications.</li>
+<li>For 3rd party API developers don’t ask them to collect credentials, use OAuth</li>
+</ul>
+<h4 id="OAuth"><a href="#OAuth" class="headerlink" title="OAuth"></a>OAuth</h4><p>For allowing developer to act as a user in your system but allows you to keep control of accepting credentials</p>
+<p>Then trust a 3rd party with a token that represents the API developer. The developer will never receive the user credentials.</p>
+<h2 id="Hypermedia"><a href="#Hypermedia" class="headerlink" title="Hypermedia"></a>Hypermedia</h2><p>Hypermedia is links for APIs helping developers to know how to use the API Links helps APIs become self-describing Links become the application state</p>
+<ul>
+<li>Hypermedia As The Engine of Application State (HATEOAS)</li>
+<li>HATEOAS add links on top of REST-ful HTTP</li>
+</ul>
+<h3 id="Links"><a href="#Links" class="headerlink" title="Links"></a>Links</h3><p>What kinds of links to provide:</p>
+<ul>
+<li>Paging</li>
+<li>Creating New Items</li>
+<li>Retrieving Associations</li>
+<li>Actions</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">totalResults</span>: <span class="number">1000</span>,</div><div class="line">    <span class="attr">links</span>: [</div><div class="line">        &#123;<span class="string">"href"</span>: <span class="string">"/api/v1/games?page=1"</span>, <span class="string">"rel"</span>: <span class="string">"prevPage"</span> &#125;,</div><div class="line">        &#123;<span class="string">"href"</span>: <span class="string">"/api/v1/games?page=3"</span>, <span class="string">"rel"</span>: <span class="string">"nextPage"</span> &#125;,</div><div class="line">        &#123;<span class="string">"href"</span>: <span class="string">"/api/v1/games"</span>, <span class="string">"rel"</span>: <span class="string">"insert"</span> &#125;</div><div class="line">    ],</div><div class="line">    <span class="string">"results"</span>: []</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">links</span>: [</div><div class="line">        &#123;<span class="string">"href"</span>: <span class="string">"/api/v1/games/2"</span>, <span class="string">"rel"</span>: <span class="string">"self"</span> &#125;,</div><div class="line">        &#123;<span class="string">"href"</span>: <span class="string">"/api/v1/games/2/rating"</span>, <span class="string">"rel"</span>: <span class="string">"rating"</span> &#125;</div><div class="line">    ],</div><div class="line">    <span class="string">"id"</span>: <span class="number">2</span>,</div><div class="line">    <span class="string">"name"</span>: <span class="string">"Final Fantasy XIII"</span>,</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Profile Media Types</p>
+<ul>
+<li>Profiles are descriptions of data returned</li>
+<li>Alternative to using custom MIME types in versioning</li>
+<li>Should be included in the Accept header</li>
+<li>Server can return profile for client</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">GET /api/order/<span class="number">123</span></div><div class="line">HOST: http:<span class="comment">//..</span></div><div class="line">Accept: appliaction/json;profile=http:<span class="comment">//api.attracs.com/orders</span></div></pre></td></tr></table></figure>
+<h3 id="Hypermedia-Standards"><a href="#Hypermedia-Standards" class="headerlink" title="Hypermedia Standards"></a>Hypermedia Standards</h3><p>The standards are emerging None are final</p>
+<ul>
+<li>HAL</li>
+<li>Collection+JSON</li>
+</ul>
+<p>Based on content types with profile media type Content type defines data formatting Profile media type defines the structure of the data Keeps the format and structure/version separated</p>
+<h4 id="HAL"><a href="#HAL" class="headerlink" title="HAL"></a>HAL</h4><ul>
+<li>Hypertext Application Language strives to be a lean hypermedia type</li>
+<li>Supports standard formats like JSON and XML for including resources and links</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">content type application/hal+json</div><div class="line">content type application/hal+xml</div><div class="line">content type application/hal+json;profile=http://api.attracs.com/orders</div></pre></td></tr></table></figure>
+<p>Resources contains state and links plus embedded resources containing state and links</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="string">"_links"</span>:&#123;</div><div class="line">    <span class="string">"self"</span>: &#123;<span class="string">"href"</span>: <span class="string">"/games"</span>&#125;,</div><div class="line">    <span class="string">"next"</span>: &#123;<span class="string">"href"</span>: <span class="string">"/games?page=2"</span>&#125;,</div><div class="line">    <span class="string">"find"</span>: &#123;<span class="string">"href"</span>: <span class="string">"/games&#123;?query&#125;"</span>, <span class="string">"templated"</span>: <span class="literal">true</span>&#125;,</div><div class="line">    <span class="string">"totalCount"</span>: <span class="number">100</span>,</div><div class="line">    <span class="string">"_embedded"</span>: &#123;</div><div class="line">        <span class="string">"results"</span>: [</div><div class="line">            &#123;</div><div class="line">                <span class="string">"_links"</span>: &#123;</div><div class="line">                    <span class="string">"self"</span>: &#123;<span class="string">"href"</span>: <span class="string">"/games/123"</span>&#125;,</div><div class="line">                    ...</div><div class="line">                &#125;,</div><div class="line">                <span class="string">"price"</span>: <span class="number">30.00</span>,</div><div class="line">                <span class="string">"currency"</span>: <span class="string">"USD"</span>,</div><div class="line">                <span class="string">"name"</span>: <span class="string">"Halo 3"</span></div><div class="line">            &#125;,</div><div class="line">            ...</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Template Links: Used when URI includes a template (e.g. RFC6570)</p>
+<h4 id="Collection-JSON"><a href="#Collection-JSON" class="headerlink" title="Collection + JSON"></a>Collection + JSON</h4><ul>
+<li>A standard for reading and writing collections</li>
+<li>Communicating lists and individual items</li>
+<li>Includes UI elements in messages</li>
+<li>Good for simple machine driven lists but a bit verbose for data-driven REST</li>
+<li>Including UI elements sets scene for automating code</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">content type application/vnd.collection+json</div><div class="line">content type application/vnd.collection+json;profile=http://foo.com/bar</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="string">"collection"</span>: &#123;</div><div class="line">        <span class="string">"version"</span>: <span class="string">"1.0"</span>,</div><div class="line">        <span class="string">"href"</span>: <span class="string">"http://api.attracs.com/Orders"</span>,</div><div class="line">        <span class="string">"links"</span>: [</div><div class="line">            &#123; <span class="string">"rel"</span>: <span class="string">"feed"</span>, <span class="string">"href"</span>: <span class="string">"http://api.attracs.com/Orders/rss"</span> &#125;</div><div class="line">        ],</div><div class="line">        <span class="string">"items"</span>: [</div><div class="line">            &#123;</div><div class="line">                <span class="string">"href"</span>: <span class="string">"http://api.attracs.com/Orders/1"</span>,</div><div class="line">                <span class="string">"data"</span>: [</div><div class="line">                    &#123; <span class="string">"Id"</span>: <span class="number">1</span>, <span class="string">"Date"</span>: <span class="string">"2014-01-01"</span>&#125;,</div><div class="line">                    ...</div><div class="line">                ],</div><div class="line">                <span class="string">"links"</span>: [</div><div class="line">                    &#123;</div><div class="line">                        <span class="string">"rel"</span>: <span class="string">"customer"</span>,</div><div class="line">                        <span class="string">"href"</span>: <span class="string">"http://api.attracs.com/Orders/1/customer"</span>,</div><div class="line">                        <span class="string">"prompt"</span>: <span class="string">"Show Customer"</span></div><div class="line">                    &#125;,</div><div class="line">                    ...</div><div class="line">                ]</div><div class="line">            &#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>It also includes queries and templates for UI building:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="string">"collection"</span>: &#123;</div><div class="line">        ...</div><div class="line">        <span class="string">"queries"</span>: [</div><div class="line">            &#123;</div><div class="line">                <span class="string">"rel"</span>: <span class="string">"search"</span>,</div><div class="line">                <span class="string">"href"</span>: <span class="string">"http://api.attracs.com/Orders/search"</span>,</div><div class="line">                <span class="string">"prompt"</span>: <span class="string">"Find Order"</span>,</div><div class="line">                <span class="string">"data"</span>: [</div><div class="line">                    &#123;<span class="string">"name"</span>: <span class="string">"search"</span>, <span class="string">"value"</span>: <span class="string">""</span>&#125;</div><div class="line">                ]</div><div class="line">            &#125;</div><div class="line">        ],</div><div class="line">        <span class="string">"template"</span>: &#123;</div><div class="line">            <span class="string">"data"</span>: [</div><div class="line">                &#123;<span class="string">"name"</span>: <span class="string">"id"</span>, <span class="string">"value"</span>: <span class="string">""</span>, <span class="string">"prompt"</span>: <span class="string">"Order Id"</span>&#125;,</div><div class="line">                &#123;<span class="string">"name"</span>: <span class="string">"date"</span>, <span class="string">"value"</span>: <span class="string">""</span>, <span class="string">"prompt"</span>: <span class="string">"Order Date"</span>&#125;,</div><div class="line">                ...</div><div class="line">            ]</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/api/" rel="tag"># api</a>
+          
+            <a href="/tags/architecture/" rel="tag"># architecture</a>
+          
+            <a href="/tags/rest/" rel="tag"># rest</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/31/mocha/" rel="next" title="Mocha">
+                <i class="fa fa-chevron-left"></i> Mocha
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/09/19/nodejs-intro/" rel="prev" title="Node.js intro">
+                Node.js intro <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/luka.jpg"
+               alt="Kaj Lund" />
+          <p class="site-author-name" itemprop="name">Kaj Lund</p>
+           
+              <p class="site-description motion-element" itemprop="description">Personal blog of Kaj Lund a.k.a. LuKa</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#URIs"><span class="nav-text">URIs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-Verbs"><span class="nav-text">HTTP Verbs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Status-Codes"><span class="nav-text">Status Codes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Associations"><span class="nav-text">Associations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Formatting-the-Results"><span class="nav-text">Formatting the Results</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Response-Formats"><span class="nav-text">Response Formats</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Entity-Tags-ETags"><span class="nav-text">Entity Tags (ETags)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Paging"><span class="nav-text">Paging</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Partials"><span class="nav-text">Partials</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Non-Resource-APIs"><span class="nav-text">Non-Resource APIs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API-Versioning"><span class="nav-text">API Versioning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Versioning-Styles"><span class="nav-text">Versioning Styles</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Versioning-using-the-URI-path"><span class="nav-text">Versioning using the URI path</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Versioning-using-Query-Param"><span class="nav-text">Versioning using Query Param</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Versioning-using-Content-Negotiation"><span class="nav-text">Versioning using Content Negotiation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Versioning-using-Custom-Header"><span class="nav-text">Versioning using Custom Header</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Resource-Versioning"><span class="nav-text">Resource Versioning</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Securing-the-API"><span class="nav-text">Securing the API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Cross-Domain-Security"><span class="nav-text">Cross Domain Security</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#JSONP"><span class="nav-text">JSONP</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CORS"><span class="nav-text">CORS</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Authentication"><span class="nav-text">Authentication</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#API-Keys"><span class="nav-text">API Keys</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#User-Security-Authenticating-Users"><span class="nav-text">User Security/Authenticating Users</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OAuth"><span class="nav-text">OAuth</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hypermedia"><span class="nav-text">Hypermedia</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Links"><span class="nav-text">Links</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hypermedia-Standards"><span class="nav-text">Hypermedia Standards</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HAL"><span class="nav-text">HAL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Collection-JSON"><span class="nav-text">Collection + JSON</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kaj Lund</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

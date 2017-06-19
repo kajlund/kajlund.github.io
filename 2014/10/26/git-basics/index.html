@@ -1,0 +1,815 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="tools,git,scm," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="kajlund.net" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Git is a modern centralized version control system that has almost become a de facto standard. HistoryGit came about in 2005 when the Linux kernel project could no longer use BitKeeper for free. This">
+<meta name="keywords" content="tools,git,scm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git Basics">
+<meta property="og:url" content="http://kajlund.net/2014/10/26/git-basics/index.html">
+<meta property="og:site_name" content="kajlund.net">
+<meta property="og:description" content="Git is a modern centralized version control system that has almost become a de facto standard. HistoryGit came about in 2005 when the Linux kernel project could no longer use BitKeeper for free. This">
+<meta property="og:updated_time" content="2017-06-11T13:03:48.350Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git Basics">
+<meta name="twitter:description" content="Git is a modern centralized version control system that has almost become a de facto standard. HistoryGit came about in 2005 when the Linux kernel project could no longer use BitKeeper for free. This">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kajlund.net/2014/10/26/git-basics/"/>
+
+
+
+
+
+  <title>Git Basics | kajlund.net</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">kajlund.net</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Personal blog of Kaj Lund a.k.a. LuKa</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://kajlund.net/2014/10/26/git-basics/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kaj Lund">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/luka.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kajlund.net">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Git Basics</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-10-26T18:25:30+02:00">
+                2014-10-26
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-11T16:03:48+03:00">
+                2017-06-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SCM/" itemprop="url" rel="index">
+                    <span itemprop="name">SCM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Git is a modern centralized version control system that has almost become a de facto standard.</p>
+<h3 id="History"><a href="#History" class="headerlink" title="History"></a>History</h3><p>Git came about in 2005 when the Linux kernel project could no longer use BitKeeper for free. This prompted Linus Torvalds and the Linux kernel team to develop their own tool based on the lessons learned using other VCS.</p>
+<h3 id="Characteristics"><a href="#Characteristics" class="headerlink" title="Characteristics"></a>Characteristics</h3><p>Git thinks about it’s data somewhat differently than you might be used to. Git does not store differences in deltas but stores snapshots of your entire project. It never stores the same thing twice so this is not as inefficient as it might sound.</p>
+<p>Everything you store is referred to using a SHA-1 hash calculated based on the contents of a file or directory structure. This should also help notice any changes or file corruption happening on your disk.</p>
+<p>Git generally only adds data to a repository so once something is committed it’s hard to loose that work.</p>
+<h5 id="Three-States"><a href="#Three-States" class="headerlink" title="Three States"></a>Three States</h5><p>A Git project folder contains <strong>3 areas</strong>. A working directory, a staging area and the Git repository.</p>
+<p>In the working directory files are either <strong>tracked</strong> or <strong>untracked</strong>. Tracked files are files that were part of the latest commit. Tracked files can be <strong>unmodified</strong>, <strong>modified</strong> or <strong>staged</strong>. Untracked files are the rest, namely files in your working folder that were not a part of latest snapshot and are not in the staging area. After cloning a repository all files in your working folder will be tracked and unmodified.</p>
+<p>As soon as a file in the working directory is changed Git will display them as modified. The modified files are <strong>staged</strong> and <strong>committed</strong> and the cycle repeats.</p>
+<p><strong>Checking out</strong> means copying from the repository to the working directory, <strong>staging</strong> means copying current state from the working directory to the staging area and <strong>committing</strong> means saving current staging area state to the repository.</p>
+<p>The Git repository (.git directory) stores the committed data plus metadata. This is what you would clone when cloning a repository.</p>
+<p>The working directory is a single checkout of one version of the project. The files are pulled out of the repo by git and placed here for you.</p>
+<p>The staging area is a file containing information on what will go into your next commit. The staging area is sometimes referred to as the <strong>index</strong>.</p>
+<h3 id="Basic-Workflow"><a href="#Basic-Workflow" class="headerlink" title="Basic Workflow"></a>Basic Workflow</h3><ul>
+<li>Modify files in your working directory</li>
+<li>Stage files (snapshot them in staging area)</li>
+<li>Commit - Store staging area snapshot permanently in repo.</li>
+</ul>
+<h2 id="Setup-and-Configuration"><a href="#Setup-and-Configuration" class="headerlink" title="Setup and Configuration"></a>Setup and Configuration</h2><h3 id="Installing-Git"><a href="#Installing-Git" class="headerlink" title="Installing Git"></a>Installing Git</h3><p>On Mac, either use <a href="http://code.google.com/p/git-osx-installer/" target="_blank">Git OSX Installer</a> from Google Code or install it via <a title="The HomeBrew Package Manager" href="http://www.kajlund.net/homebrew/" target="_blank">HomeBrew</a> using the command <code>$ brew install git</code>.</p>
+<p>On windows you can use the standard Git installer found <a href="http://git-scm.com/download/win" target="_blank" rel="external">here</a> or the msysgit one found <a href="https://code.google.com/p/msysgit/downloads/list?q=full+installer+official+git" target="_blank" rel="external">here</a>.</p>
+<p> You could also use the guide provided by Github found <a href="https://help.github.com/articles/set-up-git" target="_blank" rel="external">here</a></p>
+<h3 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h3><p>All Git configuration files are simple text files and can thus easily be moved between machines etc.</p>
+<p>Configurations can be changed via the <code>git config</code> command or directly by editing the configuration files. Configurations can be made on system-, user- and repository levels.</p>
+<h6 id="System-level"><a href="#System-level" class="headerlink" title="System level"></a>System level</h6><p>System level configurations have the lowest precedence and can be manipulated via the  <code>--system</code> option.</p>
+<p>On a Mac it’s <code>/etc/gitconfig</code> and on Windows <code>\Program Files\Git\etc\gitconfig</code>.</p>
+<h6 id="User-level"><a href="#User-level" class="headerlink" title="User level"></a>User level</h6><p>User level settings are use the global directive like <code>git config --global</code></p>
+<p>On a Mac the config file is <code>~/.gitconfig</code>. On Windows it is <code>%userprofile%\.gitconfig</code>.</p>
+<pre><code>$ git config --list                           # List all user settings
+$ git config --global user.name &quot;Your Name&quot;   # Set user name &amp; email
+$ git config --global user.email &quot;your_email@somedomain.com&quot;
+$ git config --global apply.whitespace nowarn # Make Git ignore whitespace changes
+$ git config --global core.editor &quot;notepad.exe&quot; # Set Notepad as editor for commit messages.
+$ git config --global core.editor &quot;\&quot;c:\Program Files\Notepad++\notepad++.exe\&quot;&quot;
+$ git config --global color.ui true
+</code></pre><h6 id="Repository-level"><a href="#Repository-level" class="headerlink" title="Repository level"></a>Repository level</h6><ul>
+<li><code>git config</code></li>
+<li><p>Project folder/.git/config</p>
+<p>$ git config –list             # List all settings<br>$ git config user.name          # Display current user.name setting<br>$ git config user.name luka     # Set user name for this repo only<br>$ git config –unset user.email # Remove email setting for this repo only</p>
+</li>
+</ul>
+<h4 id="Command-Aliases"><a href="#Command-Aliases" class="headerlink" title="Command Aliases"></a>Command Aliases</h4><p>Command aliases can be added to your settings for convenience.</p>
+<pre><code>$ git config --global alias.show-graph log --graph --abbrev-commit --pretty=oneline
+$ git config --global alias.co checkout
+</code></pre><h3 id="Getting-Help"><a href="#Getting-Help" class="headerlink" title="Getting Help"></a>Getting Help</h3><p>The following 3 commands basically all do the same thing, namely displays the help page for the command in question. The man command is *nix-only though.</p>
+<pre><code>$ git help &lt;command&gt;
+$ git &lt;command&gt; --help
+$ man git-&lt;command&gt;
+</code></pre><h6 id="Some-Resources-for-More-Git-Knowledge"><a href="#Some-Resources-for-More-Git-Knowledge" class="headerlink" title="Some Resources for More Git Knowledge"></a>Some Resources for More Git Knowledge</h6><ul>
+<li><a href="http://git-scm.com/" target="_blank" rel="external">Git web site</a></li>
+<li><a href="http://gitref.org/" target="_blank" rel="external">Git Reference</a></li>
+<li><a href="http://www.youtube.com/GitHubGuides" target="_blank" rel="external">GitHubGuides</a> is a YouTube channel by GitHub</li>
+<li><a href="http://try.github.io/" target="_blank" rel="external">Try Git</a> in your browser</li>
+<li><a href="http://tom.preston-werner.com/2009/05/19/the-git-parable.html" target="_blank" rel="external">The Git Parable</a></li>
+<li><a href="http://gitimmersion.com/index.html" target="_blank" rel="external">Git Immersion tutorial</a></li>
+<li><a href="http://git-scm.com/book" target="_blank" rel="external">Pro Git online book</a></li>
+<li><a href="http://www-cs-students.stanford.edu/~blynn/gitmagic/" target="_blank" rel="external">Git Magic</a></li>
+</ul>
+<h6 id="Some-Resources-for-more-GitHub-Knowledge"><a href="#Some-Resources-for-more-GitHub-Knowledge" class="headerlink" title="Some Resources for more GitHub Knowledge"></a>Some Resources for more GitHub Knowledge</h6><ul>
+<li><a href="https://help.github.com/" target="_blank" rel="external">GitHub Help</a></li>
+<li><a href="https://teach.github.com/" target="_blank" rel="external">GitHub official teaching materials</a></li>
+<li><a href="https://training.github.com/" target="_blank" rel="external">GitHub Training</a></li>
+<li><a href="https://developer.github.com/" target="_blank" rel="external">GitHub API</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tools/" rel="tag"># tools</a>
+          
+            <a href="/tags/git/" rel="tag"># git</a>
+          
+            <a href="/tags/scm/" rel="tag"># scm</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/06/15/jasmine/" rel="next" title="Jasmine">
+                <i class="fa fa-chevron-left"></i> Jasmine
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/07/15/gulp-recipes/" rel="prev" title="Gulp Recipes">
+                Gulp Recipes <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/luka.jpg"
+               alt="Kaj Lund" />
+          <p class="site-author-name" itemprop="name">Kaj Lund</p>
+           
+              <p class="site-description motion-element" itemprop="description">Personal blog of Kaj Lund a.k.a. LuKa</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#History"><span class="nav-text">History</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Characteristics"><span class="nav-text">Characteristics</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Three-States"><span class="nav-text">Three States</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-Workflow"><span class="nav-text">Basic Workflow</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Setup-and-Configuration"><span class="nav-text">Setup and Configuration</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Installing-Git"><span class="nav-text">Installing Git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Configuration"><span class="nav-text">Configuration</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#System-level"><span class="nav-text">System level</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#User-level"><span class="nav-text">User level</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Repository-level"><span class="nav-text">Repository level</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Command-Aliases"><span class="nav-text">Command Aliases</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Getting-Help"><span class="nav-text">Getting Help</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Some-Resources-for-More-Git-Knowledge"><span class="nav-text">Some Resources for More Git Knowledge</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Some-Resources-for-more-GitHub-Knowledge"><span class="nav-text">Some Resources for more GitHub Knowledge</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kaj Lund</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,852 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="architecture,javascript," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="kajlund.net" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="The Mobile Web refers to browser-based applications created for mobile devices, like smartphones and tablets, wirelessly connected to the internet. Think of the mobile web as a usage scenario instead">
+<meta name="keywords" content="architecture,javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Mobile Web">
+<meta property="og:url" content="http://kajlund.net/2014/03/15/the-mobile-web/index.html">
+<meta property="og:site_name" content="kajlund.net">
+<meta property="og:description" content="The Mobile Web refers to browser-based applications created for mobile devices, like smartphones and tablets, wirelessly connected to the internet. Think of the mobile web as a usage scenario instead">
+<meta property="og:updated_time" content="2017-06-11T12:53:17.778Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The Mobile Web">
+<meta name="twitter:description" content="The Mobile Web refers to browser-based applications created for mobile devices, like smartphones and tablets, wirelessly connected to the internet. Think of the mobile web as a usage scenario instead">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kajlund.net/2014/03/15/the-mobile-web/"/>
+
+
+
+
+
+  <title>The Mobile Web | kajlund.net</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">kajlund.net</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Personal blog of Kaj Lund a.k.a. LuKa</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://kajlund.net/2014/03/15/the-mobile-web/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kaj Lund">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/luka.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kajlund.net">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">The Mobile Web</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-03-15T18:25:30+02:00">
+                2014-03-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-11T15:53:17+03:00">
+                2017-06-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Architecture/" itemprop="url" rel="index">
+                    <span itemprop="name">Architecture</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>The Mobile Web refers to browser-based applications created for mobile devices, like smartphones and tablets, wirelessly connected to the internet.</p>
+<p>Think of the mobile web as a usage scenario instead of just a form factor. Using an application in a totally different environment than the typical desktop application is used in changes the way users access and consume websites.</p>
+<p>Mobile device characteristics are important but there’s more to it than just screen size.</p>
+<h3 id="Mobile-compared-to-desktop-platforms"><a href="#Mobile-compared-to-desktop-platforms" class="headerlink" title="Mobile compared to desktop platforms:"></a>Mobile compared to desktop platforms:</h3><ul>
+<li><p>Lots of different browsers with varying support for modern web technologies</p>
+</li>
+<li><p>Have less available resources than desktop machines, both hardware and network bandwidth</p>
+</li>
+<li><p>Form factor. Screens are smaller, interactions and expectations are different.</p>
+</li>
+<li><p>Might not have good keyboards and pointing devices</p>
+</li>
+<li><p>Typically used in an unpredictable environment instead of a fixed location</p>
+</li>
+<li><p>Mobile devices have features unavailable on a desktop computer like GPS, accelerometer, camera etc.</p>
+</li>
+</ul>
+<h3 id="Things-to-consider"><a href="#Things-to-consider" class="headerlink" title="Things to consider:"></a>Things to consider:</h3><ul>
+<li><p>What kinds personas do you want to target? Knowing this helps you identify desirable features.</p>
+</li>
+<li><p>What do these personas want to do on the site?</p>
+</li>
+<li><p>Where, when and why is the site being accessed?</p>
+</li>
+</ul>
+<h3 id="Why-do-we-need-mobile-sites-WebApps-now"><a href="#Why-do-we-need-mobile-sites-WebApps-now" class="headerlink" title="Why do we need mobile sites/WebApps now?"></a>Why do we need mobile sites/WebApps now?</h3><ul>
+<li>Mobile web usage will exceed desktop web usage in the near future</li>
+<li>The web is the only true cross-platform technology.</li>
+<li>Web technology is alone in reaching pretty much every available platform</li>
+<li>I.e. the web is the future platform.</li>
+<li>Modern devices pretty much all have browsers with desktop-like capabilities</li>
+</ul>
+<h2 id="Defining-some-commonly-used-terminology"><a href="#Defining-some-commonly-used-terminology" class="headerlink" title="Defining some commonly used terminology"></a>Defining some commonly used terminology</h2><h3 id="Web-Apps"><a href="#Web-Apps" class="headerlink" title="Web Apps?"></a>Web Apps?</h3><p>There is no clear definition of what a web app really is, but it usually involves a program running in a web browser window with interactivity and similar characteristics that are well suited for technologies commonly referred to as HTML5.</p>
+<p>Apps have an emphasis on interactivity and accomplishing tasks, as opposed to serving content. Also, apps have layouts that fits single screens and actions that don’t need to rebuild the whole UI.</p>
+<h3 id="HTML-5"><a href="#HTML-5" class="headerlink" title="HTML 5"></a>HTML 5</h3><p>By saying HTML5, people can mean a number of things but usually it is the combination of the evolving HTML5 and CSS3 standards plus JavaScript and the likewise evolving standards for device APIs (geolocation, offline storage etc).</p>
+<p>The above standards are the core pieces for building modern, interactive web applications.</p>
+<h3 id="Responsive-Web-Design-RWD"><a href="#Responsive-Web-Design-RWD" class="headerlink" title="Responsive Web Design (RWD)"></a>Responsive Web Design (RWD)</h3><p>A set of techniques used to make a web site adapt its layout according to the user’s browser window. This is usually done by switching the style sheets depending on consumer.</p>
+<p>A responsive web design, built with HTML5 and CSS3, allows a website to work across multiple devices and screens.</p>
+<p>RWD is perhaps the simplest and quickest ways to make a website built for desktop work on a lot of devices using the skills you already have.</p>
+<h2 id="Application-Categories"><a href="#Application-Categories" class="headerlink" title="Application Categories"></a>Application Categories</h2><p>Three Categories:</p>
+<ul>
+<li>Native Applications</li>
+<li>Web Apps/Sites</li>
+<li>Hybrids that are built with web technology and can be packaged for native distribution. I call these WebApps.</li>
+</ul>
+<h2 id="Native-Applications"><a href="#Native-Applications" class="headerlink" title="Native Applications"></a>Native Applications</h2><p>Applications built using the provided SDK for the designated platform. A subcategory of native applications is the Cross-Platform Native Frameworks (CPNF) that aim to use a single codebase and generate native code for multiple platforms.</p>
+<ul>
+<li>Not cross-platform</li>
+<li>Need to create separate apps for every targeted platform will be expensive</li>
+<li>Huge learning curve for new platforms</li>
+<li>Fast changing landscape could make your selected platform irrelevant in a few years.</li>
+<li>Not linkable</li>
+<li>Discoverable via App Stores</li>
+<li>Can use all device APIs. App can do anything the device is capable of</li>
+<li>Apps are faster and gets the right look and feel</li>
+</ul>
+<p>For the CPNF’s most of the cons listed goes away while the pros should mostly apply.</p>
+<h3 id="Tools"><a href="#Tools" class="headerlink" title="Tools"></a>Tools</h3><ul>
+<li>iOS - Xcode</li>
+<li>Android - Android SDK + Eclipse</li>
+<li>Windows - Visual Studio (C# + XAML)</li>
+<li>iOS + Android → Appcelerator Studio (JavaScript/CoffeeScript)</li>
+<li>Most clients → RhoMobile Suite (Ruby/Html)</li>
+</ul>
+<blockquote>
+<p>By building native apps you’ll be able to build a very responsive app with access to all device APIs and the proper look &amp; feel. This is also usually the by far most expensive and risky option. Can be the best option for complex client-side logic.</p>
+</blockquote>
+<h2 id="Web-Apps-Sites"><a href="#Web-Apps-Sites" class="headerlink" title="Web Apps/Sites"></a>Web Apps/Sites</h2><p>You can either build a single adaptable site using <a href="http://www.alistapart.com/articles/responsive-web-design/" target="_blank" rel="external">responsive web design</a> techniques or build separate<br>sites for mobile devices.</p>
+<p>The web site strategy would mainly be suitable for a traditional site serving content and not so much when you need to build something that can take advantage of mobile device functionality.</p>
+<ul>
+<li>Cross-platform</li>
+<li>Traditionally building a separate mobile site but using responsive web design (RWD) techniques we can target different device sizes with CSS.</li>
+<li>Linkable</li>
+<li>Not discoverable via App Stores</li>
+<li>Limited access to device APIs. More coming through evolving Web standards.</li>
+<li>No presence in app stores (for monetizing go native)</li>
+<li>No access to some native APIs/functionality</li>
+</ul>
+<h3 id="Tools-1"><a href="#Tools-1" class="headerlink" title="Tools"></a>Tools</h3><ul>
+<li>HTML, CSS + JavaScript</li>
+<li>Libraries like jQuery etc.</li>
+<li>Frameworks like ExtJS, Ember.js (SproutCore) etc.</li>
+</ul>
+<blockquote>
+<p>Well suited for providing traditional site content to the largest possible audience. Less well suited for applications targeted to specific audiences.</p>
+</blockquote>
+<h2 id="Web-Apps-1"><a href="#Web-Apps-1" class="headerlink" title="Web Apps"></a>Web Apps</h2><ul>
+<li>Native-like look &amp; feel, but not quite and not as fast</li>
+<li>Cross-platform in general</li>
+<li>Linkable</li>
+<li>Discoverable via App Stores</li>
+<li>Can use most device APIs</li>
+</ul>
+<h3 id="Tools-2"><a href="#Tools-2" class="headerlink" title="Tools"></a>Tools</h3><ul>
+<li>Same tools as for building Web Sites +</li>
+<li>Native container and native API provider like PhoneGap (Apache Cordova)</li>
+</ul>
+<blockquote>
+<p>Well suited for getting native-like functionality across platforms. Should often be the most suitable alternative as long as the client isn’t too complex. Lot’s of apps currently across App Stores are built like this.</p>
+</blockquote>
+<p>You can use a full-stack framework like Sencha Touch or a “Glue framework” by picking together parts from smaller libraries and frameworks like jQuery Mobile.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/architecture/" rel="tag"># architecture</a>
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/02/14/rhomobile/" rel="next" title="Rhomobile">
+                <i class="fa fa-chevron-left"></i> Rhomobile
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/05/03/bower/" rel="prev" title="Bower">
+                Bower <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/luka.jpg"
+               alt="Kaj Lund" />
+          <p class="site-author-name" itemprop="name">Kaj Lund</p>
+           
+              <p class="site-description motion-element" itemprop="description">Personal blog of Kaj Lund a.k.a. LuKa</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Mobile-compared-to-desktop-platforms"><span class="nav-text">Mobile compared to desktop platforms:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Things-to-consider"><span class="nav-text">Things to consider:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Why-do-we-need-mobile-sites-WebApps-now"><span class="nav-text">Why do we need mobile sites/WebApps now?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Defining-some-commonly-used-terminology"><span class="nav-text">Defining some commonly used terminology</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Web-Apps"><span class="nav-text">Web Apps?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML-5"><span class="nav-text">HTML 5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Responsive-Web-Design-RWD"><span class="nav-text">Responsive Web Design (RWD)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Application-Categories"><span class="nav-text">Application Categories</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Native-Applications"><span class="nav-text">Native Applications</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tools"><span class="nav-text">Tools</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-Apps-Sites"><span class="nav-text">Web Apps/Sites</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tools-1"><span class="nav-text">Tools</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-Apps-1"><span class="nav-text">Web Apps</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tools-2"><span class="nav-text">Tools</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kaj Lund</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

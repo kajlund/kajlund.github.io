@@ -1,0 +1,804 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="gulp,automation," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="kajlund.net" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Generic TasksCleaning Folders123456789101112131415161718192021gulp.task(&apos;clean&apos;, function (done) &amp;#123;    var delFiles = [].concat(config.buildFolder, config.tempFolder);    log(&apos;Cleaning: &apos; + plug.u">
+<meta name="keywords" content="gulp,automation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gulp Recipes">
+<meta property="og:url" content="http://kajlund.net/2015/07/15/gulp-recipes/index.html">
+<meta property="og:site_name" content="kajlund.net">
+<meta property="og:description" content="Generic TasksCleaning Folders123456789101112131415161718192021gulp.task(&apos;clean&apos;, function (done) &amp;#123;    var delFiles = [].concat(config.buildFolder, config.tempFolder);    log(&apos;Cleaning: &apos; + plug.u">
+<meta property="og:updated_time" content="2017-06-11T13:03:06.537Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Gulp Recipes">
+<meta name="twitter:description" content="Generic TasksCleaning Folders123456789101112131415161718192021gulp.task(&apos;clean&apos;, function (done) &amp;#123;    var delFiles = [].concat(config.buildFolder, config.tempFolder);    log(&apos;Cleaning: &apos; + plug.u">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kajlund.net/2015/07/15/gulp-recipes/"/>
+
+
+
+
+
+  <title>Gulp Recipes | kajlund.net</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">kajlund.net</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Personal blog of Kaj Lund a.k.a. LuKa</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://kajlund.net/2015/07/15/gulp-recipes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kaj Lund">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/luka.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kajlund.net">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Gulp Recipes</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-07-15T18:25:30+03:00">
+                2015-07-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-11T16:03:06+03:00">
+                2017-06-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Automation/" itemprop="url" rel="index">
+                    <span itemprop="name">Automation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Generic-Tasks"><a href="#Generic-Tasks" class="headerlink" title="Generic Tasks"></a>Generic Tasks</h2><h3 id="Cleaning-Folders"><a href="#Cleaning-Folders" class="headerlink" title="Cleaning Folders"></a>Cleaning Folders</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'clean'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">done</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> delFiles = [].concat(config.buildFolder, config.tempFolder);</div><div class="line">    log(<span class="string">'Cleaning: '</span> + plug.utils.color.blue(delFiles));</div><div class="line">    del(delFiles, done);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'clean-fonts'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">done</span>) </span>&#123;</div><div class="line">    clean(<span class="string">'./build/fonts/**/*.*'</span>, done);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'clean-images'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">done</span>) </span>&#123;</div><div class="line">    clean(<span class="string">'./build/img/**/*.*'</span>, done);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'clean-styles'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">done</span>) </span>&#123;</div><div class="line">    clean(<span class="string">'./build/css/**/*.css'</span>, done);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'fonts'</span>, [<span class="string">'clean-fonts'</span>], <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;...</div><div class="line">gulp.task(<span class="string">'images'</span>, [<span class="string">'clean-images'</span>], <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;...</div><div class="line">gulp.task(<span class="string">'styles'</span>, [<span class="string">'clean-styles'</span>], <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;...</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">clean</span>(<span class="params">path, done</span>) </span>&#123;</div><div class="line">    log(<span class="string">'Cleaning: '</span> + plug.util.colors.blue(path));</div><div class="line">    del(path, done);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params">msg</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> item;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> (msg) === <span class="string">'object'</span>) &#123;</div><div class="line">        <span class="keyword">for</span> (item <span class="keyword">in</span> msg) &#123;</div><div class="line">            <span class="keyword">if</span> (msg.hasOwnProperty(item)) &#123;</div><div class="line">                plug.util.log(plug.util.colors.blue(msg[item]));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        plug.util.log(plug.util.colors.blue(msg));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Automatic-Page-Reloads"><a href="#Automatic-Page-Reloads" class="headerlink" title="Automatic Page Reloads"></a>Automatic Page Reloads</h2><h3 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h3><ul>
+<li>Prepare CSS and HTML</li>
+<li>Restart on node server changes</li>
+</ul>
+<p><a href="https://github.com/remy/nodemon" target="_blank" rel="external">Nodemon</a> can restart, watch for changes and handle different events. The<br> gulp plugin is called gulp-nodemon. It adds supports for calling other gulp tasks on different events.</p>
+<pre><code>npm install --save-dev gulp-nodemon
+</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'server'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> plug.nodemon(&#123;</div><div class="line">            <span class="attr">script</span>: <span class="string">'server.js'</span>,</div><div class="line">            <span class="attr">delayTime</span>: <span class="number">1</span>,</div><div class="line">            <span class="attr">watch</span>: config.serverSourceFiles</div><div class="line">        &#125;)</div><div class="line">        .on(<span class="string">'restart'</span>, [<span class="string">'vet'</span>], <span class="function"><span class="keyword">function</span> (<span class="params">ev</span>) </span>&#123;</div><div class="line">            log(<span class="string">'*** nodemon restarted server'</span>);</div><div class="line">            log(<span class="string">'files changed on restart:\n'</span> + ev);</div><div class="line">        &#125;)</div><div class="line">        .on(<span class="string">'start'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            log(<span class="string">'*** nodemon started monitoring'</span>);</div><div class="line">        &#125;)</div><div class="line">        .on(<span class="string">'crash'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            log(<span class="string">'*** nodemon crashed: script crashed for some reason'</span>);</div><div class="line">        &#125;)</div><div class="line">        .on(<span class="string">'exit'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            log(<span class="string">'*** nodemon exited cleanly'</span>);</div><div class="line">        &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>Before restarting we’ll call the vet task to verify code.</p>
+<h3 id="Client"><a href="#Client" class="headerlink" title="Client"></a>Client</h3><ul>
+<li>Launch server</li>
+<li>Launch browser</li>
+<li>Restart/refresh on changes</li>
+</ul>
+<p><a href="http://www.browsersync.io" target="_blank" rel="external">BrowserSync</a> can watch client-side files and<br>automatically inject changes (using sockets.io) into the browser(s).</p>
+<p>It can also synchronize actions across browsers. This functionality is referred<br>to as ghost-mode and it can sync clicks, forms, locations and scrolling across<br>multiple browsers. Install with command <code>npm install --save-dev browser-sync</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">.on(<span class="string">'restart'</span>, [<span class="string">'vet'</span>], <span class="function"><span class="keyword">function</span> (<span class="params">ev</span>) </span>&#123;</div><div class="line">    log(<span class="string">'*** nodemon restarted server'</span>);</div><div class="line">    log(<span class="string">'files changed on restart:\n'</span> + ev);</div><div class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        browserSync.notify(<span class="string">'reloading now...'</span>);</div><div class="line">        browserSync.reload(&#123;<span class="attr">stream</span>:<span class="literal">false</span>&#125;);</div><div class="line">     &#125;, <span class="number">1000</span>);</div><div class="line">&#125;)</div><div class="line">.on(<span class="string">'start'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    log(<span class="string">'*** nodemon started monitoring'</span>);</div><div class="line">    startBrowserSync();</div><div class="line">&#125;)</div><div class="line">...</div><div class="line"></div><div class="line">function startBrowserSync () &#123;</div><div class="line">    <span class="keyword">if</span> (browserSync.active) &#123;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    log(<span class="string">'Starting browser-sync on port 3001'</span>);</div><div class="line">    gulp.watch(conf.lessFiles, [<span class="string">'styles'</span>]);</div><div class="line"></div><div class="line">    browserSync.init(&#123;</div><div class="line">        <span class="attr">proxy</span>: <span class="string">'localhost:3000'</span>,</div><div class="line">        <span class="attr">port</span>: <span class="number">3001</span>,</div><div class="line">        <span class="attr">files</span>: [</div><div class="line">            <span class="string">'./**/*.*'</span>,</div><div class="line">            <span class="string">'!./**/*.less'</span></div><div class="line">        ],</div><div class="line">        <span class="attr">ghostMode</span>: &#123;</div><div class="line">            <span class="attr">clicks</span>: <span class="literal">true</span>,</div><div class="line">            <span class="attr">location</span>: <span class="literal">true</span>,</div><div class="line">            <span class="attr">forms</span>: <span class="literal">true</span>,</div><div class="line">            <span class="attr">scroll</span>: <span class="literal">true</span></div><div class="line">        &#125;,</div><div class="line">        <span class="attr">injectChanges</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">logFileChanges</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">logLevel</span>: <span class="string">'debug'</span>,</div><div class="line">        <span class="attr">logPrefix</span>: <span class="string">'SYNC'</span>,</div><div class="line">        <span class="attr">notify</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">reloadDelay</span>: <span class="number">1000</span></div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Code-Analysis-a-k-a-Linting"><a href="#Code-Analysis-a-k-a-Linting" class="headerlink" title="Code Analysis a.k.a. Linting"></a>Code Analysis a.k.a. Linting</h2><blockquote>
+<p>As of summer 2016 I’ve dropped JSHint and JSCS in favor of eslint.</p>
+</blockquote>
+<p>These are 3 popular tools for code analysis:</p>
+<ul>
+<li><a href="http://eslint.org/" target="_blank" rel="external">eslint</a></li>
+<li><a href="http://jshint.com/" target="_blank" rel="external">JSHint</a> - <a href="http://jshint.com/docs/" target="_blank" rel="external">docs</a></li>
+<li><a href="http://jscs.info/" target="_blank" rel="external">JSCS</a> - <a href="https://github.com/jscs-dev/node-jscs" target="_blank" rel="external">Github</a></li>
+</ul>
+<p>JSHint is a popular code analysis tool that can detect syntax errors and other potential problems in your source code. Define your rules in a file called <code>.jshintrc</code></p>
+<pre><code>npm install --save-dev gulp-jshint jshint-stylish
+</code></pre><p>JSCS is a JavaScript Code Style Checker. You can use it to define a style guide for code consistency and enforce it using JSCS. Define your rules in a file called <code>.jscsrc</code></p>
+<pre><code>npm install --save-dev gulp-jscs gulp-jscs-stylish
+</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>),</div><div class="line">    plug = <span class="built_in">require</span>(<span class="string">'gulp-load-plugins'</span>)(&#123;<span class="attr">lazy</span>: <span class="literal">true</span>&#125;);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'vet'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> gulp</div><div class="line">        .src(<span class="string">'./app/**/*.js'</span>)</div><div class="line">        .pipe(plug.jshint())</div><div class="line">        .pipe(plug.jscs())</div><div class="line">        .on(<span class="string">'error'</span>, noop)</div><div class="line">        .pipe(plug.jscsStylish.combineWithHintResults())</div><div class="line">        .pipe(plug.jshint.reporter(<span class="string">'jshint-stylish'</span>, &#123;<span class="attr">verbose</span>: <span class="literal">true</span>&#125;));</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> noop = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;;</div></pre></td></tr></table></figure>
+<h2 id="Transpile-CSS"><a href="#Transpile-CSS" class="headerlink" title="Transpile CSS"></a>Transpile CSS</h2><p>If you want to use LESS or SASS you need to transpile your files to CSS.</p>
+<p>You can use <a href="https://github.com/postcss/autoprefixer" target="_blank" rel="external">AutoPrefixer</a> to add vendor browser prefixes automatically. AutoPrefixer is kept in sync with <a href="http://caniuse.com" target="_blank" rel="external">Can I Use</a></p>
+<pre><code>npm install --save-dev gulp-less gulp-autoprefixer
+</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'styles'</span>, [<span class="string">'clean-styles'</span>], <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    log(<span class="string">'Compiling LESS --&gt; CSS'</span>);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> gulp</div><div class="line">        .src(<span class="string">'./styles/*.less'</span>)</div><div class="line">        .pipe(plug.less())</div><div class="line">        .pipe(plug.autoprefixer(&#123;<span class="attr">browsers</span>: [<span class="string">'last 2 versions'</span>, <span class="string">'&gt; 5%'</span>] &#125;))</div><div class="line">        .pipe(gulp.dest(<span class="string">'./tmp'</span>));</div><div class="line">&#125;);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'clean-styles'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">done</span>) </span>&#123;</div><div class="line">    clean(<span class="string">'./tmp/**/*.css'</span>, done);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">clean</span>(<span class="params">path, done</span>) </span>&#123;</div><div class="line">    log(<span class="string">'Cleaning: '</span> + plug.util.colors.blue(path));</div><div class="line">    del(path, done);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.style-test</span> &#123;</div><div class="line">    <span class="attribute">transform-origin</span>: center bottom;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.style-test</span> &#123;</div><div class="line">  <span class="attribute">-webkit-transform-origin</span>: center bottom;</div><div class="line">          <span class="attribute">transform-origin</span>: center bottom;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>The ‘clean’ is not a gulp plugin and thus doesn’t return a stream. In these cases we declare a callback and call it after we’re finished so that things are executed in the right order.</p>
+<h2 id="Angular-Template-Cache"><a href="#Angular-Template-Cache" class="headerlink" title="Angular Template Cache"></a>Angular Template Cache</h2><p>AngularJS apps use view templates for routes and directives. These can either be loaded dynamically via AJAX calls or added to the AngularJS $templateCache service to avoid http traffic when loading them. You would add a template by calling <code>$templateCache.$put(&#39;url&#39;, &#39;template&#39;);</code>. When a route or directive needs to load an html template, Angular will check the template cache before doing an http call.</p>
+<p>Instead of using the $templateCache service manually we can use a gulp plugin like <a href="https://github.com/miickel/gulp-angular-templatecache" target="_blank" rel="external">gulp-angular-templatecache</a>. This plugin can gather all templates and add them to the $templateCache service. We can also minify the html if we want to save space. The plugin will compile our html templates to a single file and can generate an angular module to be included in our app.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// clean build and temp folders</span></div><div class="line">gulp.task(<span class="string">'clean-build'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">done</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> delFiles = [].concat(<span class="string">'./temp/**/*.js'</span>, <span class="string">'./build/**/*.html'</span>, <span class="string">'./build/**/*.js'</span>);</div><div class="line">    clean(delFiles, done);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'templatecache'</span>, [<span class="string">'clean-build'</span>], <span class="function"><span class="keyword">function</span> (<span class="params">done</span>) </span>&#123;</div><div class="line">    log(<span class="string">'Creating AngularJS $templateCache'</span>);</div><div class="line">    <span class="comment">// SAMPLE config object</span></div><div class="line">    <span class="keyword">var</span> config = &#123;</div><div class="line">        <span class="attr">htmlTemplates</span>: <span class="string">'./app/**/*.html'</span>, <span class="comment">// avoid index.html</span></div><div class="line">        templateCache = &#123;</div><div class="line">       			<span class="attr">file</span>: <span class="string">'templates.js'</span>,</div><div class="line">          	<span class="attr">options</span>: &#123;</div><div class="line">       		      <span class="attr">module</span>: <span class="string">'app'</span>,</div><div class="line">          		  <span class="attr">standAlone</span>: <span class="literal">false</span>,</div><div class="line">          		  <span class="attr">root</span>: <span class="string">'app/'</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> gulp.src(config.htmlTemplates)</div><div class="line">    		.pipe(plug.minifyHtml(&#123;<span class="attr">empty</span>: <span class="literal">true</span>&#125;))</div><div class="line">    		.pipe(plug.angularTemplateCache(config.templateCache.file, config.templateCache.options))</div><div class="line">        .pipe(gulp.dest(config.tempFolder));</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="Image-Minification"><a href="#Image-Minification" class="headerlink" title="Image Minification"></a>Image Minification</h2><p>You can use <a href="https://github.com/sindresorhus/gulp-imagemin" target="_blank" rel="external">gulp-imagemin</a> for image minification.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'imagemin'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    log(<span class="string">'Compress images and copy to build folder'</span>);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> gulp.src(config.images)</div><div class="line">        .pipe(plug.imagemin(&#123;<span class="attr">optimizationLevel</span>: <span class="number">3</span>&#125;))</div><div class="line">        .pipe(<span class="string">'./build/img'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h2 id="html-injection"><a href="#html-injection" class="headerlink" title="html injection"></a>html injection</h2><p>Automating adding the needed dependencies to the html file. For 3rd party dependencies you can use <a href="https://github.com/taptapship/wiredep" target="_blank" rel="external">Wiredep</a> to inject bower dependencies into HTML.</p>
+<p>You would use HTML comments as placeholders. The type should be either <code>css</code> or <code>js</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;!-- bower:type --&gt;</div></pre></td></tr></table></figure>
+<p>For custom code use you can use <a href="https://github.com/klei/gulp-inject" target="_blank" rel="external">gulp-inject</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;!-- inject:type --&gt;</div></pre></td></tr></table></figure>
+<p>Separating between 3rd party CSS/JS and our own</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">ng-app</span>=<span class="string">"app"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- bower:css --&gt;</span></div><div class="line">    <span class="comment">&lt;!-- endbower --&gt;</span></div><div class="line"></div><div class="line">    <span class="comment">&lt;!-- inject:css --&gt;</span></div><div class="line">    <span class="comment">&lt;!-- endinject --&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-include</span>=<span class="string">"'app/layout/shell.html'"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- bower:js --&gt;</span></div><div class="line">    <span class="comment">&lt;!-- endbower --&gt;</span></div><div class="line"></div><div class="line">    <span class="comment">&lt;!-- inject:js --&gt;</span></div><div class="line">    <span class="comment">&lt;!-- endinject --&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>wiredep injects the runtime css dependencies at <code>&lt;!-- bower:css --&gt;</code> and the javascript dependencies at <code>&lt;!-- bower:js --&gt;</code>. Wiredep uses the bower.json files of the 3rd party packages to figure out the dependencies i.e. what to load and loading order.</p>
+<p>gulp-inject injects the runtime css dependencies at <code>&lt;!-- inject:css --&gt;</code> and the javascript dependencies at <code>&lt;!-- inject:js --&gt;</code>.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/gulp/" rel="tag"># gulp</a>
+          
+            <a href="/tags/automation/" rel="tag"># automation</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/10/26/git-basics/" rel="next" title="Git Basics">
+                <i class="fa fa-chevron-left"></i> Git Basics
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/08/28/spa/" rel="prev" title="Single Page Applications">
+                Single Page Applications <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/luka.jpg"
+               alt="Kaj Lund" />
+          <p class="site-author-name" itemprop="name">Kaj Lund</p>
+           
+              <p class="site-description motion-element" itemprop="description">Personal blog of Kaj Lund a.k.a. LuKa</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Generic-Tasks"><span class="nav-text">Generic Tasks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Cleaning-Folders"><span class="nav-text">Cleaning Folders</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Automatic-Page-Reloads"><span class="nav-text">Automatic Page Reloads</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Server"><span class="nav-text">Server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Client"><span class="nav-text">Client</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-Analysis-a-k-a-Linting"><span class="nav-text">Code Analysis a.k.a. Linting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transpile-CSS"><span class="nav-text">Transpile CSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Angular-Template-Cache"><span class="nav-text">Angular Template Cache</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Image-Minification"><span class="nav-text">Image Minification</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#html-injection"><span class="nav-text">html injection</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kaj Lund</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

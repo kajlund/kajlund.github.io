@@ -1,0 +1,809 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="angular,routing," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="kajlund.net" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="UI-Router is a state based library as opposed to the default routing library that is URL-based. Using ngRoute a route is always associated with a particular URL. In UI-router states can exist without">
+<meta name="keywords" content="angular,routing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular Routing with ui-router">
+<meta property="og:url" content="http://kajlund.net/2015/09/29/angular-ui-router/index.html">
+<meta property="og:site_name" content="kajlund.net">
+<meta property="og:description" content="UI-Router is a state based library as opposed to the default routing library that is URL-based. Using ngRoute a route is always associated with a particular URL. In UI-router states can exist without">
+<meta property="og:updated_time" content="2017-06-11T13:05:47.723Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Angular Routing with ui-router">
+<meta name="twitter:description" content="UI-Router is a state based library as opposed to the default routing library that is URL-based. Using ngRoute a route is always associated with a particular URL. In UI-router states can exist without">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kajlund.net/2015/09/29/angular-ui-router/"/>
+
+
+
+
+
+  <title>Angular Routing with ui-router | kajlund.net</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">kajlund.net</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Personal blog of Kaj Lund a.k.a. LuKa</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://kajlund.net/2015/09/29/angular-ui-router/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kaj Lund">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/luka.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kajlund.net">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Angular Routing with ui-router</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-09-29T18:25:30+03:00">
+                2015-09-29
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-11T16:05:47+03:00">
+                2017-06-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AngularJS/" itemprop="url" rel="index">
+                    <span itemprop="name">AngularJS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>UI-Router is a state based library as opposed to the default routing library that is URL-based. Using ngRoute a route is always associated with a particular URL. In UI-router states can exist without a URL. States can also be nested.</p>
+<blockquote>
+<p>A state is a combination of a controller and a view that can exist independently from any particular URL - A state is a “place” in an application.</p>
+</blockquote>
+<h2 id="Preparation"><a href="#Preparation" class="headerlink" title="Preparation"></a>Preparation</h2><h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><p>There are a couple of ways to install</p>
+<ul>
+<li>Install via package manager <code>bower install angular-ui-router</code> or <code>npm install angular-ui-router</code> or <code>jspm install angular-ui-router</code></li>
+<li>Use a CDN like Cloudflare</li>
+<li>Download from the github project</li>
+</ul>
+<h3 id="Setup-UI-Router"><a href="#Setup-UI-Router" class="headerlink" title="Setup UI_Router"></a>Setup UI_Router</h3><p>Once you have access to the JavaScript file you need to add ui.router as a module dependency and add the ui-view dircetive to your html.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>UI-Router demo<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">ng-app</span>=<span class="string">"app"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">ui-view</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"libs/angular.js/1.4.6/angular.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"libs/angular-ui-router/0.2.15/angular-ui-router.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    angular.module(<span class="string">'app'</span>, [<span class="string">'ui.router'</span>]);</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<h2 id="Configuring-States"><a href="#Configuring-States" class="headerlink" title="Configuring States"></a>Configuring States</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"> angular.module(<span class="string">'app'</span>).config(configRoutes);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">configRoutes</span>(<span class="params">$stateProvider, $urlRouterProvider</span>) </span>&#123;</div><div class="line">    $urlRouterProvider.otherwise(<span class="string">'/'</span>);</div><div class="line"></div><div class="line">    $stateProvider</div><div class="line">        .state(<span class="string">'home'</span>, &#123;</div><div class="line">            <span class="attr">url</span>: <span class="string">'/'</span>,</div><div class="line">            <span class="attr">controller</span>: <span class="string">'HomeController'</span>,</div><div class="line">            <span class="attr">controllerAs</span>: <span class="string">'vm'</span>,</div><div class="line">            <span class="attr">templateUrl</span>: <span class="string">'app/home.html'</span>,</div><div class="line">            <span class="attr">resolve</span>: &#123;</div><div class="line">                <span class="comment">//allMyData will be injected into HomeController if promise resolved</span></div><div class="line">                allMyData: <span class="function"><span class="keyword">function</span> (<span class="params">dataService</span>) </span>&#123;</div><div class="line">                    <span class="keyword">return</span> dataService.getAllMyData();</div><div class="line">                    <span class="comment">//throw 'Emulate state change failure'</span></div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>The command <code>$urlRouterProvider.otherwise(&#39;/&#39;)</code> defines a “catch all” route making sure that if a user enters an invalid URL (invalid state or invalid param value) he will be routed to ‘/’.</p>
+<blockquote>
+<p>Since the views are bound to states you don’t have to provide a URL (no change in address bar) to change the view but that might also be confusing in some cases.</p>
+</blockquote>
+<h3 id="Activating-States"><a href="#Activating-States" class="headerlink" title="Activating States"></a>Activating States</h3><p>In JavaScript code you would use <code>$state.go(&#39;home&#39;);</code> to change to the home state. In templates you can use both normal href links <code>&lt;a href=&quot;/home&quot;&gt;Home&lt;/a&gt;</code> and the ui-sref directive <code>&lt;a ui-sref=&quot;home&quot;&gt;Home&lt;/a&gt;</code>. If the state doesn’t have a particular URL you must obviously use the ui-sref directive.</p>
+<h2 id="Using-the-state-Service"><a href="#Using-the-state-Service" class="headerlink" title="Using the $state Service"></a>Using the $state Service</h2><h3 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$state.go()     - $state.go(&apos;statename&apos;, &#123;id: 1, another: &apos;two&apos;&#125;);</div><div class="line">$state.reload() - reloads the current state</div><div class="line">$state.get()    - retrieve a state object by name or all states</div></pre></td></tr></table></figure>
+<h3 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h3><ul>
+<li>current - currently active state</li>
+<li>params  - object containing params for current state</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyController</span> (<span class="params">$state, $log, allMyData</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> vm = <span class="keyword">this</span>;</div><div class="line">        vm.data = allMyData;</div><div class="line">    $log.debug(<span class="string">'Activated state '</span>, $state.current);</div><div class="line"></div><div class="line">    vm.refresh = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        $log.debug(<span class="string">'Reloaded state '</span>, $state.current);</div><div class="line">        $state.reload();</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h3><ul>
+<li>$stateChangeError</li>
+<li>$stateChangeStart</li>
+<li>$stateChangeSuccess</li>
+<li>$stateNotFound</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">runApp</span> (<span class="params">$rootScope, $log</span>) </span>&#123;</div><div class="line">    $rootScope.$on(<span class="string">'$stateChangeSuccess'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">event, toState, toParams, fromState, fromParams</span>) </span>&#123;</div><div class="line">        $log.debug(<span class="string">'Successfully changed state: '</span>);</div><div class="line"></div><div class="line">        $log.debug(<span class="string">'event'</span>, event);</div><div class="line">        $log.debug(<span class="string">'toState'</span>, toState);</div><div class="line">        $log.debug(<span class="string">'toParams'</span>, toParams);</div><div class="line">        $log.debug(<span class="string">'fromState'</span>, fromState);</div><div class="line">        $log.debug(<span class="string">'fromParams'</span>, fromParams);</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    $rootScope.$on(<span class="string">'$stateNoFound'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">event, unfoundState, fromState, fromParams</span>) </span>&#123;</div><div class="line">        $log.debug(<span class="string">'Requested state not found: '</span>, unfoundState);</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    $rootScope.$on(<span class="string">'$stateChangeError'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">event, toState, toParams, fromState, fromParams, error</span>) </span>&#123;</div><div class="line">        $log.debug(<span class="string">'An error occurred while changing state: '</span>, error);</div><div class="line"></div><div class="line">        $log.debug(<span class="string">'event'</span>, event);</div><div class="line">        $log.debug(<span class="string">'toState'</span>, toState);</div><div class="line">        $log.debug(<span class="string">'toParams'</span>, toParams);</div><div class="line">        $log.debug(<span class="string">'fromState'</span>, fromState);</div><div class="line">        $log.debug(<span class="string">'fromParams'</span>, fromParams);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="State-Parameters"><a href="#State-Parameters" class="headerlink" title="State Parameters"></a>State Parameters</h2><p>You can declare state params in the url param of the route configuration:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">.state(<span class="string">'tripdetail'</span>, &#123;</div><div class="line">   <span class="attr">url</span>: <span class="string">'/tripdetail/:id'</span></div><div class="line">&#125;)</div><div class="line">...</div><div class="line"></div><div class="line">function TripDetailController ($stateParams) &#123;</div><div class="line">    <span class="keyword">var</span> vm = <span class="keyword">this</span>;</div><div class="line">    vm.tripId = $stateParams.id;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>With UI-Router there are also other options:</p>
+<p>Using curly braces works the same way but allows you to enter a regex. The parameter will only be set if it matches the regex.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.state(<span class="string">'tripdetail'</span>, &#123;</div><div class="line">   <span class="attr">url</span>: <span class="string">'/tripdetail/&#123;id:[0-9]&#125;'</span></div><div class="line">&#125;)</div><div class="line">...</div></pre></td></tr></table></figure>
+<p>The third option is to use the params property on the state configuration object. This allows you to give default values to the params or to declare params that doesn’t exist in the URL.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">.state(<span class="string">'tripdetail'</span>, &#123;</div><div class="line">    <span class="attr">url</span>: <span class="string">'/tripdetail/&#123;id:[0-9]&#125;'</span>,</div><div class="line">    <span class="attr">params</span>: &#123;</div><div class="line">        <span class="attr">secretMessage</span>: &#123;<span class="attr">value</span>: <span class="string">'Shhh!'</span>&#125;</div><div class="line">    &#125;</div><div class="line">&#125;)</div><div class="line">...</div><div class="line"></div><div class="line">function TripDetailController ($stateParams) &#123;</div><div class="line">    <span class="keyword">var</span> vm = <span class="keyword">this</span>;</div><div class="line">    vm.tripId = $stateParams.id;</div><div class="line">    vm.message = $stateParams.secretMessage; <span class="comment">// cannot be passed via URL</span></div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>In templates you pass route parameters in an object literal as a parameter to the ui-sref state value <code>&lt;a ui-sref=&quot;tripdetail({id: 1234, secretMessage: &#39;New message&#39;})&quot;&gt;Detail&lt;/a&gt;</code></p>
+<p>In code you pass an object literal as the second argument to the $state.go function <code>$state.go({id: 1234, secretMessage: &#39;New message&#39;});</code>.</p>
+<h3 id="Additional-State-Configuration-Properties"><a href="#Additional-State-Configuration-Properties" class="headerlink" title="Additional State Configuration Properties"></a>Additional State Configuration Properties</h3><p>Similar to the ngRoute resolve property you call a function returning a promise. The promise must be resolved before the state change will occur. The name of the resolve function is what you will inject to the controller.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">.state(<span class="string">'triplist'</span>, &#123;</div><div class="line">    <span class="attr">url</span>: <span class="string">'/trips'</span>,</div><div class="line">    <span class="attr">resolve</span>: &#123;</div><div class="line">        <span class="attr">trips</span>: <span class="function"><span class="keyword">function</span> (<span class="params">dataService</span>) </span>&#123;</div><div class="line">            <span class="keyword">return</span> dataService.getAllTrips();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;)</div><div class="line">...</div></pre></td></tr></table></figure>
+<p>You can also assign data to the states. You don’t need to call it data but it is a convention. State data is inherited by child-states:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">.state(<span class="string">'triplist'</span>, &#123;</div><div class="line">    <span class="attr">url</span>: <span class="string">'/trips'</span>,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'Trip List'</span>,</div><div class="line">        <span class="attr">desc</span>: <span class="string">'Whatever'</span></div><div class="line">    &#125;</div><div class="line">&#125;)</div><div class="line">...</div><div class="line">$log.debug($state.current.data);</div></pre></td></tr></table></figure>
+<p>Templates can be assigned via a function to the templateUrl property which makes it easy to dynamically determine what template to use. You can also use the injectable templateProvider property. Controllers have similar options.</p>
+<p>The onEnter and onExit properties can hold callback functions that will execute when a state is entered or exited.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">.state(<span class="string">'triplist'</span>, &#123;</div><div class="line">    <span class="attr">url</span>: <span class="string">'/trips'</span>,</div><div class="line">    <span class="attr">onEnter</span>: <span class="function"><span class="keyword">function</span> (<span class="params">$log</span>) </span>&#123;</div><div class="line">        $log.debug(<span class="string">'Entering triplist state'</span>);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">onExit</span>: <span class="function"><span class="keyword">function</span> (<span class="params">$log</span>) </span>&#123;</div><div class="line">        $log.debug(<span class="string">'Exiting triplist state'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;)</div><div class="line">...</div></pre></td></tr></table></figure>
+<h2 id="Nested-States-and-Views"><a href="#Nested-States-and-Views" class="headerlink" title="Nested States and Views"></a>Nested States and Views</h2><p>Combined these features allow you to build complex views from simpler parts. nested states works a bit like inheritance where child states inherit from parent states.</p>
+<p>For nested states, state properties including the URL is inherited to child states.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">.state(<span class="string">'book'</span>, &#123;</div><div class="line">    <span class="attr">abstract</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">url</span>: <span class="string">'/book/:id'</span>,</div><div class="line">    <span class="attr">resolve</span>: &#123;&#125;,</div><div class="line">    <span class="attr">data</span>: &#123;&#125;,</div><div class="line">    <span class="attr">template</span>: <span class="string">'&lt;div ui-view&gt;'</span></div><div class="line">&#125;)</div><div class="line">.state(<span class="string">'book.summary'</span>, &#123;</div><div class="line">    <span class="attr">url</span>: <span class="string">'/summary'</span>,</div><div class="line">    <span class="attr">templateUrl</span>: <span class="string">'book.summary'</span></div><div class="line">&#125;)</div><div class="line">.state(<span class="string">'bookDetail'</span>, &#123;</div><div class="line">    <span class="attr">url</span>: <span class="string">'/detail'</span>,</div><div class="line">    <span class="attr">parent</span>: <span class="string">'book'</span>, <span class="comment">// or book state object</span></div><div class="line">    templateUrl: <span class="string">'book.detail.html'</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>To define a child state you either repeat the parent state name, followed by a dot, followed by the child state name like above. You can also instead add the property parent to the child state definition and give it a string or literal value of the parent state.</p>
+<p>The view templates defined in child view definitions will be rendered in their parent’s view template’s ui-view directive, not in the ui-view directive defined for the app.</p>
+<h3 id="Abstract-States"><a href="#Abstract-States" class="headerlink" title="Abstract States"></a>Abstract States</h3><p>A specialiced version of parent state that can’t be activated directly. They are implicitly activated by activating any of their child states. If an abstact state specifies a URL any child state’s URL will be prepended with it. It can be used as an abstraction for gathering resolves and data you wish to be available in all child states. You can also use it for sharing part of the view for all child states.</p>
+<h3 id="Multiple-Named-Views"><a href="#Multiple-Named-Views" class="headerlink" title="Multiple Named Views"></a>Multiple Named Views</h3><p>Allows you to define multiple views for a single state. This can be useful for separating views and controllers to keep them smaller and more maintainable and also if you need to reuse part of a view in different places throughout your app. You do this by defining a views object on the state configuration object.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">.state(<span class="string">'book'</span>, &#123;</div><div class="line">    <span class="attr">abstract</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">templateUrl</span>: <span class="string">'app/book.html'</span>,</div><div class="line">    <span class="attr">url</span>: <span class="string">'/book/:id'</span>,</div><div class="line">    <span class="attr">resolve</span>: &#123;&#125;,</div><div class="line">    <span class="attr">data</span>: &#123;&#125;</div><div class="line">&#125;)</div><div class="line">.state(<span class="string">'book.summary'</span>, &#123;</div><div class="line">    <span class="attr">url</span>: <span class="string">'/summary'</span>,</div><div class="line">    <span class="attr">views</span>: &#123;</div><div class="line">        <span class="string">'bookSummary'</span>: &#123;</div><div class="line">            <span class="attr">templateUrl</span>: <span class="string">'app/book.summary.html'</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;)</div><div class="line">.state(<span class="string">'bookDetail'</span>, &#123;</div><div class="line">    <span class="attr">url</span>: <span class="string">'/detail'</span>,</div><div class="line">    <span class="attr">parent</span>: <span class="string">'book'</span>, <span class="comment">// or book state object</span></div><div class="line">    views: &#123;</div><div class="line">        <span class="string">'bookSummary'</span>: &#123;</div><div class="line">            <span class="attr">templateUrl</span>: <span class="string">'app/book.summary.html'</span></div><div class="line">        &#125;,</div><div class="line">        <span class="string">'bookDetail'</span>: &#123;</div><div class="line">            <span class="attr">templateUrl</span>: <span class="string">'app/book.detail.html'</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>and the template book.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>I will be here for all my children<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ui-view</span>=<span class="string">"bookSummary"</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">div</span> <span class="attr">ui-view</span>=<span class="string">"bookDetail"</span>&gt;</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/angular/" rel="tag"># angular</a>
+          
+            <a href="/tags/routing/" rel="tag"># routing</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/09/28/angular-ng-route/" rel="next" title="Angular Routing with ng-route">
+                <i class="fa fa-chevron-left"></i> Angular Routing with ng-route
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/25/typescript/" rel="prev" title="TypeScript">
+                TypeScript <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/luka.jpg"
+               alt="Kaj Lund" />
+          <p class="site-author-name" itemprop="name">Kaj Lund</p>
+           
+              <p class="site-description motion-element" itemprop="description">Personal blog of Kaj Lund a.k.a. LuKa</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Preparation"><span class="nav-text">Preparation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Installation"><span class="nav-text">Installation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Setup-UI-Router"><span class="nav-text">Setup UI_Router</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Configuring-States"><span class="nav-text">Configuring States</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Activating-States"><span class="nav-text">Activating States</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-the-state-Service"><span class="nav-text">Using the $state Service</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Methods"><span class="nav-text">Methods</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Properties"><span class="nav-text">Properties</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Events"><span class="nav-text">Events</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#State-Parameters"><span class="nav-text">State Parameters</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Additional-State-Configuration-Properties"><span class="nav-text">Additional State Configuration Properties</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nested-States-and-Views"><span class="nav-text">Nested States and Views</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract-States"><span class="nav-text">Abstract States</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multiple-Named-Views"><span class="nav-text">Multiple Named Views</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kaj Lund</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

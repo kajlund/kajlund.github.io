@@ -1,0 +1,1502 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="jquery,libs," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="kajlund.net" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="jQuery makes rich UI development fast, easy and cross-browser compatible by providing a fast and concise JavaScript library that simplifies:  DOM traversal and manipulation Event handling UI effects a">
+<meta name="keywords" content="jquery,libs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery">
+<meta property="og:url" content="http://kajlund.net/2013/03/26/jquery/index.html">
+<meta property="og:site_name" content="kajlund.net">
+<meta property="og:description" content="jQuery makes rich UI development fast, easy and cross-browser compatible by providing a fast and concise JavaScript library that simplifies:  DOM traversal and manipulation Event handling UI effects a">
+<meta property="og:updated_time" content="2017-06-11T13:01:09.750Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jQuery">
+<meta name="twitter:description" content="jQuery makes rich UI development fast, easy and cross-browser compatible by providing a fast and concise JavaScript library that simplifies:  DOM traversal and manipulation Event handling UI effects a">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kajlund.net/2013/03/26/jquery/"/>
+
+
+
+
+
+  <title>jQuery | kajlund.net</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">kajlund.net</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Personal blog of Kaj Lund a.k.a. LuKa</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://kajlund.net/2013/03/26/jquery/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kaj Lund">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/luka.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kajlund.net">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">jQuery</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-03-26T18:25:30+02:00">
+                2013-03-26
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-11T16:01:09+03:00">
+                2017-06-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Libraries/" itemprop="url" rel="index">
+                    <span itemprop="name">Libraries</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>jQuery makes rich UI development fast, easy and cross-browser compatible by providing a fast and concise JavaScript library that simplifies:</p>
+<ul>
+<li>DOM traversal and manipulation</li>
+<li>Event handling</li>
+<li>UI effects and -manipulation</li>
+<li>AJAX</li>
+</ul>
+<p>The functionality in jQuery could be broken down into eight major categories:</p>
+<ul>
+<li><code>Core Functionality</code>. jQuery core functions and commonly used utilities.</li>
+<li><code>Selection and traversal</code>. Provides functions for finding and navigating content in a document i.e. DOM traversal.</li>
+<li><code>Manipulation &amp; CSS</code>. Functions for changing content and working with CSS data.</li>
+<li><code>Events</code>. Provides functions and helpers for working with DOM events</li>
+<li><code>Effects</code>. Functions for creating basic animations and effects like hide/show and moving elements on the screen.</li>
+<li><code>Ajax</code>. Provides AJAX functions for loading content and JSON data handling.</li>
+<li><code>User Interface</code>. Provides an official plug-in with commonly used interface widgets.</li>
+<li><code>Extensibility</code>. Enables enhancement of base functionality via plug-ins</li>
+</ul>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p>jQuery can be downloaded in two versions. One that is compressed for production and one with no compression for development. You can also choose between downloading or using a hosted version.</p>
+<h5 id="Option-1-Download-the-source-save-it-and-include-in-page"><a href="#Option-1-Download-the-source-save-it-and-include-in-page" class="headerlink" title="Option 1: Download the source, save it and include in page:"></a>Option 1: Download the source, save it and include in page:</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>Hello jQuery!<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"jquery-1.7.2.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<h5 id="Option-2-Use-the-hosted-version"><a href="#Option-2-Use-the-hosted-version" class="headerlink" title="Option 2: Use the hosted version"></a>Option 2: Use the hosted version</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>Hello jQuery!<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://code.jquery.com/jquery-1.7.2.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="The-jQuery-alias-function"><a href="#The-jQuery-alias-function" class="headerlink" title="The jQuery alias function"></a>The jQuery alias function</h2><p>The jQuery function acts as a single gateway into the whole library. It can be abbreviated by using the dollar sign.</p>
+<h3 id="Page-Ready"><a href="#Page-Ready" class="headerlink" title="Page Ready"></a>Page Ready</h3><p>In JavaScript you’ll use the window.onload function event to add functionality that you want to execute on page load. jQuery’s version of this function is called document.ready and it will (unlike window.onload) fire when the DOM is ready to be modified but before all page elemnts like images has been loaded.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">$(<span class="string">'document'</span>).ready(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    alert(<span class="string">'The DOM is ready'</span>);</div><div class="line">&#125;);</div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure>
+<p>Usually you’ll see the abbreviated version below:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">   $(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">     alert(<span class="string">'The DOM is ready'</span>);</div><div class="line">   &#125;); <span class="comment">// abbreviated version</span></div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="Selectors-and-Filters"><a href="#Selectors-and-Filters" class="headerlink" title="Selectors and Filters"></a>Selectors and Filters</h2><p>Selectors and filters represent the query part of jQuery. They are used to select and filter out content that then can be further manipulated using other functions.</p>
+<h3 id="Selectors"><a href="#Selectors" class="headerlink" title="Selectors"></a>Selectors</h3><p><a href="http://api.jquery.com/category/selectors/" target="_blank" rel="external">jQuery Selectors</a> return a list of objects matching the selection criteria provided. The selectors return collections of jQuery objects, not DOM elements. Selectors and filters use familiar CSS syntax.</p>
+<table>
+<thead>
+<tr>
+<th>SELECTOR</th>
+<th>PURPOSE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tagname</td>
+<td>Finds all elements with the provided tagname</td>
+</tr>
+<tr>
+<td>#identifer</td>
+<td>Finds element with ID</td>
+</tr>
+<tr>
+<td>.classname</td>
+<td>Finds all elements using the specified class</td>
+</tr>
+<tr>
+<td>tag.classname</td>
+<td>Gets elements with the provided tag that use the specified class</td>
+</tr>
+<tr>
+<td>*</td>
+<td>Finds all the elements in a page</td>
+</tr>
+<tr>
+<td>sel1,sel2…</td>
+<td>Finds all the specified selectors</td>
+</tr>
+<tr>
+<td>class1.class2</td>
+<td>Finds all selectors with both class1 and class2 applied</td>
+</tr>
+<tr>
+<td>parent &gt; child</td>
+<td>Finds child elements that are direct children of elements of type parent</td>
+</tr>
+<tr>
+<td>ance desc</td>
+<td>Finds all descendant elements that are contained within elements of type ancestor</td>
+</tr>
+<tr>
+<td>prev+next</td>
+<td>Finds all next elements that are next to a prev element</td>
+</tr>
+<tr>
+<td>prev ~ sibl</td>
+<td>Finds all sibling elements that come after prev and match the siblings selector</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'tr'</span>) <span class="comment">//all table rows</span></div><div class="line">$(<span class="string">'#menu'</span>) <span class="comment">//The element with id menu</span></div><div class="line">$(<span class="string">'.data'</span>) <span class="comment">//The elements of class data</span></div><div class="line">$(<span class="string">'table.data'</span>) <span class="comment">//Table elements of class data</span></div><div class="line">$(<span class="string">'#menu li'</span>) <span class="comment">//All list items under the element with id menu</span></div><div class="line">$(<span class="string">'#aside tbody tr'</span>) <span class="comment">//All tablerows in the tbody section of a table in the aside element</span></div><div class="line">$(<span class="string">'p,div,h1,input'</span>) <span class="comment">//all p, div, h1 and input elements</span></div></pre></td></tr></table></figure>
+<h3 id="Filters"><a href="#Filters" class="headerlink" title="Filters"></a>Filters</h3><p>Filters operate on selectors to further refine the result array that the selector returned.</p>
+<p>Six categories of filters:</p>
+<ul>
+<li><code>Basic</code>. Basic filtering like getting first, last, even or odd numbered items.</li>
+<li><code>Content</code>. Filters a set of elements based on their content, like wether an element contains a particular string.</li>
+<li><code>Visibility</code>. Filters a set of elements using the visibility setting of each element as a test.</li>
+<li><code>Attribute</code>. Filters based on an element’s attributes.</li>
+<li><code>Child</code>. Selects elements based upon their relationship with their parent element.</li>
+<li><code>Form</code>. Provides specialized filters on form elements.</li>
+</ul>
+<h4 id="Basic-Filters"><a href="#Basic-Filters" class="headerlink" title="Basic Filters"></a>Basic Filters</h4><p>Refine the results of a selector by including elements matching some condition like position or index:</p>
+<table>
+<thead>
+<tr>
+<th>FILTER</th>
+<th>PURPOSE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:first</td>
+<td>Selects only the first element of the selector’s returned set</td>
+</tr>
+<tr>
+<td>:last</td>
+<td>Selects only the last element of the selector’s returned set</td>
+</tr>
+<tr>
+<td>:even</td>
+<td>Selects even-numbered elements in the selector’s returned set</td>
+</tr>
+<tr>
+<td>:odd</td>
+<td>Selects odd-numbered elements in the selector’s returned set</td>
+</tr>
+<tr>
+<td>:eq(n)</td>
+<td>Filters out the elements positioned at the given index</td>
+</tr>
+<tr>
+<td>:gt(n)</td>
+<td>Includes elements that appear after the given index</td>
+</tr>
+<tr>
+<td>:lt(n)</td>
+<td>Includes elements that appear before the given index</td>
+</tr>
+<tr>
+<td>:header</td>
+<td>Selects all header elements (H1..H6)</td>
+</tr>
+<tr>
+<td>:animated</td>
+<td>Selects all elements currently being animated</td>
+</tr>
+<tr>
+<td>:not(selector)</td>
+<td>Includes elements that does not match the given selector</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'#aside tbody tr:even'</span>) <span class="comment">//Find even table rows in the tbody section of a table in the aside element</span></div><div class="line">$(<span class="string">'p:first'</span>); <span class="comment">//Finds the first paragraph tag</span></div><div class="line">$(<span class="string">'p:last'</span>); <span class="comment">//Finds the last paragraph tag</span></div><div class="line">$(<span class="string">'p:even'</span>); <span class="comment">//Finds even numbered paragraphs. 0, 2, 4...</span></div><div class="line">$(<span class="string">'p:odd'</span>); <span class="comment">//Finds odd numbered paragraphs. 1, 3, 5...</span></div><div class="line">$(<span class="string">'.a:first'</span>); <span class="comment">//First instance of element with .a class applied</span></div><div class="line">$(<span class="string">'.b:even'</span>); <span class="comment">//Even numbered elements with class .b applied</span></div><div class="line">$(<span class="string">'p:gt(1)'</span>); <span class="comment">//Paragraph elements beyond second</span></div><div class="line">$(<span class="string">'p:not(p:eq(2))'</span>); <span class="comment">//All paragraphs except third</span></div></pre></td></tr></table></figure>
+<h4 id="Attribute-Filters"><a href="#Attribute-Filters" class="headerlink" title="Attribute Filters"></a>Attribute Filters</h4><table>
+<thead>
+<tr>
+<th>FILTER</th>
+<th>PURPOSE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[attribute]</td>
+<td>Includes elements that has the specified attribute</td>
+</tr>
+<tr>
+<td>[attribute=value]</td>
+<td>Includes elements if they have the specified attribute and value</td>
+</tr>
+<tr>
+<td>[attribute!=value]</td>
+<td>Include elements if they have the specified attribute and it doesn’t have the specified value</td>
+</tr>
+<tr>
+<td>[attribute\^=value]</td>
+<td>Include elements if they have the specified attribute and it starts with the specified value</td>
+</tr>
+<tr>
+<td>[attribute$=value]</td>
+<td>Include elements if they have the specified attribute and it ends with the specified value</td>
+</tr>
+<tr>
+<td>[attribute*=value]</td>
+<td>Include elements if they have the specified attribute and it contains the specified value</td>
+</tr>
+<tr>
+<td>[attrFlt1] [attrFltN]</td>
+<td>Includes elements that mach all of the specified attribute filters</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"p[class]"</span>); <span class="comment">//All paragraphs using the class attribute</span></div><div class="line">$(<span class="string">"p[id=para1]"</span>); <span class="comment">//All pragraphs with attribute id=para1</span></div><div class="line">$(<span class="string">"p[id^=para]"</span>); <span class="comment">//All paragraphs with an id attribute starting with 'para'</span></div><div class="line">$(<span class="string">"p[id^=para][lang*=en-]"</span>); <span class="comment">//All paragraphs with an id attribute starting with 'para' and a language attribute containing 'en-'</span></div></pre></td></tr></table></figure>
+<h4 id="Content-and-visibility-filters"><a href="#Content-and-visibility-filters" class="headerlink" title="Content and visibility filters"></a>Content and visibility filters</h4><table>
+<thead>
+<tr>
+<th>FILTER</th>
+<th>PURPOSE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:contains(text)</td>
+<td>Filters the selection to only include elements containing given text</td>
+</tr>
+<tr>
+<td>:empty</td>
+<td>Filters the selection to only include empty elements i.e. has no children</td>
+</tr>
+<tr>
+<td>:has(selector)</td>
+<td>Matches elements that contain at least one element that has the given selector</td>
+</tr>
+<tr>
+<td>:parent</td>
+<td>Matches all the elements that are parents (contains at least one other element, including text)</td>
+</tr>
+<tr>
+<td>:visible</td>
+<td>Filters the selection to only include visible elements</td>
+</tr>
+<tr>
+<td>:hidden</td>
+<td>Filters the selection to only include hidden elements</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"p:contains(3)"</span>);</div><div class="line">$(<span class="string">"li:contains(3), p:contains(3)"</span>);</div><div class="line">$(<span class="string">"p:parent"</span>);</div><div class="line">$(<span class="string">"ul:has(li[class=a])"</span>);</div></pre></td></tr></table></figure>
+<h4 id="Child-filters"><a href="#Child-filters" class="headerlink" title="Child filters"></a>Child filters</h4><table>
+<thead>
+<tr>
+<th>FILTER</th>
+<th>PURPOSE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:nth-child(index)</td>
+<td>Matches elements at index</td>
+</tr>
+<tr>
+<td>:nth-child(even), nth-child(odd)</td>
+<td>Matches even or odd elements</td>
+</tr>
+<tr>
+<td>:nth-child(equation)</td>
+<td>Match an equation of the form Xn+M (like 2n or 3n+1)</td>
+</tr>
+<tr>
+<td>:first-child</td>
+<td>Matches element that is the first child of their parent</td>
+</tr>
+<tr>
+<td>:last-child</td>
+<td>Matches element that is the last child of their parent</td>
+</tr>
+<tr>
+<td>:only-child</td>
+<td>Matches elements who are the only child of their parent</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"ul li:nth-child(3)"</span>);</div><div class="line">$(<span class="string">"ul li:last-child"</span>);</div><div class="line">$(<span class="string">"ul li:nth-child(2n)"</span>);</div></pre></td></tr></table></figure>
+<h4 id="Form-Selectors"><a href="#Form-Selectors" class="headerlink" title="Form Selectors"></a>Form Selectors</h4><table>
+<thead>
+<tr>
+<th>SELECTOR</th>
+<th>PURPOSE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:input</td>
+<td>Finds all input, select, textarea and button elements</td>
+</tr>
+<tr>
+<td>:text</td>
+<td>Finds all text elements</td>
+</tr>
+<tr>
+<td>:password</td>
+<td>Finds all password elements</td>
+</tr>
+<tr>
+<td>:radio</td>
+<td>Finds all radio button elements</td>
+</tr>
+<tr>
+<td>:checkbox</td>
+<td>Finds all checkbox elements</td>
+</tr>
+<tr>
+<td>:submit</td>
+<td>Finds all submit elements</td>
+</tr>
+<tr>
+<td>:reset</td>
+<td>Finds all reset elements</td>
+</tr>
+<tr>
+<td>:image</td>
+<td>Finds all image elements</td>
+</tr>
+<tr>
+<td>:button</td>
+<td>Finds all button elements</td>
+</tr>
+<tr>
+<td>:file</td>
+<td>Finds all file upload elements</td>
+</tr>
+<tr>
+<td>:enabled</td>
+<td>Matches all elements that are enabled</td>
+</tr>
+<tr>
+<td>:disabled</td>
+<td>Matches all elements that are disabled</td>
+</tr>
+<tr>
+<td>:checked</td>
+<td>Matches all form elements that are checked (radiobuttons and checkboxes)</td>
+</tr>
+<tr>
+<td>:selected</td>
+<td>Matches all form elements that are selected</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"form:input"</span>);</div><div class="line">$(<span class="string">"form:text"</span>);</div><div class="line">$(<span class="string">"form:text:enabled"</span>);</div><div class="line">$(<span class="string">"form:checked"</span>);</div><div class="line">$(<span class="string">"form:checkbox:checked"</span>);</div></pre></td></tr></table></figure>
+<h3 id="Traversing-Document-Information"><a href="#Traversing-Document-Information" class="headerlink" title="Traversing Document Information"></a>Traversing Document Information</h3><table>
+<thead>
+<tr>
+<th>Function/Property</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>size(), length</td>
+<td>The number of elements in a jQuery result set</td>
+</tr>
+<tr>
+<td>get()</td>
+<td>Returns an array of matched DOM elements. For when you need to work on DOM elements instead of jQuery functions</td>
+</tr>
+<tr>
+<td>get(index)</td>
+<td>Access a single matched DOM element at the specified index in a result set</td>
+</tr>
+<tr>
+<td>find(expression)</td>
+<td>Searches for descendant elements that match the specified expression</td>
+</tr>
+<tr>
+<td>each(fn)</td>
+<td>Execute a function within the context of every matched element</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">alert(<span class="string">"There are "</span> + $(<span class="string">"p"</span>).length + <span class="string">" &lt;p&gt; tags"</span>);</div><div class="line">alert(<span class="string">"There are "</span> + $(<span class="string">"p"</span>).size() + <span class="string">" &lt;p&gt; tags"</span>);</div><div class="line"><span class="keyword">var</span> elems = $(<span class="string">'li'</span>).get();</div><div class="line">alert(<span class="string">"There are "</span> + elems.length + <span class="string">" &lt;li&gt; tags"</span>);</div><div class="line">alert($(<span class="string">"li"</span>).get(<span class="number">0</span>));</div><div class="line">$(<span class="string">"ul"</span>).find(<span class="string">"li.b"</span>).css(<span class="string">"border"</span>, <span class="string">"3px solid red"</span>);</div><div class="line"><span class="keyword">var</span> leftmargin = <span class="number">0</span>;</div><div class="line"><span class="keyword">var</span> border = <span class="number">3</span>;</div><div class="line">$(<span class="string">"p"</span>).each(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    $(<span class="keyword">this</span>).css(<span class="string">"border"</span>, border + <span class="string">"px solid red"</span>);</div><div class="line">    $(<span class="keyword">this</span>).css(<span class="string">"margin-left"</span>, leftmargin);</div><div class="line">    border += <span class="number">2</span>;</div><div class="line">    leftmargin += <span class="number">10</span>;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="Statement-chaining"><a href="#Statement-chaining" class="headerlink" title="Statement chaining"></a>Statement chaining</h3><p>One of jQuery’s most powerful features is its ability to chain multiple functions together to perform several operations in one line of code.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(selector).fn1().fn2().fn3();</div></pre></td></tr></table></figure>
+<h2 id="Manipulating-Content"><a href="#Manipulating-Content" class="headerlink" title="Manipulating Content"></a>Manipulating Content</h2><p>Once you’ve used selectors and filters to retrieve web page content, you usually want to manipulate it.</p>
+<p>Sometimes you want to create new content dynamically into the page. jQuery has functions for creating, copying, deleting and moving content around as well as wrapping page content in other content.</p>
+<h3 id="Creating-new-content"><a href="#Creating-new-content" class="headerlink" title="Creating new content"></a>Creating new content</h3><p>To create new HTML content, you simply pass a string containing new HTML to the $() function:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> newHeader = $(<span class="string">"&lt;h1&gt;My New Header&lt;/h1&gt;"</span>); <span class="comment">//passing a string</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> myStr = <span class="string">"&lt;h1&gt;My New Header&lt;/h1&gt;"</span>;</div><div class="line"><span class="keyword">var</span> newHeader = $(myStr); <span class="comment">//passing a variable</span></div></pre></td></tr></table></figure>
+<p>In addition you can use the <code>html()</code> and <code>text()</code> functions to get and set content on elements.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>html()</td>
+<td>Returns the HTML content of the first matched element</td>
+</tr>
+<tr>
+<td>html(newcontent)</td>
+<td>Sets the HTML content of every matched element</td>
+</tr>
+<tr>
+<td>text()</td>
+<td>Returns the text content of the first matched element</td>
+</tr>
+<tr>
+<td>text(newtext)</td>
+<td>Sets the text content for all matched elements</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">alert($(<span class="string">"#list1"</span>).html());</div><div class="line"></div><div class="line">$(<span class="string">"#list1"</span>).html(<span class="string">"&lt;li&gt;This is a new list item&lt;/li&gt;"</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> newItem = $(<span class="string">"&lt;p&gt;This is a new paragraph&lt;/p&gt;"</span>);</div><div class="line">$(<span class="string">"#para2"</span>).html(newItem.html());</div><div class="line"></div><div class="line">$(<span class="string">"p:last"</span>).text(<span class="string">"This is the last paragraph"</span>);</div></pre></td></tr></table></figure>
+<h3 id="Manipulating-Attributes"><a href="#Manipulating-Attributes" class="headerlink" title="Manipulating Attributes"></a>Manipulating Attributes</h3><p>To change or inspect attribute values on elements use the <code>attr()</code> function.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>attr(name)</td>
+<td>Accesses property on the first matched element. If no such attribute exists, undefined is returned</td>
+</tr>
+<tr>
+<td>attr(properties)</td>
+<td>Sets attribute values on all matched elements using object notation syntax. Use for setting a large number of properties at once</td>
+</tr>
+<tr>
+<td>attr(key, value)</td>
+<td>Sets a single property to a value on all matched elements</td>
+</tr>
+<tr>
+<td>attr(key, fn)</td>
+<td>Sets a single property to a computed value on all matched elements</td>
+</tr>
+<tr>
+<td>removeAttr(name)</td>
+<td>Removes the named attribute from all matched elements</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'a'</span>).attr(<span class="string">'target'</span>, <span class="string">'_blank'</span>); <span class="comment">//Make all links open in new windows</span></div><div class="line">$(<span class="string">'a'</span>).remove(<span class="string">'href'</span>); <span class="comment">//Removes href attribute on all links</span></div><div class="line">$(<span class="string">'img'</span>).attr(&#123;<span class="attr">src</span>: <span class="string">'someimg.jpeg'</span>, <span class="attr">alt</span>:<span class="string">'some image'</span>&#125;); <span class="comment">//set multiple attributes on all links</span></div></pre></td></tr></table></figure>
+<h3 id="Inserting-Content"><a href="#Inserting-Content" class="headerlink" title="Inserting Content"></a>Inserting Content</h3><p>There are several functions for inserting content into the document both before and after existing page elements.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>append(content)</td>
+<td>Appends content inside every matched element</td>
+</tr>
+<tr>
+<td>appendTo(selector)</td>
+<td>Appends all of the matched elements to another, specified, set of elements</td>
+</tr>
+<tr>
+<td>prepend(content)</td>
+<td>Prepends content to the inside of every matched element</td>
+</tr>
+<tr>
+<td>prependTo(selector)</td>
+<td>Prepends all the matched elements to another, specified, set of elements</td>
+</tr>
+<tr>
+<td>after(content)</td>
+<td>Inserts content after each of the matched elements</td>
+</tr>
+<tr>
+<td>before(content)</td>
+<td>Insert content before each of the matched elements</td>
+</tr>
+<tr>
+<td>insertAfter(selector)</td>
+<td>Inserts all of the matched elements after another, specified, set of elements</td>
+</tr>
+<tr>
+<td>insertBefore(selector)</td>
+<td>Inserts all the matched elements before another, specified, set of elements</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'p'</span>).append(<span class="string">' with something appended'</span>); <span class="comment">//append additional string to each paragraph</span></div><div class="line">$(<span class="string">'p'</span>).prepend(<span class="string">'Hello! '</span>); <span class="comment">//prepend each paragraph with string Hello!</span></div><div class="line">$(<span class="string">'p:last'</span>).appendTo(<span class="string">'p:first'</span>); <span class="comment">//Append last paragraph to first</span></div><div class="line">$(<span class="string">'p:last'</span>).prependTo(<span class="string">'p:first'</span>); <span class="comment">//puts last paragraph before first</span></div></pre></td></tr></table></figure>
+<h3 id="Wrapping-Replacing-and-Removing-Content"><a href="#Wrapping-Replacing-and-Removing-Content" class="headerlink" title="Wrapping, Replacing and Removing Content"></a>Wrapping, Replacing and Removing Content</h3><table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>wrap(html)</td>
+<td>Wraps each matched element with the specified HTML content</td>
+</tr>
+<tr>
+<td>wrap(element)</td>
+<td>Wraps each matched element with the specified element</td>
+</tr>
+<tr>
+<td>wrapAll(html)</td>
+<td>Wraps all the elements in the matched set with the specified HTML content</td>
+</tr>
+<tr>
+<td>wrapAll(element)</td>
+<td>Wraps all the elements in the matched set into a single wrapper element</td>
+</tr>
+<tr>
+<td>wrapInner(html)</td>
+<td>Wraps the inner child contents of each matched element (incl. text nodes) with a HTML structure</td>
+</tr>
+<tr>
+<td>wrapInner(element)</td>
+<td>Wraps the inner child contents of each matched element (incl. text nodes) with a DOM structure</td>
+</tr>
+<tr>
+<td>replaceWith(content)</td>
+<td>Replaces all matched elements with the specified HTML or DOM elements</td>
+</tr>
+<tr>
+<td>replaceAll(selector)</td>
+<td>Replaces the elements matched by the specified selector with the matched elements</td>
+</tr>
+<tr>
+<td>empty()</td>
+<td>Removes all child nodes from the set of matched elements</td>
+</tr>
+<tr>
+<td>remove()</td>
+<td>Removes all matched elements from the DOM</td>
+</tr>
+<tr>
+<td>clone()</td>
+<td>Clone the matched DOM elements and select the clones</td>
+</tr>
+<tr>
+<td>clone(bool)</td>
+<td>Clones the matched DOM elements, and all their event handlers, and select the clones</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'p'</span>).wrap(<span class="string">'&lt;div &gt;&lt;/div&gt;'</span>); <span class="comment">//wrap all paragraphs inside div elements</span></div><div class="line">$(<span class="string">'p'</span>).wrapAll(<span class="string">'&lt;div &gt;&lt;/div&gt;'</span>); <span class="comment">//wrap paragraps inside one div element</span></div><div class="line">$(<span class="string">'ul'</span>).empty(); <span class="comment">//removes all list items of unordered lists</span></div></pre></td></tr></table></figure>
+<h3 id="Manipulating-CSS"><a href="#Manipulating-CSS" class="headerlink" title="Manipulating CSS"></a>Manipulating CSS</h3><p>jQuery’s CSS functions provide easy cross-browser access for setting properties, working with positioning and sizing values.</p>
+<p>The <code>css()</code> function allows you to retrieve and set CSS styles for a set of matched elements.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>css(name)</td>
+<td>Returns the value for the named CSS property for the first matched element</td>
+</tr>
+<tr>
+<td>css(properties)</td>
+<td>Sets the CSS properties of every matched element using object notation syntax</td>
+</tr>
+<tr>
+<td>css(property,value)</td>
+<td>Sets a single style property to a given value on all matched elements. Nr values are converted to pixels but do not work on all attributes</td>
+</tr>
+</tbody>
+</table>
+<p>jQuery also provides a set of functions for working with CSS classes on page elements. Classes can be added, removed, toggled and detected.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>addClass(class)</td>
+<td>Adds specified class(es) to each matched element</td>
+</tr>
+<tr>
+<td>hasClass(class)</td>
+<td>Returns true if the specified class is present on at least one of the set of matched elements</td>
+</tr>
+<tr>
+<td>removeClass(class)</td>
+<td>Remove all the specified class(es) from the set of matched elements</td>
+</tr>
+<tr>
+<td>toggleClass(class)</td>
+<td>Adds the specified class if not present, removes it otherwise</td>
+</tr>
+<tr>
+<td>toggleClass(class,switch)</td>
+<td>Adds the specified class if the switch is true, removes it otherwise</td>
+</tr>
+</tbody>
+</table>
+<h4 id="CSS-Positioning"><a href="#CSS-Positioning" class="headerlink" title="CSS Positioning"></a>CSS Positioning</h4><table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>offset()</td>
+<td>Gets the current offset of the first matched element, in pixels, relative to the document</td>
+</tr>
+<tr>
+<td>offsetParent()</td>
+<td>Returns a jQuery collection with the positioned parent of the first matched element</td>
+</tr>
+<tr>
+<td>position()</td>
+<td>Gets the top and left position of an element relative to its offset parent</td>
+</tr>
+<tr>
+<td>scrollTop()</td>
+<td>Gets the scroll top offset of the first matched element</td>
+</tr>
+<tr>
+<td>scrollTop(val)</td>
+<td>Sets the scroll top offset to the given value on all matched elements</td>
+</tr>
+<tr>
+<td>scrollLeft()</td>
+<td>Gets the scroll left offset of the first matched element</td>
+</tr>
+<tr>
+<td>scrollLeft(val)</td>
+<td>Sets the scroll left offset to the given value on all matched elements</td>
+</tr>
+</tbody>
+</table>
+<h4 id="CSS-Sizing"><a href="#CSS-Sizing" class="headerlink" title="CSS Sizing"></a>CSS Sizing</h4><table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>height()</td>
+<td>Gets the current height in pixels of the first matched element</td>
+</tr>
+<tr>
+<td>height(val)</td>
+<td>Sets the CSS height attribute for every matched element</td>
+</tr>
+<tr>
+<td>width()</td>
+<td>Gets the current width in pixels of the first matched element</td>
+</tr>
+<tr>
+<td>width(val)</td>
+<td>Sets the CSS width attribute for every matched element</td>
+</tr>
+<tr>
+<td>innerHeight()</td>
+<td>Gets the inner height (excl. border but incl. padding) of the first matched element</td>
+</tr>
+<tr>
+<td>innerWidth()</td>
+<td>Gets the inner width (excl. border but incl. padding) of the first matched element</td>
+</tr>
+<tr>
+<td>outerHeight(bool)</td>
+<td>Gets the outer height (incl. border and padding by default) for the first matched element. If bool argument is true, the margin value is also included</td>
+</tr>
+<tr>
+<td>outerWidth(bool)</td>
+<td>Gets the outer width (incl. border and padding by default) for the first matched element. If bool argument is true, the margin value is also included</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><p>jQuery provides a mechanism for working with events that is simpler than the DOM event model. It also abstracts away the differences between browser implementations. jQuery makes it easy to assign event handlers to groups of elements by using selectors and filters.</p>
+<h3 id="Event-Categories"><a href="#Event-Categories" class="headerlink" title="Event Categories"></a>Event Categories</h3><h3 id="Binding-Unbinding"><a href="#Binding-Unbinding" class="headerlink" title="Binding/Unbinding"></a>Binding/Unbinding</h3><p>Allows events to be wired up and torn down in a cross-browser fashion. Events are connected to and disconnected from elements using the bind() and unbind() functions.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'selector'</span>).bind(<span class="string">'event'</span>,data,handler);</div><div class="line">$(<span class="string">'selector'</span>).unbind(<span class="string">'event'</span>, handler);</div></pre></td></tr></table></figure>
+<h5 id="Bind-Params"><a href="#Bind-Params" class="headerlink" title="Bind Params"></a>Bind Params</h5><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>event</td>
+<td>Defines the event that you want to be bound to for each element in the selector’s result set. Possible values are blur, focus, resize, scroll, unload, before, unload, click, dblklick, mousedown, mouseup, mousemove, mouseover, mouseout, mouseenter, mouseleave, chenge, select, submit, keydown, keypress, keyup, error</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Optional. Defines a piece of data that will be passed to the handler function when the event occurs and the handler function is called</td>
+</tr>
+<tr>
+<td>handler</td>
+<td>Specifies the function that will handle the event</td>
+</tr>
+</tbody>
+</table>
+<h5 id="Unbind-Params"><a href="#Unbind-Params" class="headerlink" title="Unbind Params"></a>Unbind Params</h5><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>event</td>
+<td>Defines the event that you want to be disconnected for each element in the selector’s result set</td>
+</tr>
+<tr>
+<td>handler</td>
+<td>Specifies the handler function that was defined to handle the event</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Unified-Event-Object"><a href="#Unified-Event-Object" class="headerlink" title="Unified Event Object"></a>Unified Event Object</h3><p>Provides an event object that exposes the most common properties in a cross-browser fashion. Most common properties on the event object:</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>Type of the event (‘click’)</td>
+</tr>
+<tr>
+<td>target</td>
+<td>Element that issued the event</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Data passed to bind function</td>
+</tr>
+<tr>
+<td>pageX, pageY</td>
+<td>Mouse coordinates relative to document</td>
+</tr>
+<tr>
+<td>result</td>
+<td>Value returned by the last handler function</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>Time when the event occurred</td>
+</tr>
+<tr>
+<td>preventDefault()</td>
+<td>Prevent the browser from executing the default action</td>
+</tr>
+<tr>
+<td>isDefaultPrevented()</td>
+<td>Returns whether preventDefault() was ever called on this object</td>
+</tr>
+<tr>
+<td>stopPropagation()</td>
+<td>Stops the bubbling of an event to parent elements</td>
+</tr>
+<tr>
+<td>isPropagationStopped()</td>
+<td>Returns whether stopPropagation() was ever called on this object</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Animations-and-Effects"><a href="#Animations-and-Effects" class="headerlink" title="Animations and Effects"></a>Animations and Effects</h2><h2 id="jQuery-UI-Plugin"><a href="#jQuery-UI-Plugin" class="headerlink" title="jQuery UI Plugin"></a>jQuery UI Plugin</h2><p><a href="http://jqueryui.com/" target="_blank" rel="external">jQuery UI</a> provides a prebuilt set of functionality and widgets that gives your pages with a polished, professional look and feel.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/jquery/" rel="tag"># jquery</a>
+          
+            <a href="/tags/libs/" rel="tag"># libs</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/03/05/client-app-tech/" rel="next" title="Client Application Technologies">
+                <i class="fa fa-chevron-left"></i> Client Application Technologies
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/10/10/extjs4/" rel="prev" title="ExtJS 4">
+                ExtJS 4 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/luka.jpg"
+               alt="Kaj Lund" />
+          <p class="site-author-name" itemprop="name">Kaj Lund</p>
+           
+              <p class="site-description motion-element" itemprop="description">Personal blog of Kaj Lund a.k.a. LuKa</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Installation"><span class="nav-text">Installation</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Option-1-Download-the-source-save-it-and-include-in-page"><span class="nav-text">Option 1: Download the source, save it and include in page:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Option-2-Use-the-hosted-version"><span class="nav-text">Option 2: Use the hosted version</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-jQuery-alias-function"><span class="nav-text">The jQuery alias function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Page-Ready"><span class="nav-text">Page Ready</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Selectors-and-Filters"><span class="nav-text">Selectors and Filters</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Selectors"><span class="nav-text">Selectors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Filters"><span class="nav-text">Filters</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Basic-Filters"><span class="nav-text">Basic Filters</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Attribute-Filters"><span class="nav-text">Attribute Filters</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Content-and-visibility-filters"><span class="nav-text">Content and visibility filters</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Child-filters"><span class="nav-text">Child filters</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Form-Selectors"><span class="nav-text">Form Selectors</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Traversing-Document-Information"><span class="nav-text">Traversing Document Information</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Statement-chaining"><span class="nav-text">Statement chaining</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Manipulating-Content"><span class="nav-text">Manipulating Content</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Creating-new-content"><span class="nav-text">Creating new content</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Manipulating-Attributes"><span class="nav-text">Manipulating Attributes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Inserting-Content"><span class="nav-text">Inserting Content</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Wrapping-Replacing-and-Removing-Content"><span class="nav-text">Wrapping, Replacing and Removing Content</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Manipulating-CSS"><span class="nav-text">Manipulating CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS-Positioning"><span class="nav-text">CSS Positioning</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS-Sizing"><span class="nav-text">CSS Sizing</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Events"><span class="nav-text">Events</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Event-Categories"><span class="nav-text">Event Categories</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Binding-Unbinding"><span class="nav-text">Binding/Unbinding</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Bind-Params"><span class="nav-text">Bind Params</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Unbind-Params"><span class="nav-text">Unbind Params</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unified-Event-Object"><span class="nav-text">Unified Event Object</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Animations-and-Effects"><span class="nav-text">Animations and Effects</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery-UI-Plugin"><span class="nav-text">jQuery UI Plugin</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kaj Lund</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

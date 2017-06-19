@@ -1,0 +1,1014 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="architecture,javascript," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="kajlund.net" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="I watched a really interesting course by Shawn Wildermuth on Pluralsight recently and learned a thing or two about writing large scale JavaScript applications.  The material is very useful when appli">
+<meta name="keywords" content="architecture,javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Large Scale JavaScript Development">
+<meta property="og:url" content="http://kajlund.net/2014/02/08/large-scale-javascript/index.html">
+<meta property="og:site_name" content="kajlund.net">
+<meta property="og:description" content="I watched a really interesting course by Shawn Wildermuth on Pluralsight recently and learned a thing or two about writing large scale JavaScript applications.  The material is very useful when appli">
+<meta property="og:updated_time" content="2017-06-11T13:00:30.599Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Large Scale JavaScript Development">
+<meta name="twitter:description" content="I watched a really interesting course by Shawn Wildermuth on Pluralsight recently and learned a thing or two about writing large scale JavaScript applications.  The material is very useful when appli">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kajlund.net/2014/02/08/large-scale-javascript/"/>
+
+
+
+
+
+  <title>Large Scale JavaScript Development | kajlund.net</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">kajlund.net</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Personal blog of Kaj Lund a.k.a. LuKa</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://kajlund.net/2014/02/08/large-scale-javascript/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kaj Lund">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/luka.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kajlund.net">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Large Scale JavaScript Development</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-02-08T18:25:30+02:00">
+                2014-02-08
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-11T16:00:30+03:00">
+                2017-06-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Architecture/" itemprop="url" rel="index">
+                    <span itemprop="name">Architecture</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>I watched a really interesting course by Shawn Wildermuth on <a href="http://www.pluralsight.com/training/Courses/TableOfContents/large-scale-javascript" target="_blank" rel="external">Pluralsight</a> recently and learned a thing or two about writing large scale JavaScript applications.</p>
+</blockquote>
+<p>The material is very useful when applied to large applications, but can of course benefit small projects as well.</p>
+<h2 id="What-is-large-Scale-JavaScript"><a href="#What-is-large-Scale-JavaScript" class="headerlink" title="What is large Scale JavaScript?"></a>What is large Scale JavaScript?</h2><p>How to determine what is large (subjective)</p>
+<ul>
+<li>More than 10 000 lines of code</li>
+<li>More than 12 members in a team</li>
+<li>Complex application (many modules and/or areas of functionality)</li>
+</ul>
+<h3 id="What’s-Wrong-with-JavaScript"><a href="#What’s-Wrong-with-JavaScript" class="headerlink" title="What’s Wrong with JavaScript?"></a>What’s Wrong with JavaScript?</h3><ul>
+<li>JavaScript wasn’t designed for scale (modularity, composition classes…)</li>
+<li>Among the key flawds are lack of packaging, too easy to pollute the global namespace, prototypical inheritance and immature tooling.</li>
+<li>Easily end up with big files containing a mix of business logic and UI logic using libraries like jQuery.</li>
+<li>Nested asynchronous calls can lead to what is known as callback-hell</li>
+</ul>
+<blockquote>
+<p>These flawds often lead to code that is hard to read and maintain.</p>
+</blockquote>
+<h3 id="Frameworks-and-Libraries"><a href="#Frameworks-and-Libraries" class="headerlink" title="Frameworks and Libraries"></a>Frameworks and Libraries</h3><ul>
+<li>A library is a toolbox for a specific purpose. It doesn’t imply structure</li>
+<li>A framework contains a set of libraries/tools for a specific purpose. They do imply structure.</li>
+<li>Popular frameworks are AngularJS, Ember, Durandal, Knockout, Backbone</li>
+</ul>
+<blockquote>
+<p>Scalable JavaScript is not a product of a framework but frameworks can make it simpler to build large scale apps.</p>
+</blockquote>
+<h3 id="What’s-the-Solution"><a href="#What’s-the-Solution" class="headerlink" title="What’s the Solution?"></a>What’s the Solution?</h3><p><strong>The key is to have a codebase that is</strong>:</p>
+<ul>
+<li>Maintainable - Modularized, Separation of concerns,</li>
+<li>Scalable - Compozeable, loosely coupled</li>
+<li>Testable - Encapsulate, test facades</li>
+</ul>
+<blockquote>
+<p>SPAs do not solve these problems but can make them worse. Apps should include as many pages as necessary. <em>Rich JavaScript applications</em> would be a better name.</p>
+</blockquote>
+<p>SPAs have brought some goodness:</p>
+<ul>
+<li>Encourages loose coupling</li>
+<li>uses MV*</li>
+<li>Tend to have long lived pages</li>
+<li>Focuses on data binding + REST</li>
+</ul>
+<blockquote>
+<p>Good development practices can solve many of the problems with the JavaScript language</p>
+</blockquote>
+<h3 id="Meta-Languages"><a href="#Meta-Languages" class="headerlink" title="Meta Languages"></a>Meta Languages</h3><ul>
+<li>ES6 - will add modules, classes and inheritance</li>
+<li>CoffeeScript, requires learning Rubyesque syntax</li>
+<li>TypeScript, requires mostly learning ES6 syntax, type safety</li>
+<li>Dart, requires mostly learning ES6 syntax, type safety</li>
+</ul>
+<blockquote>
+<p>Using a meta language can help but will need to be backed by good development practices to solve our problems building large scale apps.</p>
+</blockquote>
+<h2 id="Maintainable-JavaScript"><a href="#Maintainable-JavaScript" class="headerlink" title="Maintainable JavaScript"></a>Maintainable JavaScript</h2><ul>
+<li>Avoid the global scope so you don’t have to worry about name collisions</li>
+<li>Use strict mode to help find mistakes early</li>
+<li>Increase stability by structuring your code into separate modules</li>
+<li>Manage dependencies by using the dependency injection pattern</li>
+<li>Abandon nested callbacks in favor of promises and async patterns</li>
+<li>Use eventing and messaging for loose coupling of modules</li>
+</ul>
+<h3 id="Application-Frameworks"><a href="#Application-Frameworks" class="headerlink" title="Application Frameworks"></a>Application Frameworks</h3><ul>
+<li>Techniques for writing maintaiable code works with most frameworks</li>
+<li>Frameworks may encourage you to write more maintainable codebases, but it’s ultimately up to the developers to do the right thing</li>
+</ul>
+<h3 id="Avoid-Polluting-the-Global-Scope"><a href="#Avoid-Polluting-the-Global-Scope" class="headerlink" title="Avoid Polluting the Global Scope"></a>Avoid Polluting the Global Scope</h3><ul>
+<li>Easy to pollute - Too easy to create global vars in JavaScript</li>
+<li>Collision - Risk of overwriting existing vars</li>
+<li>Monolithic - Encourages large blocks of code instead of smaller pieces of structured code</li>
+</ul>
+<blockquote>
+<p>In JS there is no block scope. Instead we must use function scope to avoid global objects.</p>
+</blockquote>
+<ul>
+<li><strong>Self-Executing Anonymous Functions</strong> (SEAF)</li>
+<li>Also called <strong>Self-Invoking Anonymous Functions</strong> (SIAF)</li>
+<li>And <strong>Immediately Invoked Function Expressions</strong> (IIFE)</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// Your Code Here</span></div><div class="line">    <span class="keyword">var</span> a = &#123;&#125;; <span class="comment">// The a object is only global inside the function</span></div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<p>Enclosing a function inside parenteses creates a function object. The last two parenteses tells the parser to execute the function object. Any variable declared inside this function will not leak to the global scope. You can pass parameters between the last two parenteses to prevent global object lookup.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">$</span>) </span>&#123;</div><div class="line">    <span class="comment">// Your Code Here</span></div><div class="line">    $.each(...)</div><div class="line">&#125;)(jQuery);</div></pre></td></tr></table></figure>
+<h3 id="Strictness-in-JavaScript"><a href="#Strictness-in-JavaScript" class="headerlink" title="Strictness in JavaScript"></a>Strictness in JavaScript</h3><p>Using strict mode improves code quality by providing early detection of problematic code.</p>
+<ul>
+<li>Prohibits automatic var declaration on first use</li>
+<li>Enforces type</li>
+<li>Enforces implemented read/write access to objects</li>
+</ul>
+<p>In strict mode exceptions are raised when these bad practices are used in code. Using strict mode is not a replacement for JSLint.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    x = <span class="number">0</span>; <span class="comment">// works</span></div><div class="line">    <span class="keyword">var</span> y = <span class="string">""</span>;</div><div class="line">    y = <span class="number">123</span>;    <span class="comment">// works too</span></div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line"><span class="meta">    "use strict"</span>;</div><div class="line"></div><div class="line">    x = <span class="number">0</span>;      <span class="comment">// raises exception</span></div><div class="line">    <span class="keyword">var</span> y = <span class="string">""</span>;</div><div class="line">    y = <span class="number">123</span>;    <span class="comment">// raises exception</span></div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<h3 id="Modular-JavaScript"><a href="#Modular-JavaScript" class="headerlink" title="Modular JavaScript"></a>Modular JavaScript</h3><p>Small discrete units of work pieced together to make code base more maintainable</p>
+<blockquote>
+<p>each of a set of standardized parts or independent units that can be used to construct a more complex structure</p>
+</blockquote>
+<ul>
+<li>A module is a single unit of work horizontal (login) or vertical (logging).</li>
+<li>Small, reusable and individually testable</li>
+<li>Loosly coupled</li>
+<li>Discrete</li>
+</ul>
+<p>Rules for Modules:</p>
+<ul>
+<li>No DOM manipulation outside a module</li>
+<li>No global declarations</li>
+<li>No Hard coupling to other modules</li>
+<li>No accessing of Global/Native objects (pass them in)</li>
+</ul>
+<h4 id="The-Module-Pattern"><a href="#The-Module-Pattern" class="headerlink" title="The Module Pattern"></a>The Module Pattern</h4><p>Returns a Singleton representing the module.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> destinationsModule = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line"><span class="meta">    "use strict"</span>;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> _cache = &#123;&#125;;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">_fillCache</span>(<span class="params">callback</span>) </span>&#123;</div><div class="line">        <span class="comment">//...</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">        <span class="attr">fillCache</span>: _fillCache,</div><div class="line">        <span class="attr">cache</span>: _cache</div><div class="line">    &#125;;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<h4 id="The-JavaScript-Class-Pattern"><a href="#The-JavaScript-Class-Pattern" class="headerlink" title="The JavaScript Class Pattern"></a>The JavaScript Class Pattern</h4><p>Useful when you need multiple instances of objects.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params"></span>) </span>&#123;</div><div class="line"><span class="meta">    "use strict"</span>;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.cache = &#123;&#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Animal.prototype.walk = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">//...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>Framework</th>
+<th>Types of Modularity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JavaScript</td>
+<td>Namespaces, Module Pattern, Class Pattern</td>
+</tr>
+<tr>
+<td>AngularJS</td>
+<td>Modules, Services, Factories, Controllers, Directives</td>
+</tr>
+<tr>
+<td>Backbone</td>
+<td>Namespaces and Objects. More with extensions</td>
+</tr>
+<tr>
+<td>EmberJS</td>
+<td>Extend built-in objects or use ES6</td>
+</tr>
+<tr>
+<td>Durandal</td>
+<td>Asynchronous Module Definition</td>
+</tr>
+<tr>
+<td>EcmaScript 6</td>
+<td><a href="http://en.wikipedia.org/wiki/CommonJS" target="_blank" rel="external">CommonJS</a> Compatible</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Dependency-Management"><a href="#Dependency-Management" class="headerlink" title="Dependency Management"></a>Dependency Management</h3><blockquote>
+<p>The degree to which each program module relies on each one of the other modules</p>
+</blockquote>
+<p>A system for handling dependencies across an application. Using the <a href="http://en.wikipedia.org/wiki/Dependency_injection" target="_blank" rel="external">dependency injection pattern</a> (a.k.a. inversion of control) is typical.</p>
+<p>Allows passing dependencies without relying on global scope. Cascading dependencies are handled automatically</p>
+<ul>
+<li>RequireJS (e.g. AMD)</li>
+<li>CommonJS</li>
+<li>AngularJS</li>
+</ul>
+<h4 id="Asynchronous-Module-Definition-AMD"><a href="#Asynchronous-Module-Definition-AMD" class="headerlink" title="Asynchronous Module Definition (AMD)"></a>Asynchronous Module Definition (AMD)</h4><p>Making a Module</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// someModule.js - default module name is file name if no name provided</span></div><div class="line"><span class="comment">// The array param is for dependencies required for this module</span></div><div class="line">define(<span class="string">"myModule"</span>, [], <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">_init</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">        <span class="attr">init</span>: _init</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p><strong>Using a Module</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">require</span>([<span class="string">"myModule"</span>, <span class="string">"jQuery"</span>],</div><div class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">myModule, $</span>) </span>&#123;</div><div class="line">        <span class="comment">//use the dependencies</span></div><div class="line">    &#125;</div><div class="line">);</div></pre></td></tr></table></figure>
+<h4 id="CommonJS-Spec"><a href="#CommonJS-Spec" class="headerlink" title="CommonJS Spec"></a>CommonJS Spec</h4><p>The module must use the exports function to export the facade of the module.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">exports.getMeSomething = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>The code using the module requires the exported facade by assigning it to a variable that can then be used.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> my = <span class="built_in">require</span>(<span class="string">'./myModule'</span>);</div><div class="line">my.getMeSomething();</div></pre></td></tr></table></figure>
+<p>AngularJS Sample</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myModule = angular.module(<span class="string">"myModule"</span>, []);</div><div class="line"></div><div class="line">myModule.factory(<span class="string">"dataFactory"</span>, [],</div><div class="line">    <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> _myData = &#123;&#125;;</div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">            <span class="attr">myData</span>: _myData</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">myModule.controller(<span class="string">"controller"</span>, [<span class="string">"dataFactory"</span>],</div><div class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">dataFactory</span>) </span>&#123;</div><div class="line">        <span class="comment">//...</span></div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<h3 id="Smart-Asynchrony"><a href="#Smart-Asynchrony" class="headerlink" title="Smart Asynchrony"></a>Smart Asynchrony</h3><ul>
+<li>Deeply nested callbacks become hard to maintain</li>
+<li>The two patterns commonly used to deal with this is <em>promises</em> and <em>async libraries</em></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    $.get(<span class="string">"/api/destinations"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (result.success) &#123;</div><div class="line">            <span class="keyword">if</span> ($(<span class="string">"#userName"</span>).length &gt; <span class="number">0</span>) &#123;</div><div class="line">                $.get(<span class="string">"/api/user/"</span> + userId, <span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;</div><div class="line">                    <span class="keyword">if</span> (result.success) &#123;</div><div class="line">                        ...</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            alert(<span class="string">"Failed to get destinations"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4 id="Promises"><a href="#Promises" class="headerlink" title="Promises"></a>Promises</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// using Q.js</span></div><div class="line">someModule.makeAsyncCall()</div><div class="line">    .then(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;)     <span class="comment">// runs first</span></div><div class="line">    .then(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;)     <span class="comment">// runs second</span></div><div class="line">    .fail(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;)     <span class="comment">//runs if something fails</span></div><div class="line">    .finally(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;)  <span class="comment">//runs after either success or fail</span></div><div class="line">    .done();                       <span class="comment">//completes the promises chain</span></div></pre></td></tr></table></figure>
+<h4 id="Async-Library"><a href="#Async-Library" class="headerlink" title="Async Library"></a>Async Library</h4><ul>
+<li>Used by node.js</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// using Async</span></div><div class="line"></div><div class="line"><span class="keyword">async</span>.parallel([</div><div class="line">    <span class="function"><span class="keyword">function</span>(<span class="params">cb</span>) </span>&#123;</div><div class="line">        ...</div><div class="line">        cb(<span class="number">1</span>);</div><div class="line">    &#125;,</div><div class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">cb</span>) </span>&#123;</div><div class="line">        ...</div><div class="line">        cb(<span class="number">2</span>);</div><div class="line">    &#125;</div><div class="line">], <span class="function"><span class="keyword">function</span> (<span class="params">err, results</span>) </span>&#123;</div><div class="line">    ...</div><div class="line">    <span class="comment">// results = [1,2]</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="Loose-Coupling"><a href="#Loose-Coupling" class="headerlink" title="Loose Coupling"></a>Loose Coupling</h3><ul>
+<li>don’t maintain hard links between modules</li>
+<li>Avoid every module requiring references to every other module</li>
+<li>Enables testing</li>
+<li>The key to loose coupling is messaging by pub/sub or global events</li>
+</ul>
+<h4 id="jQuery-Events"><a href="#jQuery-Events" class="headerlink" title="jQuery Events"></a>jQuery Events</h4><p>JQuery has a global event object on the jQuery object.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Publish event</span></div><div class="line">$.event.trigger(<span class="string">"our.event.name"</span>, [<span class="string">"some"</span>, <span class="string">"Context"</span>]);</div><div class="line"></div><div class="line"><span class="comment">//Subscribe (requires DOM element)</span></div><div class="line">$(<span class="built_in">document</span>).on(<span class="string">"our.event.name"</span>),</div><div class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">event, some, context</span>) </span>&#123;</div><div class="line">        <span class="comment">//...</span></div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<h4 id="AmplifyJS"><a href="#AmplifyJS" class="headerlink" title="AmplifyJS"></a>AmplifyJS</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Publish event</span></div><div class="line">amplify.publish(<span class="string">"our.event.name"</span>, <span class="string">"some"</span>, <span class="string">"context"</span>);</div><div class="line"></div><div class="line"><span class="comment">//Subscribe</span></div><div class="line">amplify.subscribe(<span class="string">"our.event.name"</span>),</div><div class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">some, cnx</span>) </span>&#123;</div><div class="line">        <span class="comment">//...</span></div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<h4 id="AngularJS"><a href="#AngularJS" class="headerlink" title="AngularJS"></a>AngularJS</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Publish event</span></div><div class="line">app.controller(<span class="string">"myCtrl"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$rootScope</span>) </span>&#123;</div><div class="line">     $rootScope.$broadcast(<span class="string">"our.event.name"</span>, <span class="string">"some"</span>, <span class="string">"context"</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">//Subscribe</span></div><div class="line"></div><div class="line">app.controller(<span class="string">"myCtrl"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$scope</span>) </span>&#123;</div><div class="line">     $scope.$on(<span class="string">"our.event.name"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">some, ctx &#123; ... &#125;</span>)</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="Scalable-JavaScript"><a href="#Scalable-JavaScript" class="headerlink" title="Scalable JavaScript"></a>Scalable JavaScript</h2><p>JavaScript code can run on many different types of devices. You want your code to run on both high-end and low-end devices.</p>
+<p>JavaScript typically has the following scalability problems:</p>
+<ul>
+<li>Runtime performance (Desktop/Mobile) - Improve code quality</li>
+<li>Parse time - Affects startup time. Optimize code.</li>
+<li>Download speeds - Compose your app so that not everything is loaded up front</li>
+</ul>
+<h3 id="Improve-Code-Quality"><a href="#Improve-Code-Quality" class="headerlink" title="Improve Code Quality"></a>Improve Code Quality</h3><p>Entails writing less code, improving your app architecture and smarter UI coding.</p>
+<ul>
+<li>Code size impacts performance - Parsing is a bottleneck not linear with code size</li>
+<li>Your code is not always cached or JITed</li>
+<li>Deferring operations until necessary is important</li>
+<li>Users are more inclined to wait as they go that wait up front</li>
+<li>Use a smart application architecture where you are able to compose a larger app into loadabled modules via a common facade and underlying framework. Don’t make direct dependencies between modules.</li>
+<li>Smarter UI coding entails avoiding pre-drawing hidden UI if possible, do DOM manipulation off DOM (remove, edit, insert).</li>
+</ul>
+<h3 id="Optimize"><a href="#Optimize" class="headerlink" title="Optimize"></a>Optimize</h3><ul>
+<li>Make your source as small as possible by minifying</li>
+<li>Automate by creating a build step</li>
+<li>Remove debug code sections using conditional compilation</li>
+</ul>
+<h4 id="Minification"><a href="#Minification" class="headerlink" title="Minification"></a>Minification</h4><blockquote>
+<p>The process of removing all unnecessary characters from source code without changing its functionality</p>
+</blockquote>
+<ul>
+<li>To be able to minify your code needs to be planned for it. Relying on function parameter names is a typical problem.</li>
+<li>Automate minification with tools like Visual Studio, GruntJS etc.</li>
+<li>Parameter-, function- and variable names are shortened</li>
+<li>White space is removed.</li>
+</ul>
+<p>GruntJS is a nodejs based JavaScript Task Runner. The Contrib-Uglify plugin allows you to do minification.</p>
+<p>Minifying is helpful, but removing code that is only used for debugging is also crucial in delivering only required JavaScript to the browser.</p>
+<h4 id="Conditional-Compilation"><a href="#Conditional-Compilation" class="headerlink" title="Conditional Compilation"></a>Conditional Compilation</h4><p>You can use <a href="http://gruntjs.com/" target="_blank" rel="external">GruntJS</a> and <a href="https://github.com/gruntjs/grunt-contrib-uglify" target="_blank" rel="external">UglifyJS</a> to accomplish conditional compiling:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> DEBUG === <span class="literal">undefined</span>) DEBUG = <span class="literal">true</span>; <span class="comment">//Force</span></div><div class="line"></div><div class="line">DEBUG &amp;&amp; <span class="built_in">console</span>.log(<span class="string">"some info"</span>);</div><div class="line"><span class="keyword">if</span> (DEBUG) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"Other info"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"initial"</span>);</div><div class="line">&#125;</div><div class="line">foo();</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//gruntfile.js</span></div><div class="line">...</div><div class="line">uglify: &#123;</div><div class="line">    <span class="attr">options</span>: &#123;</div><div class="line">        <span class="attr">compress</span>: &#123;</div><div class="line">            <span class="attr">global_defs</span>: &#123;</div><div class="line">                <span class="attr">DEBUG</span>: <span class="literal">false</span></div><div class="line">            &#125;,</div><div class="line">            <span class="attr">dead_code</span>: <span class="literal">true</span> <span class="comment">//remove code never called</span></div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Composition"><a href="#Composition" class="headerlink" title="Composition"></a>Composition</h3><ul>
+<li>Construct your JavaScrips as necessary instead of loading all that’s available</li>
+<li>Concatenate and minify into logical code units</li>
+<li>You can use JavaScript loaders (combined with dependency injection) to do the heavy lifting</li>
+</ul>
+<p>You can easily minify to separate JavaScript modules using GruntJS + UglifyJS.</p>
+<p><a href="https://github.com/rgrove/lazyload/" target="_blank" rel="external">LazyLoadJS</a> allows you to lazy load javascript. It works well with frameworks that already handle dependencies like AngularJS:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// main.js</span></div><div class="line"><span class="comment">// include lazyload.js</span></div><div class="line"></div><div class="line">$(<span class="string">"#loadButton"</span>).on(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    LazyLoad.js([<span class="string">"js/build/module1.min.js"</span>], <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="comment">// Now module is loaded</span></div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p><a href="http://requirejs.org/" target="_blank" rel="external">RequireJS</a> mixes script loading and dependency management. Scripts needed are defined in the html page as usual but will not be loaded until they are required.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">// index.html</div><div class="line">...</div><div class="line">&lt;script src=&quot;js/vendor.require.min.js&quot;</div><div class="line">    data-main=&quot;js/main&quot;&lt;/script&gt;</div><div class="line"></div><div class="line">//main.js (or main.min.js)</div><div class="line">require([&quot;myModule&quot;], function (myModule) &#123;</div><div class="line">    //use myModule</div><div class="line">&#125;);</div><div class="line"></div><div class="line">//myModule.js</div><div class="line">define([], function () &#123; //module pattern</div><div class="line">    ...</div><div class="line"></div><div class="line">    return &#123;</div><div class="line">        cache: _cache</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="Testable-JavaScript"><a href="#Testable-JavaScript" class="headerlink" title="Testable JavaScript"></a>Testable JavaScript</h2><ul>
+<li>Ad-hoc JavaScript fails to separate concerns and is simply impossible to test except for UI-centric testing.<br>*</li>
+</ul>
+<h3 id="Why-is-testing-JS-hard"><a href="#Why-is-testing-JS-hard" class="headerlink" title="Why is testing JS hard?"></a>Why is testing JS hard?</h3><ul>
+<li>Nested anonymous functions</li>
+<li>Side effects because of globals or closures</li>
+<li>Business rules in event handlers</li>
+<li>Navigation mixed into other code</li>
+</ul>
+<h3 id="Types-of-tests"><a href="#Types-of-tests" class="headerlink" title="Types of tests"></a>Types of tests</h3><ul>
+<li>UI Tests - Testing expected bahavior of the DOM</li>
+<li>Unit Tests - Testing a single module</li>
+<li>Integration Tests - Testing that multiple modules work together</li>
+</ul>
+<blockquote>
+<p>Testability in JS is typically relative to the amount of effort you put into creating maintainable and scalable code. Good separation and modularization of your code makes it more testable.</p>
+</blockquote>
+<p>If you can unit test it’s a good indicator that you have a good structure or architecture in your project.</p>
+<h3 id="Unit-Testing"><a href="#Unit-Testing" class="headerlink" title="Unit Testing"></a>Unit Testing</h3><blockquote>
+<p>A method by which individual units of source code together with associated control data, usage procedures, and operating procedures are tested to determine if they are fit for use.</p>
+</blockquote>
+<ul>
+<li><p>An atomic test that determines expected bahavior (for specific input, what is the expected output)</p>
+</li>
+<li><p><a href="http://visionmedia.github.io/mocha/" target="_blank" rel="external">Mocha</a>, <a href="http://pivotal.github.io/jasmine/" target="_blank" rel="external">Jasmine</a>, <a href="http://qunitjs.com/" target="_blank" rel="external">QUnit</a> etc.</p>
+</li>
+</ul>
+<h3 id="A-few-useful-links"><a href="#A-few-useful-links" class="headerlink" title="A few useful links"></a>A few useful links</h3><ul>
+<li><a href="http://www.slideshare.net/briandemant/smarr-oscon-2007" target="_blank" rel="external">OSCon Slides</a></li>
+<li><a href="http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f" target="_blank" rel="external">Web Essentials VS Plugin</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/architecture/" rel="tag"># architecture</a>
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/01/25/jquery-mobile/" rel="next" title="jQuery Mobile">
+                <i class="fa fa-chevron-left"></i> jQuery Mobile
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/02/14/rhomobile/" rel="prev" title="Rhomobile">
+                Rhomobile <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/luka.jpg"
+               alt="Kaj Lund" />
+          <p class="site-author-name" itemprop="name">Kaj Lund</p>
+           
+              <p class="site-description motion-element" itemprop="description">Personal blog of Kaj Lund a.k.a. LuKa</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-large-Scale-JavaScript"><span class="nav-text">What is large Scale JavaScript?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What’s-Wrong-with-JavaScript"><span class="nav-text">What’s Wrong with JavaScript?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Frameworks-and-Libraries"><span class="nav-text">Frameworks and Libraries</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What’s-the-Solution"><span class="nav-text">What’s the Solution?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Meta-Languages"><span class="nav-text">Meta Languages</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Maintainable-JavaScript"><span class="nav-text">Maintainable JavaScript</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Application-Frameworks"><span class="nav-text">Application Frameworks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Avoid-Polluting-the-Global-Scope"><span class="nav-text">Avoid Polluting the Global Scope</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Strictness-in-JavaScript"><span class="nav-text">Strictness in JavaScript</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Modular-JavaScript"><span class="nav-text">Modular JavaScript</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#The-Module-Pattern"><span class="nav-text">The Module Pattern</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#The-JavaScript-Class-Pattern"><span class="nav-text">The JavaScript Class Pattern</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dependency-Management"><span class="nav-text">Dependency Management</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Asynchronous-Module-Definition-AMD"><span class="nav-text">Asynchronous Module Definition (AMD)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CommonJS-Spec"><span class="nav-text">CommonJS Spec</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Smart-Asynchrony"><span class="nav-text">Smart Asynchrony</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Promises"><span class="nav-text">Promises</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Async-Library"><span class="nav-text">Async Library</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Loose-Coupling"><span class="nav-text">Loose Coupling</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#jQuery-Events"><span class="nav-text">jQuery Events</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AmplifyJS"><span class="nav-text">AmplifyJS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AngularJS"><span class="nav-text">AngularJS</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scalable-JavaScript"><span class="nav-text">Scalable JavaScript</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Improve-Code-Quality"><span class="nav-text">Improve Code Quality</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Optimize"><span class="nav-text">Optimize</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Minification"><span class="nav-text">Minification</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Conditional-Compilation"><span class="nav-text">Conditional Compilation</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Composition"><span class="nav-text">Composition</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Testable-JavaScript"><span class="nav-text">Testable JavaScript</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Why-is-testing-JS-hard"><span class="nav-text">Why is testing JS hard?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Types-of-tests"><span class="nav-text">Types of tests</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unit-Testing"><span class="nav-text">Unit Testing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A-few-useful-links"><span class="nav-text">A few useful links</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kaj Lund</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

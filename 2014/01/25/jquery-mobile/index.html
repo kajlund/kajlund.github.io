@@ -1,0 +1,900 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="frameworks,jqm,jquery,mobile," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="kajlund.net" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="IntroductionSome Resources jQM Website jQuery Mobile Tutorial jQuery Mobile Gallery at Github jQM Intro jQM Quickstart jQuery Mobile Tutorial jQuery Mobile Book  What is jQuery Mobile jQuery Mobile is">
+<meta name="keywords" content="frameworks,jqm,jquery,mobile">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery Mobile">
+<meta property="og:url" content="http://kajlund.net/2014/01/25/jquery-mobile/index.html">
+<meta property="og:site_name" content="kajlund.net">
+<meta property="og:description" content="IntroductionSome Resources jQM Website jQuery Mobile Tutorial jQuery Mobile Gallery at Github jQM Intro jQM Quickstart jQuery Mobile Tutorial jQuery Mobile Book  What is jQuery Mobile jQuery Mobile is">
+<meta property="og:updated_time" content="2017-06-11T13:01:53.230Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jQuery Mobile">
+<meta name="twitter:description" content="IntroductionSome Resources jQM Website jQuery Mobile Tutorial jQuery Mobile Gallery at Github jQM Intro jQM Quickstart jQuery Mobile Tutorial jQuery Mobile Book  What is jQuery Mobile jQuery Mobile is">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kajlund.net/2014/01/25/jquery-mobile/"/>
+
+
+
+
+
+  <title>jQuery Mobile | kajlund.net</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">kajlund.net</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Personal blog of Kaj Lund a.k.a. LuKa</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://kajlund.net/2014/01/25/jquery-mobile/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kaj Lund">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/luka.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kajlund.net">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">jQuery Mobile</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-01-25T18:25:30+02:00">
+                2014-01-25
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-11T16:01:53+03:00">
+                2017-06-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Frameworks/" itemprop="url" rel="index">
+                    <span itemprop="name">Frameworks</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><h4 id="Some-Resources"><a href="#Some-Resources" class="headerlink" title="Some Resources"></a>Some Resources</h4><ul>
+<li><a href="http://jquerymobile.com/" target="_blank" rel="external">jQM Website</a></li>
+<li><a href="http://the-jquerymobile-tutorial.org/index.php" target="_blank" rel="external">jQuery Mobile Tutorial</a></li>
+<li><a href="http://www.jqmgallery.com/" target="_blank" rel="external">jQuery Mobile Gallery</a></li>
+<li><a href="https://github.com/jquery/jquery-mobile" target="_blank" rel="external">at Github</a></li>
+<li><a href="http://jquerymobile.com/demos/1.2.0/docs/about/intro.html" target="_blank" rel="external">jQM Intro</a></li>
+<li><a href="http://jquerymobile.com/demos/1.2.0/docs/about/getting-started.html" target="_blank" rel="external">jQM Quickstart</a></li>
+<li><a href="http://the-jquerymobile-tutorial.org/index.php" target="_blank" rel="external">jQuery Mobile Tutorial</a></li>
+<li><a href="http://miamicoder.com/jquery-mobile-book-how-to-build-a-jquery-mobile-application/" target="_blank" rel="external">jQuery Mobile Book</a></li>
+</ul>
+<h3 id="What-is-jQuery-Mobile"><a href="#What-is-jQuery-Mobile" class="headerlink" title="What is jQuery Mobile"></a>What is jQuery Mobile</h3><ul>
+<li><a href="http://jquerymobile.com/" target="_blank" rel="external">jQuery Mobile</a> is a lightweight (~20KB) UI library for mobile devices</li>
+<li>It depends on <a href="http://jquery.com/" target="_blank" rel="external">jQuery</a></li>
+<li>Supports the vast majority of all modern desktop, e-reader, smartphone and tablet platforms like iOS, Android, Blackberry, Windows Phone and others via <a href="http://en.wikipedia.org/wiki/Progressive_enhancement" target="_blank" rel="external">progressive enhancement</a></li>
+<li>Support is graded into A, B and C level as described <a href="http://en.wikipedia.org/wiki/JQuery_Mobile" target="_blank" rel="external">here</a></li>
+<li>Supports rotation and touch events.</li>
+<li>Can bee used with PhoneGap to create native apps.</li>
+<li>Supports <a href="http://jquerymobile.com/themeroller/" target="_blank" rel="external">theming</a> and accessibility features (WAI-ARIA)</li>
+<li>Sometimes confused with the jQTouch plugin</li>
+<li>No MVC, serialization, storage and networking</li>
+<li>Short learning curve. Good for rapid prototyping</li>
+</ul>
+<h3 id="How-Does-It-Work"><a href="#How-Does-It-Work" class="headerlink" title="How Does It Work?"></a>How Does It Work?</h3><ul>
+<li>A jQuery Mobile application consists of pages</li>
+<li>jQM enhances pages on loading by taking valid HTML tags and format them using predefined styles adapting them to the current browser capabilities.</li>
+<li>Relies upon jQuery and the HTML5 features supported by the hosting browser to offer extended functionality.</li>
+<li>Use standard html tags with data- attributes to style markup into widgets</li>
+<li>For non-capable older browsers much of the styling is ignored but the html is still valid.</li>
+<li>Use old-style divs or modern html5 markup</li>
+<li>Include jQuery + jQuery Mobile .js and .css files</li>
+<li>Download or use a CDN</li>
+<li>Viewport meta declaration</li>
+</ul>
+<h5 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>My Page<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"http://code.jquery.com/mobile/latest/jquery.mobile.min.css"</span> /&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://code.jquery.com/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://code.jquery.com/mobile/latest/jquery.mobile.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="Pages-and-Dialogs"><a href="#Pages-and-Dialogs" class="headerlink" title="Pages and Dialogs"></a>Pages and Dialogs</h2><h3 id="Page-Architecture"><a href="#Page-Architecture" class="headerlink" title="Page Architecture"></a>Page Architecture</h3><ul>
+<li>Any section or div element using the attribute <code>data-role=&quot;page&quot;</code> is what in jQuery Mobile refers to as an internal page</li>
+<li>Page content are typically loaded via AJAX, parsed and added to the DOM</li>
+<li>jQM page does not equal an HTML page. You can have multiple “pages” in single file</li>
+<li>A jQuery Mobile page is usually composed of three basic elements: a <strong>header</strong>, <strong>content</strong>, and a <strong>footer</strong></li>
+<li>jQM will load and display the first page found in a file initially</li>
+<li>If you want to modify browser page title use attribute <code>data-title=&quot;&quot;</code> on the page element</li>
+<li>A page transition is used to animate a new page into place</li>
+<li>You can load another page via code or by linking to it using its id</li>
+<li>You can link to any external page and if jQM finds a <code>data-role=&quot;page&quot;</code> attribute it will use it’s content to replace the current page’s content. If not it will be displayed like any normal web page. These types of pages are called external pages.</li>
+<li>You can link to external pages without using the normal AJAX behaviour by using the attribute <code>rel=&quot;external&quot;</code>, the attribute <code>data-ajax=&quot;false&quot;</code> or by using a target attribute on a link.</li>
+</ul>
+<h3 id="Samples"><a href="#Samples" class="headerlink" title="Samples"></a>Samples</h3><h5 id="A-page-with-header-and-footer"><a href="#A-page-with-header-and-footer" class="headerlink" title="A page with header and footer"></a>A page with header and footer</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-role</span>=<span class="string">"page"</span> <span class="attr">id</span>=<span class="string">"indexPage"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">data-role</span>=<span class="string">"header"</span>&gt;</span>Header<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">data-role</span>=<span class="string">"content"</span>&gt;</span>Content<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">data-role</span>=<span class="string">"footer"</span>&gt;</span>Footer<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<h5 id="Multiple-Pages"><a href="#Multiple-Pages" class="headerlink" title="Multiple Pages"></a>Multiple Pages</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>jQuery Mobile Sample<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- First Page --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">section</span> <span class="attr">id</span>=<span class="string">"first"</span> <span class="attr">data-role</span>=<span class="string">"page"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#second"</span>&gt;</span>Page 2<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">section</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- Second Page --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">section</span> <span class="attr">id</span>=<span class="string">"second"</span> <span class="attr">data-role</span>=<span class="string">"page"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#first"</span>&gt;</span>Page 1<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">      <span class="comment">&lt;!-- External Pages using AJAX --&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"anotherpage.html"</span>&gt;</span>External<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">      <span class="comment">&lt;!-- External Pages without AJAX --&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"external.html"</span> <span class="attr">rel</span>=<span class="string">"external"</span>&gt;</span>External<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"external.html"</span> <span class="attr">data-ajax</span>=<span class="string">"false"</span>&gt;</span>External<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"external.html"</span> <span class="attr">target</span>=<span class="string">"mytarget"</span>&gt;</span>External<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">section</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="Transitions"><a href="#Transitions" class="headerlink" title="Transitions"></a>Transitions</h3><p>Page transitions rely on CSS3 and will not work without CSS3 support in the target browser. Transitions can be modified via the data-transition attribute of the link tag.</p>
+<ul>
+<li>fade</li>
+<li>flip</li>
+<li>pop - Default for dialogs</li>
+<li>slide - Default for pages</li>
+<li>slideDown</li>
+<li>slideUp</li>
+</ul>
+<h3 id="Dialogs"><a href="#Dialogs" class="headerlink" title="Dialogs"></a>Dialogs</h3><p>You can display any valid page as a dialog by adding a data-rel=”dialog” attribute to the link tag that opens the page.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#otherpage"</span> <span class="attr">data-rel</span>=<span class="string">"dialog"</span>&gt;</span>Dialog<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="Headers"><a href="#Headers" class="headerlink" title="Headers"></a>Headers</h3><p>jQM page headers look like native application headers. You create page headers by adding a div with attribute data-role=”page-header” inside a page element.</p>
+<p>Any <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code> element will be centered inside and the first a element will go on the left side of the header. Adding another a element will push it to the right.</p>
+<p>Links in the header will be styled as buttons</p>
+<p>The first button will be on the left, and a second button will be on the right</p>
+<p>If you only want one button and have it right-aligned you add <code>class=”ui-btn-right”</code> to the link element.</p>
+<p>If you want the icon to be on the right side instead of left side add attribute data-iconpos=”right”</p>
+<p>To show icon only add attribute <code>data-iconpos=&quot;notext&quot;</code></p>
+<p><a href="http://jquerymobile.com/demos/1.2.0/docs/toolbars/docs-headers.html" target="_blank" rel="external">more on headers</a></p>
+<h5 id="Headers-Sample"><a href="#Headers-Sample" class="headerlink" title="Headers Sample"></a>Headers Sample</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-role</span>=<span class="string">"header"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">data-role</span>=<span class="string">"button"</span>&gt;</span>Left<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Header<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">data-role</span>=<span class="string">"button"</span>&gt;</span>Right<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>todo: ADD PICTURES</p>
+<h3 id="Footers"><a href="#Footers" class="headerlink" title="Footers"></a>Footers</h3><p>To create a footer bar add a div or section with attribute data-role=”footer” inside a page element</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-role</span>=<span class="string">"footer"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Footer<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="Buttons"><a href="#Buttons" class="headerlink" title="Buttons"></a>Buttons</h2><div align="right"><a href="http://jquerymobile.com/demos/1.2.0/docs/buttons/" target="_blank">Button doc</a> | <a href="http://jquerymobile.com/demos/1.2.0/docs/api/data-attributes.html" target="_blank">Attributes</a></div>
+
+<p>There are basically 3 different ways to display buttons. First you can use the <code>&lt;button&gt;</code> tag, secondly you can use the <code>&lt;input&gt;</code> tag with <code>type=&quot;button&quot;</code> attribute, and finally you can use the link (<code>&lt;a&gt;</code>) tag using the attribute <code>data-role=&quot;button&quot;</code>.</p>
+<p>Buttons use all available screen width by default. To avoid that you use the attribute <code>data-inline=&quot;true&quot;</code>.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>Button<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"Button"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">data-role</span>=<span class="string">"button"</span>&gt;</span>Button<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">data-role</span>=<span class="string">"button"</span> <span class="attr">data-inline</span>=<span class="string">"true"</span></span></div></pre></td></tr></table></figure>
+<h3 id="Button-Grouping"><a href="#Button-Grouping" class="headerlink" title="Button Grouping"></a>Button Grouping</h3><p>Buttons can be grouped and be placed horizontally or vertically.  To group buttons together you add them inside a <code>&lt;div&gt;</code> with <code>data-role=&quot;controlgroup&quot;</code>.</p>
+<h4 id="Vertical-Group"><a href="#Vertical-Group" class="headerlink" title="Vertical Group"></a>Vertical Group</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-role</span>=<span class="string">"controlgroup"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">data-role</span>=<span class="string">"button"</span>&gt;</span>Btn1<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">data-role</span>=<span class="string">"button"</span>&gt;</span>Btn2<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">data-role</span>=<span class="string">"button"</span>&gt;</span>Btn3<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="Horizontal-Group"><a href="#Horizontal-Group" class="headerlink" title="Horizontal Group"></a>Horizontal Group</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-role</span>=<span class="string">"controlgroup"</span> <span class="attr">data-type</span>=<span class="string">"horizontal"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">data-role</span>=<span class="string">"button"</span>&gt;</span>Btn1<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">data-role</span>=<span class="string">"button"</span>&gt;</span>Btn2<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">data-role</span>=<span class="string">"button"</span>&gt;</span>Btn3<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="Button-Icons"><a href="#Button-Icons" class="headerlink" title="Button Icons"></a>Button Icons</h3><p>You can provide a button with an icon by providing the attribute <code>data-icon=&quot;iconname&quot;</code>.  Available icon names are:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alert | arrow-d | arrow-l | arrow-r | arrow-u | back | check | custom | delete | forward</div><div class="line">gear | grid | home | info | minus | plus | refresh | search | star</div></pre></td></tr></table></figure>
+<h4 id="Icon-Positioning"><a href="#Icon-Positioning" class="headerlink" title="Icon Positioning"></a>Icon Positioning</h4><p>You can also specify the icon position using the attribute <code>data-iconpos=&quot;pos&quot;</code>. Possible values are:</p>
+<pre><code>bottom | left | right | top | notexts
+</code></pre><h2 id="Listviews"><a href="#Listviews" class="headerlink" title="Listviews"></a><a href="http://jquerymobile.com/demos/1.2.0/docs/lists/index.html" target="_blank" rel="external">Listviews</a></h2><p>Both ordered and unordered lists can be enhanced. To make a list a jQM listview add the attribute <code>data-role=&quot;listview&quot;</code>.</p>
+<p>To make items selectable enclose the item text in a link tag. You can add dividers by using <code>data-role=&quot;divider&quot;</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">data-role</span>=<span class="string">"divider"</span>&gt;</span>Divider<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>List item<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>To define a count bubble wrap the number in a <code>&lt;span&gt;</code> or other inline element and add the class <code>&quot;ui-li-count&quot;</code>.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Item 1<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"ui-li-count"</span>&gt;</span>10<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>To add an icon include an image inside the link element using class <code>ui-li-icon</code>.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"img/myImg.png"</span> <span class="attr">class</span>=<span class="string">"ui-li-icon"</span> /&gt;</span></div><div class="line">    My Item</div><div class="line">  <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="List-Filtering"><a href="#List-Filtering" class="headerlink" title="List Filtering"></a>List Filtering</h4><p>Lists can easily be filtered using the attribute <code>data-filter=&quot;true&quot;</code>.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">data-role</span>=<span class="string">"listview"</span> <span class="attr">data-filter</span>=<span class="string">"true"</span></span></div><div class="line">  <span class="attr">data-filter-placeholder</span>=<span class="string">"Filter here"</span>&gt;</div><div class="line">  ...</div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="Nesting-Lists"><a href="#Nesting-Lists" class="headerlink" title="Nesting Lists"></a>Nesting Lists</h3><p>Lists can be nested within other lists.</p>
+<h4 id="Split-Button-Lists"><a href="#Split-Button-Lists" class="headerlink" title="Split Button Lists"></a>Split Button Lists</h4><p>If you need a list where items have two separately tappable areas you simply add two link elements to each item.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Larger area<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Icon area<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="List-With-Complex-Items"><a href="#List-With-Complex-Items" class="headerlink" title="List With Complex Items"></a>List With Complex Items</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">data-role</span>=<span class="string">"listview"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">h4</span>&gt;</span>My Item<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"font-weight: bold"</span>&gt;</span>Item Summary<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"ui-li-aside"</span>&gt;</span>Due 12pm<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>This is the detail text for Item 1<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="Toolbars"><a href="#Toolbars" class="headerlink" title="Toolbars"></a><a href="http://jquerymobile.com/demos/1.2.0/docs/toolbars/index.html" target="_blank" rel="external">Toolbars</a></h2><p>Toolbars are normally displayed at the top and bottom of a page. Toolbars can contain button and navigational elements.</p>
+<p>Todo: Add image</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-role</span>=<span class="string">"footer"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">data-role</span>=<span class="string">"button"</span>&gt;</span>Btn 1<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">data-role</span>=<span class="string">"button"</span>&gt;</span>Btn 2<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">data-role</span>=<span class="string">"button"</span>&gt;</span>Btn 3<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Todo: Add image</p>
+<p>To add some spacing in the footer containing buttons add <code>class=&quot;ui-bar&quot;</code>.</p>
+<h2 id="Navbars"><a href="#Navbars" class="headerlink" title="Navbars"></a><a href="http://jquerymobile.com/demos/1.2.0/docs/toolbars/docs-navbar.html" target="_blank" rel="external">Navbars</a></h2><p>Provides up to 5 buttons in a navigation bar placed in header or footer</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-role</span>=<span class="string">"header"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">nav</span> <span class="attr">data-role</span>=<span class="string">"navbar"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">data-role</span>=<span class="string">"button"</span>&gt;</span>Btn 1<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">data-role</span>=<span class="string">"button"</span>&gt;</span>Btn 2<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">data-role</span>=<span class="string">"button"</span>&gt;</span>Btn 3<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">nav</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Todo: Add image</p>
+<p>To add equal width buttons add the links in an unordered list. You cal display the selected button by setting classes ui-btn-active and ui-state-persist.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-role</span>=<span class="string">"header"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">nav</span> <span class="attr">data-role</span>=<span class="string">"navbar"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">data-role</span>=<span class="string">"button"</span></span></div><div class="line">        <span class="attr">class</span>=<span class="string">"ui-btn-active ui-state-persist"</span>&gt;First<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">data-role</span>=<span class="string">"button"</span>&gt;</span>Second<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">data-role</span>=<span class="string">"button"</span>&gt;</span>Third<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Todo: Add image</p>
+<h2 id="Fixed-Toolbars"><a href="#Fixed-Toolbars" class="headerlink" title="Fixed Toolbars"></a>Fixed Toolbars</h2><ul>
+<li>Inline - Default setting. Toolbar scrolls with page content.</li>
+<li>Fixed - Toolbars gets hidden when scrolling but reappears at top and bottom when scrolling stops. Tapping the screen toggles display/hide of the toolbars.</li>
+<li>Fullscreen - Page content takes up entire screen with toolbars placed over the content at the top and/or bottom. Tapping will show/hide toolbars.</li>
+</ul>
+<p>The <code>data-fullscreen=&quot;true&quot;</code> attribute is added to the page tag and the data-position attribute is added to header and/or footer toolbars.</p>
+<h3 id="Fixed-Footer-Bar-with-Icons"><a href="#Fixed-Footer-Bar-with-Icons" class="headerlink" title="Fixed Footer Bar with Icons"></a>Fixed Footer Bar with Icons</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-role</span>=<span class="string">"footer"</span> <span class="attr">data-position</span>=<span class="string">"fixed"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">nav</span> <span class="attr">data-role</span>=<span class="string">"navbar"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">data-role</span>=<span class="string">"button"</span></span></div><div class="line">        <span class="attr">data-icon</span>=<span class="string">"home"</span></div><div class="line">        <span class="attr">class</span>=<span class="string">"ui-btn-active ui-state-persist"</span>&gt;Home<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">data-role</span>=<span class="string">"button"</span></span></div><div class="line">        <span class="attr">data-icon</span>=<span class="string">"star"</span>&gt;Favs<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">data-role</span>=<span class="string">"button"</span></span></div><div class="line">        <span class="attr">data-icon</span>=<span class="string">"gear"</span>&gt;Setup<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Todo: Add image</p>
+<h2 id="Forms"><a href="#Forms" class="headerlink" title="Forms"></a><a href="http://jquerymobile.com/demos/1.2.0/docs/forms/index.html" target="_blank" rel="external">Forms</a></h2><p>Form elements are automatically enhanced by jQM. All form elements should be wrapped inside a valid <code>&lt;form&gt;</code> element.</p>
+<p>You should try to get unique form field tags across the whole site.</p>
+<p>Form submissions are automatically handled via AJAX. To group related controls use an attribute <code>data-role=&quot;fieldcontain&quot;</code>.</p>
+<p>jQM requires all form fields to have labels for accessibility reasons. To hide the label add class “ui-hidden-accessible”</p>
+<h4 id="Text-input"><a href="#Text-input" class="headerlink" title="Text input"></a>Text input</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">pre</span>&gt;</span><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"fld1"</span>&gt;</span>Text Input<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"fld1"</span> <span class="attr">id</span>=<span class="string">"fld1"</span> <span class="attr">value</span>=<span class="string">""</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">name</span>=<span class="string">"age"</span> <span class="attr">id</span>=<span class="string">"age"</span> <span class="attr">value</span>=<span class="string">""</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"email"</span> <span class="attr">name</span>=<span class="string">"email"</span> <span class="attr">id</span>=<span class="string">"email"</span> <span class="attr">value</span>=<span class="string">""</span> /&gt;</span></div></pre></td></tr></table></figure>
+<p><strong> Search input</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"search"</span> <span class="attr">name</span>=<span class="string">"search"</span> <span class="attr">id</span>=<span class="string">"search"</span> <span class="attr">value</span>=<span class="string">""</span> /&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>Textarea</strong></p>
+<p>Textarea fields grow automatically by 2 lines/time to try to avoid user having to scroll.<br><code>&lt;textarea&gt;I will grow automagically&lt;/textarea&gt;</code></p>
+<h4 id="Radio-Buttons-Checkboxes-and-Toggle-Switches"><a href="#Radio-Buttons-Checkboxes-and-Toggle-Switches" class="headerlink" title="Radio Buttons, Checkboxes and Toggle Switches"></a>Radio Buttons, Checkboxes and Toggle Switches</h4><p>jQM uses standard markup for radio buttons and checkboxes but will enhance the look. Controls can be grouped together vertically and horizontally.</p>
+<p>A specially named <code>&lt;select&gt;</code> can be styled as a toggle switch.</p>
+<h4 id="Sliders-and-Select-Menus"><a href="#Sliders-and-Select-Menus" class="headerlink" title="Sliders and Select Menus"></a>Sliders and Select Menus</h4><p>Create a slider using an <code>&lt;input&gt;</code> element with <code>type=&quot;range&quot;</code>.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">fieldset</span> <span class="attr">data-role</span>=<span class="string">"fieldcontain"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"slider"</span>&gt;</span>Slider<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"range"</span> <span class="attr">name</span>=<span class="string">"slider"</span> <span class="attr">id</span>=<span class="string">"slider"</span> <span class="attr">value</span>=<span class="string">"25"</span></span></div><div class="line">      <span class="attr">min</span>=<span class="string">"1"</span> <span class="attr">max</span>=<span class="string">"100"</span> /&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Create select menus using normal html. jQM can create customized select menus supporting multiple <code>&lt;optgroup&gt;</code>, styling using CSS. The attribute data-native=”false” will make jQM not use native style for select menus.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">fieldset</span> <span class="attr">data-role</span>=<span class="string">"fieldcontain"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"sel"</span>&gt;</span>Select a value<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">"sel"</span> <span class="attr">id</span>=<span class="string">"mySel"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"v1"</span>&gt;</span>Value 1<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"v2"</span> <span class="attr">disabled</span>=<span class="string">"disabled"</span>&gt;</span>Value 2<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"v3"</span>&gt;</span>Value 3<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"v4"</span>&gt;</span>Value 4<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">select</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="Layout"><a href="#Layout" class="headerlink" title="Layout"></a><a href="http://jquerymobile.com/demos/1.2.0/docs/content/content-grids.html" target="_blank" rel="external">Layout</a></h2><p>You can use between 2 and 5 columns in a jQuery Mobile layout grid. This could be used for layout of form fields or toolbar icons etc. Layout grids occupy all width and have no margin or padding. Grid column share the width equally.</p>
+<table><br><tbody><br><tr><br><th>Class</th><br><th>cols</th><br><th>Width</th><br></tr><br><tr><br><td>ui-grid-a</td><br><td>2</td><br><td>50%/50%</td><br></tr><br><tr><br><td>ui-grid-b</td><br><td>3</td><br><td>33%/33%/33%</td><br></tr><br><tr><br><td>ui-grid-c</td><br><td>4</td><br><td>25%/25%/25%/25%</td><br></tr><br><tr><br><td>ui-grid-d</td><br><td>5</td><br><td>20%/20%/20%/20%/20%</td><br></tr><br></tbody><br></table>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ui-grid-a"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ui-block-a"</span>&gt;</span>One<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ui-block-b"</span>&gt;</span>Two<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="Collapsible-Content-Blocks"><a href="#Collapsible-Content-Blocks" class="headerlink" title="Collapsible Content Blocks"></a>Collapsible Content Blocks</h2><p>All container elements can be made collapsible by adding <code>data-role=&quot;collapsible&quot;</code>. Within the collapsible element any header element will be displayed as the title and any content following will be collapsible. Collapsible blocks are collapsed by default. To display them expanded add attribute <code>data-collapsed=&quot;false&quot;</code>. You can also nest collapsible blocks.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-role</span>=<span class="string">"collapsible"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Content<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">data-role</span>=<span class="string">"collapsible"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Nested Header<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Nested content<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="Collapsible-Set-Accordion"><a href="#Collapsible-Set-Accordion" class="headerlink" title="Collapsible Set (Accordion)"></a>Collapsible Set (Accordion)</h2><p>A collapsible set contains a number of collapsible blocks where only one can be expanded at a time.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-role</span>=<span class="string">"collapsible-set"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">data-role</span>=<span class="string">"collapsible"</span> <span class="attr">data-collapsed</span>=<span class="string">"false"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>First<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Content<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">data-role</span>=<span class="string">"collapsible"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Second<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Content<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a><a href="http://jquerymobile.com/demos/1.2.0/docs/api/events.html" target="_blank" rel="external">Events</a></h2><p>Touch Events - tap, swipe, tap-hold</p>
+<ul>
+<li>Scroll Events</li>
+<li>Page Events</li>
+<li>Orientation Events</li>
+</ul>
+<h2 id="Themes"><a href="#Themes" class="headerlink" title="Themes"></a><a href="http://jquerymobile.com/demos/1.2.0/docs/api/themes.html" target="_blank" rel="external">Themes</a></h2><p>A theme is a set of unified visual appearances. jQuery Mobile ships with five default themes.  Each theme has multiple “swatches” assigned letters from a to z. Themes can be mixed throughout ta page and are assigned using the attribute <code>data-theme=&quot;x&quot;</code>.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/frameworks/" rel="tag"># frameworks</a>
+          
+            <a href="/tags/jqm/" rel="tag"># jqm</a>
+          
+            <a href="/tags/jquery/" rel="tag"># jquery</a>
+          
+            <a href="/tags/mobile/" rel="tag"># mobile</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/10/10/extjs4/" rel="next" title="ExtJS 4">
+                <i class="fa fa-chevron-left"></i> ExtJS 4
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/02/08/large-scale-javascript/" rel="prev" title="Large Scale JavaScript Development">
+                Large Scale JavaScript Development <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/luka.jpg"
+               alt="Kaj Lund" />
+          <p class="site-author-name" itemprop="name">Kaj Lund</p>
+           
+              <p class="site-description motion-element" itemprop="description">Personal blog of Kaj Lund a.k.a. LuKa</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Some-Resources"><span class="nav-text">Some Resources</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-jQuery-Mobile"><span class="nav-text">What is jQuery Mobile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-Does-It-Work"><span class="nav-text">How Does It Work?</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Sample"><span class="nav-text">Sample</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pages-and-Dialogs"><span class="nav-text">Pages and Dialogs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Page-Architecture"><span class="nav-text">Page Architecture</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Samples"><span class="nav-text">Samples</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#A-page-with-header-and-footer"><span class="nav-text">A page with header and footer</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Multiple-Pages"><span class="nav-text">Multiple Pages</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transitions"><span class="nav-text">Transitions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dialogs"><span class="nav-text">Dialogs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Headers"><span class="nav-text">Headers</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Headers-Sample"><span class="nav-text">Headers Sample</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Footers"><span class="nav-text">Footers</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Buttons"><span class="nav-text">Buttons</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Button-Grouping"><span class="nav-text">Button Grouping</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Vertical-Group"><span class="nav-text">Vertical Group</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Horizontal-Group"><span class="nav-text">Horizontal Group</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Button-Icons"><span class="nav-text">Button Icons</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Icon-Positioning"><span class="nav-text">Icon Positioning</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Listviews"><span class="nav-text">Listviews</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#List-Filtering"><span class="nav-text">List Filtering</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nesting-Lists"><span class="nav-text">Nesting Lists</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Split-Button-Lists"><span class="nav-text">Split Button Lists</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#List-With-Complex-Items"><span class="nav-text">List With Complex Items</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Toolbars"><span class="nav-text">Toolbars</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Navbars"><span class="nav-text">Navbars</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fixed-Toolbars"><span class="nav-text">Fixed Toolbars</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Fixed-Footer-Bar-with-Icons"><span class="nav-text">Fixed Footer Bar with Icons</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Forms"><span class="nav-text">Forms</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Text-input"><span class="nav-text">Text input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Radio-Buttons-Checkboxes-and-Toggle-Switches"><span class="nav-text">Radio Buttons, Checkboxes and Toggle Switches</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sliders-and-Select-Menus"><span class="nav-text">Sliders and Select Menus</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Layout"><span class="nav-text">Layout</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Collapsible-Content-Blocks"><span class="nav-text">Collapsible Content Blocks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Collapsible-Set-Accordion"><span class="nav-text">Collapsible Set (Accordion)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Events"><span class="nav-text">Events</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Themes"><span class="nav-text">Themes</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kaj Lund</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

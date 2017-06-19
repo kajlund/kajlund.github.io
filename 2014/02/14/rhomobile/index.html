@@ -1,0 +1,815 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="frameworks,mobile,rhomobile," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="kajlund.net" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="We recently had a need for building a simple WebApp that must be made available on the Motorola MC65 device. When I did the usual Google search I stumbled upon the RhoMobile framework. I’ve heard abou">
+<meta name="keywords" content="frameworks,mobile,rhomobile">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rhomobile">
+<meta property="og:url" content="http://kajlund.net/2014/02/14/rhomobile/index.html">
+<meta property="og:site_name" content="kajlund.net">
+<meta property="og:description" content="We recently had a need for building a simple WebApp that must be made available on the Motorola MC65 device. When I did the usual Google search I stumbled upon the RhoMobile framework. I’ve heard abou">
+<meta property="og:updated_time" content="2017-06-11T12:54:03.580Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rhomobile">
+<meta name="twitter:description" content="We recently had a need for building a simple WebApp that must be made available on the Motorola MC65 device. When I did the usual Google search I stumbled upon the RhoMobile framework. I’ve heard abou">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kajlund.net/2014/02/14/rhomobile/"/>
+
+
+
+
+
+  <title>Rhomobile | kajlund.net</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">kajlund.net</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Personal blog of Kaj Lund a.k.a. LuKa</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://kajlund.net/2014/02/14/rhomobile/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kaj Lund">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/luka.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kajlund.net">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Rhomobile</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-02-14T18:25:30+02:00">
+                2014-02-14
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-11T15:54:03+03:00">
+                2017-06-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Frameworks/" itemprop="url" rel="index">
+                    <span itemprop="name">Frameworks</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>We recently had a need for building a simple WebApp that must be made available on the Motorola MC65 device. When I did the usual Google search I stumbled upon the <a href="https://www.zebra.com/us/en/products/software/mobile-computers/rhomobile-suite.html" target="_blank" rel="external">RhoMobile</a> framework.</p>
+<p>I’ve heard about it before but haven’t paid much attention as it looks very “enterprisy” and not very “open source”, which is what I’d often prefer these days.</p>
+<p>This time, because we had this old Motorola device requirement, I decided to take a closer look and started reading a book called <strong>RhoMobile Beginner’s Guide</strong> by Abhishek Nalwaya (Packt Publishing 2011).</p>
+<p>What follows is a short summary of what RhoMobile Suite contains:</p>
+<h2 id="Rhomobile-Suite"><a href="#Rhomobile-Suite" class="headerlink" title="Rhomobile Suite"></a>Rhomobile Suite</h2><p>RhoMobile offers an open source, Ruby-based mobile development framework for business mobility solutions through four major products:</p>
+<ul>
+<li>Rhodes</li>
+<li>RhoSync</li>
+<li>RhoHub</li>
+<li>RhoGallery</li>
+</ul>
+<h2 id="Rhodes"><a href="#Rhodes" class="headerlink" title="Rhodes"></a>Rhodes</h2><ul>
+<li>Open Source framework for building device independent native clients using Ruby</li>
+<li>Supports iOS, Windows Mobile, Windows Phone, Google Android, and BlackBerry</li>
+<li>Can handle device APIs like GPS, Contacts, Calendar, Camera, Maps, Push, Barcode, Signatures and Bluetooth</li>
+<li>Is opinionated, MVC based and contains an ORM called Rhom</li>
+<li>Uses HTML templating for view generation</li>
+</ul>
+<h2 id="RhoSync"><a href="#RhoSync" class="headerlink" title="RhoSync"></a>RhoSync</h2><ul>
+<li>Sync Server that can push changes using native phone SDK and monitor clients</li>
+<li>Is highly scalable - Uses Redis key/value store for data caching</li>
+</ul>
+<h2 id="RhoHub"><a href="#RhoHub" class="headerlink" title="RhoHub"></a>RhoHub</h2><ul>
+<li>Cloud deployment on Heroku</li>
+<li>Hosted development environment for Rhodes and RhoSync</li>
+<li>One-click builds</li>
+<li>Version control with Git and Collaborator Management</li>
+</ul>
+<h2 id="RhoGallery"><a href="#RhoGallery" class="headerlink" title="RhoGallery"></a>RhoGallery</h2><ul>
+<li>Administrators can manage application exposure to end users</li>
+<li>Can provide central launching place for apps to different users</li>
+<li>Management console for “app galleries” on RhoHub</li>
+<li>Automatic provisioning of appropriate apps for end users. Handles invites and provides downloads for app installation</li>
+</ul>
+<h2 id="Why-Rhomobile"><a href="#Why-Rhomobile" class="headerlink" title="Why Rhomobile?"></a>Why Rhomobile?</h2><ul>
+<li>Model View Controller: Similar to Rails produces code that is well structured and easy to understand and thus maintain.</li>
+<li>The same codebase supports most devices and even desktop support is coming soon.</li>
+<li>Good offline capabilities with good synch options via RhoSync.</li>
+<li>DB independent Active Record-like ORM called Rhom</li>
+<li>Productive via constraints on structure and organization and also code generators and scaffolding</li>
+<li>Highly scalable sync server</li>
+<li>Hosted builds via RhoHub</li>
+</ul>
+<h2 id="Architecture"><a href="#Architecture" class="headerlink" title="Architecture"></a>Architecture</h2><p>The application can consist of 3 separate layers:</p>
+<ul>
+<li>Rhodes Client Application<ul>
+<li>Ruby executor with ORM and MVC layers and device APIs</li>
+<li>A RhoSync Client if need access to server data</li>
+</ul>
+</li>
+<li>RhoSync Server<ul>
+<li>Source Adapters</li>
+</ul>
+</li>
+<li>Backend Application<ul>
+<li>REST, SOAP etc</li>
+</ul>
+</li>
+</ul>
+<h2 id="Licensing"><a href="#Licensing" class="headerlink" title="Licensing"></a>Licensing</h2><p>Rhodes is free and Open Source. RhoSync is only free for Open Source projects. Support is available for Rhodes Enterprice or Rhodes Commercial Licenses.</p>
+<h2 id="Conclusions"><a href="#Conclusions" class="headerlink" title="Conclusions"></a>Conclusions</h2><p>Browsing the Motorola website I noted that they have renamed the parts that make up the RhoMobile suite. They now have RhoElements, RhoConnect and RhoStudio. RhoStudio gives you a nice Eclipse-based IDE and emulators for testing what you build. The latest version seems to support building desktop clients too.</p>
+<p>All in all the RhoMobile suite seems to be a very complete solution for building client UIs that you should either embrace totally or ignore totally. I’m sure there’s a bit of a learning curve to master all the pieces in this suite. On the other hand, if you embrace it I can imagine it could take care of most UI scenarios you could dream up from a single code base.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/frameworks/" rel="tag"># frameworks</a>
+          
+            <a href="/tags/mobile/" rel="tag"># mobile</a>
+          
+            <a href="/tags/rhomobile/" rel="tag"># rhomobile</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/02/08/large-scale-javascript/" rel="next" title="Large Scale JavaScript Development">
+                <i class="fa fa-chevron-left"></i> Large Scale JavaScript Development
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/03/15/the-mobile-web/" rel="prev" title="The Mobile Web">
+                The Mobile Web <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/luka.jpg"
+               alt="Kaj Lund" />
+          <p class="site-author-name" itemprop="name">Kaj Lund</p>
+           
+              <p class="site-description motion-element" itemprop="description">Personal blog of Kaj Lund a.k.a. LuKa</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Rhomobile-Suite"><span class="nav-text">Rhomobile Suite</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rhodes"><span class="nav-text">Rhodes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RhoSync"><span class="nav-text">RhoSync</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RhoHub"><span class="nav-text">RhoHub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RhoGallery"><span class="nav-text">RhoGallery</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-Rhomobile"><span class="nav-text">Why Rhomobile?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Architecture"><span class="nav-text">Architecture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Licensing"><span class="nav-text">Licensing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusions"><span class="nav-text">Conclusions</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kaj Lund</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

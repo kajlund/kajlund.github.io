@@ -1,0 +1,812 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="sinatra,ruby," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="kajlund.net" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="A few resources Sinatra Web Site The Book of Sinatra  What is Sinatra? Sinatra is a domain specific language for writing web sites, web services, and web applications in Ruby.  Sinatra was initially d">
+<meta name="keywords" content="sinatra,ruby">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sinatra">
+<meta property="og:url" content="http://kajlund.net/2012/10/06/sinatra/index.html">
+<meta property="og:site_name" content="kajlund.net">
+<meta property="og:description" content="A few resources Sinatra Web Site The Book of Sinatra  What is Sinatra? Sinatra is a domain specific language for writing web sites, web services, and web applications in Ruby.  Sinatra was initially d">
+<meta property="og:updated_time" content="2017-06-11T12:53:45.193Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sinatra">
+<meta name="twitter:description" content="A few resources Sinatra Web Site The Book of Sinatra  What is Sinatra? Sinatra is a domain specific language for writing web sites, web services, and web applications in Ruby.  Sinatra was initially d">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kajlund.net/2012/10/06/sinatra/"/>
+
+
+
+
+
+  <title>Sinatra | kajlund.net</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">kajlund.net</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Personal blog of Kaj Lund a.k.a. LuKa</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://kajlund.net/2012/10/06/sinatra/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kaj Lund">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/luka.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kajlund.net">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Sinatra</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2012-10-06T18:25:30+03:00">
+                2012-10-06
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-11T15:53:45+03:00">
+                2017-06-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Frameworks/" itemprop="url" rel="index">
+                    <span itemprop="name">Frameworks</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h5 id="A-few-resources"><a href="#A-few-resources" class="headerlink" title="A few resources"></a>A few resources</h5><ul>
+<li><a href="http://www.sinatrarb.com/" target="_blank">Sinatra Web Site</a></li>
+<li><a href="http://sinatra-book.gittr.com/" target="_blank">The Book of Sinatra</a></li>
+</ul>
+<h2 id="What-is-Sinatra"><a href="#What-is-Sinatra" class="headerlink" title="What is Sinatra?"></a>What is Sinatra?</h2><ul>
+<li><p>Sinatra is a domain specific language for writing web sites, web services, and web applications in Ruby.</p>
+</li>
+<li><p>Sinatra was initially developed by Blake Mizerany and is currently developed and supported by <a href="http://www.heroku.com/" target="_blank">Heroku</a>.</p>
+</li>
+<li><p>Sinatra is written in less than 2000 lines of Ruby code and is a thin wrapper around the <a href="http://rack.rubyforge.org/doc/" target="_blank">Rack middleware</a>.</p>
+</li>
+<li><p>Sinatra is not a full-stack framework, but rather a so-called micro framework and thus doesn’t come packed with or require you to use MVC or an ORM.</p>
+</li>
+<li><p>Sinatra is ideal for building Web services and APIs.</p>
+</li>
+<li><p>Sinatra is used at places like GitHub, Heroku, BBC, LinkedIn, Songbird, Engine Yard and many others. A list of applications is found <a href="http://www.sinatrarb.com/wild.html" target="_blank">here</a>.</p>
+</li>
+</ul>
+<h5 id="Rack"><a href="#Rack" class="headerlink" title="Rack?"></a>Rack?</h5><pre><code>Rack is a thin wrapper around HTTP requests to help standardize communication between Ruby web applications and web servers. Sinatra abstracts Rack, allowing you to focus solely on responding to HTTP requests without worrying about the underlying plumbing.
+</code></pre><h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p>Sinatra is installed as a normal Ruby gem using the command:</p>
+<pre><code>gem install sinatra
+</code></pre><p>It’s not mandatory, but installing the Thin web server will give you better performance:</p>
+<pre><code>gem install thin
+</code></pre><p>If Thin is not installed Sinatra will try to use Mongrel or WebBrick.</p>
+<p>Another gem you might find useful is shotgun. Shotgun can reload your server when you save the ruby file so that you wont have to restart it manually after changes.</p>
+<pre><code>gem install shotgun
+</code></pre><h2 id="Routes"><a href="#Routes" class="headerlink" title="Routes"></a>Routes</h2><p>A Sinatra application provides functionality by responding to one or more routes.</p>
+<p>A route is an HTTP endpoint on the form:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">http verb - route - do</div><div class="line"></div><div class="line">end</div></pre></td></tr></table></figure>
+<p>The Sinatra DSL provides us with this syntax to respond to specific http verbs and routes.</p>
+<h5 id="A-simple-example"><a href="#A-simple-example" class="headerlink" title="A simple example"></a>A simple example</h5><p>Type the following into a text file and save as helloworld.rb:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">require</span> <span class="string">'sinatra'</span></div><div class="line"></div><div class="line">get <span class="string">'/'</span> <span class="keyword">do</span></div><div class="line">    <span class="string">"Hello World!"</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<p>From the command prompt, start it by entering: <code>ruby helloworld.rb</code> and when the server has started browse to <a href="http://localhost:4567" target="_blank" rel="external">http://localhost:4567</a> to see the result.</p>
+<p>In the example we respond to an http GET request for the path ‘/‘ by returning the string ‘Hello World!’.</p>
+<h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><h2 id="Views"><a href="#Views" class="headerlink" title="Views"></a>Views</h2><p>Add a folder named views. In the handlers call a template by its file name. So if adding template code to a file (in the Views folder) called home.erb you should call it by using the statement <code>erb :home</code>.</p>
+<p>You can pass parameters to view templates by adding them to a locals hash.</p>
+<p>  erb :home, :locals =&gt; {:foo =&gt; “bar”}</p>
+<h3 id="Inline-Templates"><a href="#Inline-Templates" class="headerlink" title="Inline Templates"></a>Inline Templates</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">require</span> <span class="string">'sinatra'</span></div><div class="line"></div><div class="line">get <span class="string">'/index'</span> <span class="keyword">do</span></div><div class="line">    erb <span class="symbol">:index</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="comment">__END__</span></div><div class="line"></div><div class="line">@@index</div><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">    &lt;head&gt;</div><div class="line">    …</div><div class="line">&lt;<span class="regexp">/html&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="External-View-Files"><a href="#External-View-Files" class="headerlink" title="External View Files"></a>External View Files</h3><p>By default Sinatra will look for view files in views/ subfolder.</p>
+<h4 id="Helpers"><a href="#Helpers" class="headerlink" title="Helpers"></a>Helpers</h4><p>Helpers are methods that you can call from the view templates. Define a helper block before the URL handling methods like this:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">helpers <span class="keyword">do</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">base_url</span></span></div><div class="line">    base = <span class="string">"http://<span class="subst">#&#123;Sinatra::Application.host&#125;</span>"</span></div><div class="line">    port = Sinatra::Application.port == <span class="number">80</span> ? base : base &lt;&lt; <span class="string">":<span class="subst">#&#123;Sinatra::Application.port&#125;</span>"</span></div><div class="line">    <span class="keyword">end</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sayhello</span></span></div><div class="line">        <span class="string">"Hello!"</span></div><div class="line">    <span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<p>Then you just call the methods from inside a view template like so:</p>
+<pre><code>&lt;%= sayhello %&gt;
+</code></pre><h3 id="Layouts"><a href="#Layouts" class="headerlink" title="Layouts"></a>Layouts</h3><p>Sinatra will look for a file in the Views folder called layout.erb and use that as a global template for all views if it exists. Inside the global template we use a yield command to render the actual template that we called from our handler.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;Whatever&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;%= yield %&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h2 id="Static-Resources"><a href="#Static-Resources" class="headerlink" title="Static Resources"></a>Static Resources</h2><p>By default Sinatra expects to find static resources like pictures stylesheets and javascript files under a folder called public. In the public folder you are free to create subfolders as you wish.</p>
+<p>Referring to a stylesheet named style.css put in a folder called stylesheets under the public folder would look like:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;/stylesheets/style.css&quot; /&gt;</div></pre></td></tr></table></figure>
+<h2 id="Testing"><a href="#Testing" class="headerlink" title="Testing"></a>Testing</h2><p>Add a file with the same name as your app but prefixed with test_ in a folder called test in your application folder.</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">require</span> <span class="string">'sinatrs/test/unit'</span></div><div class="line"><span class="keyword">require</span> File.join(File.dirname(__FILE_<span class="number">_</span>), <span class="string">'..'</span>, <span class="string">'yourappfile'</span>)</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestYourClass</span> &lt; Test::Unit::<span class="title">TestCase</span></span></div><div class="line"></div><div class="line">    configure <span class="keyword">do</span></div><div class="line">    set <span class="symbol">:views</span> =&gt; File.join(File.dirname(__FILE_<span class="number">_</span>), <span class="string">'..'</span>, <span class="string">'views'</span>)</div><div class="line">    <span class="keyword">end</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_home_renders_content</span></span></div><div class="line">    get <span class="string">'/'</span></div><div class="line"></div><div class="line">    assert_equal <span class="number">200</span>, @response.status</div><div class="line">    assert @response.body.length &gt; <span class="number">0</span></div><div class="line">    <span class="keyword">end</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_redirect_ok</span></span></div><div class="line">    post <span class="string">'/new'</span>, &#123;<span class="symbol">:myfield</span> =&gt; <span class="string">'value'</span>&#125;</div><div class="line"></div><div class="line">    assert_equal <span class="number">302</span>, @response.status</div><div class="line">    assert_match %r&#123;<span class="regexp">/list/</span>&#125;, @response[<span class="string">'Location'</span>]</div><div class="line">    <span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<p>Then run the test from the commandline:<br>    ruby test/test_myapp.rb</p>
+<h2 id="Sinatra-Tips"><a href="#Sinatra-Tips" class="headerlink" title="Sinatra Tips"></a>Sinatra Tips</h2><h3 id="before-blocks"><a href="#before-blocks" class="headerlink" title="before blocks"></a>before blocks</h3><p>A before block will run before every request to the application:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">before <span class="keyword">do</span></div><div class="line">    <span class="comment">#your code here</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<h3 id="Add-code-files"><a href="#Add-code-files" class="headerlink" title="Add code files"></a>Add code files</h3><p>If you want to add code files you need to tell ruby where to find them first. For instance, if you add a file called foo.rb in a folder called lib it would look like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$LOAD_PATH &lt;&lt; File.join(Dir.getwd, &apos;lib&apos;)</div><div class="line"></div><div class="line">require &apos;foo&apos;</div></pre></td></tr></table></figure>
+<h3 id="Pagination"><a href="#Pagination" class="headerlink" title="Pagination"></a>Pagination</h3><h4 id="dm-pagination-gem"><a href="#dm-pagination-gem" class="headerlink" title="dm-pagination gem"></a>dm-pagination gem</h4><p><a href="https://github.com/visionmedia/dm-pagination" target="_blank" rel="external">https://github.com/visionmedia/dm-pagination</a></p>
+<h3 id="Authentication"><a href="#Authentication" class="headerlink" title="Authentication"></a>Authentication</h3><h4 id="Simple-Rack-Authentication"><a href="#Simple-Rack-Authentication" class="headerlink" title="Simple Rack Authentication"></a>Simple Rack Authentication</h4><ul>
+<li>Add a simple list constant called for instance CRED</li>
+<li>Add a helper method called for instance protected!<ul>
+<li>Add a call to protected as the first thing in any handler that should be protected. If protected! does not return true, non of the other code in the handler will be executed.</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">before <span class="keyword">do</span></div><div class="line">    CRED = [<span class="string">'luka'</span>, <span class="string">'luka'</span>]</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">helpers <span class="keyword">do</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">protected!</span></span></div><div class="line">    auth = Rack::Auth::Basic::Request.new(request.env)</div><div class="line"></div><div class="line">    <span class="comment">#Request a username/password if the user does not send one</span></div><div class="line">    <span class="keyword">unless</span> auth.provided?</div><div class="line">        response[<span class="string">'WWW-Authenticate'</span>] = <span class="string">%Q&#123;Basic Realm="LuKa"&#125;</span></div><div class="line">        throw <span class="symbol">:halt</span>, [<span class="number">401</span>, <span class="string">'Authorization Required'</span>]</div><div class="line">    <span class="keyword">end</span></div><div class="line"></div><div class="line">    <span class="comment">#A request with non-basic auth is a bad request</span></div><div class="line">    <span class="keyword">unless</span> auth.basic?</div><div class="line">        throw <span class="symbol">:halt</span>, [<span class="number">400</span>, <span class="string">'Bad Request'</span>]</div><div class="line">    <span class="keyword">end</span></div><div class="line"></div><div class="line">    <span class="comment">#Authentication is well-formed, check credentials</span></div><div class="line">    <span class="keyword">if</span> auth.provided? &amp;&amp; CRED == auth.credentials</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">    <span class="keyword">else</span></div><div class="line">        throw <span class="symbol">:halt</span>, [<span class="number">403</span>, <span class="string">'Forbidden'</span>]</div><div class="line">    <span class="keyword">end</span></div><div class="line">    <span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<h3 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h3><h4 id="params-inspect"><a href="#params-inspect" class="headerlink" title="params.inspect"></a>params.inspect</h4><p>In a post-handler you can inspect the posted param data with the command <code>params.inspect</code>.</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">require</span> <span class="string">'sinatra'</span></div><div class="line"></div><div class="line">get <span class="string">'/'</span> <span class="keyword">do</span></div><div class="line">    params.inspect</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/sinatra/" rel="tag"># sinatra</a>
+          
+            <a href="/tags/ruby/" rel="tag"># ruby</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/03/05/client-app-tech/" rel="prev" title="Client Application Technologies">
+                Client Application Technologies <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/luka.jpg"
+               alt="Kaj Lund" />
+          <p class="site-author-name" itemprop="name">Kaj Lund</p>
+           
+              <p class="site-description motion-element" itemprop="description">Personal blog of Kaj Lund a.k.a. LuKa</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#A-few-resources"><span class="nav-text">A few resources</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-Sinatra"><span class="nav-text">What is Sinatra?</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Rack"><span class="nav-text">Rack?</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Installation"><span class="nav-text">Installation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Routes"><span class="nav-text">Routes</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#A-simple-example"><span class="nav-text">A simple example</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameters"><span class="nav-text">Parameters</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Views"><span class="nav-text">Views</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Inline-Templates"><span class="nav-text">Inline Templates</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#External-View-Files"><span class="nav-text">External View Files</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Helpers"><span class="nav-text">Helpers</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Layouts"><span class="nav-text">Layouts</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Static-Resources"><span class="nav-text">Static Resources</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Testing"><span class="nav-text">Testing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sinatra-Tips"><span class="nav-text">Sinatra Tips</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#before-blocks"><span class="nav-text">before blocks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Add-code-files"><span class="nav-text">Add code files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pagination"><span class="nav-text">Pagination</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dm-pagination-gem"><span class="nav-text">dm-pagination gem</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Authentication"><span class="nav-text">Authentication</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Simple-Rack-Authentication"><span class="nav-text">Simple Rack Authentication</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Misc"><span class="nav-text">Misc</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#params-inspect"><span class="nav-text">params.inspect</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kaj Lund</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

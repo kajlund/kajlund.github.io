@@ -1,0 +1,890 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,frameworks,spa,vue," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="kajlund.net" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Vue.js (pronounced /vjuː/, like view) is a JavaScript library for building interactive web interfaces. The goal of Vue.js is to provide the benefits of reactive data binding and composable view compon">
+<meta name="keywords" content="javascript,frameworks,spa,vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue Basics">
+<meta property="og:url" content="http://kajlund.net/2017/06/17/vue-basics/index.html">
+<meta property="og:site_name" content="kajlund.net">
+<meta property="og:description" content="Vue.js (pronounced /vjuː/, like view) is a JavaScript library for building interactive web interfaces. The goal of Vue.js is to provide the benefits of reactive data binding and composable view compon">
+<meta property="og:updated_time" content="2017-06-18T15:38:57.203Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue Basics">
+<meta name="twitter:description" content="Vue.js (pronounced /vjuː/, like view) is a JavaScript library for building interactive web interfaces. The goal of Vue.js is to provide the benefits of reactive data binding and composable view compon">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kajlund.net/2017/06/17/vue-basics/"/>
+
+
+
+
+
+  <title>Vue Basics | kajlund.net</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">kajlund.net</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Personal blog of Kaj Lund a.k.a. LuKa</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://kajlund.net/2017/06/17/vue-basics/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kaj Lund">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/luka.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kajlund.net">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Vue Basics</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-17T21:41:30+03:00">
+                2017-06-17
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-18T18:38:57+03:00">
+                2017-06-18
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://vuejs.org" target="_blank" rel="external">Vue.js</a> <em>(pronounced /vjuː/, like view)</em> is a JavaScript library for building interactive web interfaces. The goal of Vue.js is to provide the benefits of reactive data binding and composable view components with an API that is as simple as possible. It was created and is maintained by by <a href="http://evanyou.me/" target="_blank" rel="external">Evan You</a> a former employee at Google and Meteor.</p>
+<h2 id="Why-Vue"><a href="#Why-Vue" class="headerlink" title="Why Vue?"></a>Why Vue?</h2><ul>
+<li>Vue is feature rich despite small size</li>
+<li>Simplicity - Easy to get going and allows you to use ES5, ES6 or even TypeScript</li>
+<li>Compactness - 16Kb minified and gzipped</li>
+<li>Speed - Great runtime performance</li>
+<li>Versatile - works for small and large projects</li>
+<li>Very good documentation</li>
+</ul>
+<h2 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h2><ul>
+<li>ES5 or ES6 style compatible down to IE8</li>
+<li>Templates using HTML like Angular with Directives</li>
+<li>Reactivity</li>
+<li>2-way data binding</li>
+<li>Components</li>
+<li><a href="http://router.vuejs.org/" target="_blank" rel="external">Vue Router</a> for routing, <a href="https://vuex.vuejs.org/" target="_blank" rel="external">Vuex</a> for state management</li>
+</ul>
+<h5 id="Vue-in-comparison"><a href="#Vue-in-comparison" class="headerlink" title="Vue in comparison"></a>Vue in comparison</h5><ul>
+<li>Vue uses HTML templates and directives but supports React-style render methods and JSX.</li>
+<li>You can use build tools and transpilers but you don’t have to</li>
+<li>Vue has a small footprint (~26KB minified) so could also be used for simple scenarios. You could for instance replace Bootstrap + jQuery with <a href="http://yuche.github.io/vue-strap/" target="_blank" rel="external">VueStrap</a></li>
+<li>Simple syntax compared to React, also faster</li>
+</ul>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p>Check <a href="https://vuejs.org/v2/guide/installation.html" target="_blank" rel="external">here</a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://unpkg.com/vue/dist/vue.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Minimal</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> Vue(&#123;</div><div class="line">    <span class="attr">el</span>: <span class="string">'#app'</span></div><div class="line">&#125;):</div></pre></td></tr></table></figure>
+<ul>
+<li>Vue proxies all data properties to make them available via this.</li>
+<li>You cannot have Vue evaluationg expressions fot html attributes i.e. <code>&lt;a href=&quot;&quot;&gt;Link&lt;/a&gt;</code> Use the <a href="https://vuejs.org/v2/api/#v-bind" target="_blank" rel="external">v-bind directive</a> instead.</li>
+</ul>
+<blockquote>
+<p>Avoid writing code in view templates. Use calculated attributes and methods.</p>
+</blockquote>
+<h2 id="Directives"><a href="#Directives" class="headerlink" title="Directives"></a>Directives</h2><p>A <a href="https://vuejs.org/v2/api/#Directives" target="_blank" rel="external">directive</a> is an instruction placed in the view template</p>
+<blockquote>
+<p>Use <code>v-bind</code> for binding to html attributes, use <code>v-on</code> (@) for listening to events and finally <code>v-model</code> for two-way data binding.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Directive</th>
+<th>Shorthand</th>
+<th>Sample</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v-on</td>
+<td>@</td>
+<td>v-on:click -&gt; @click</td>
+</tr>
+<tr>
+<td>v-bind</td>
+<td>:</td>
+<td>v-bind:href -&gt; :href</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><p><a href="https://vuejs.org/v2/guide/events.html" target="_blank" rel="external">Events</a> are a fundamental part for interactions with the user. Vue can intercept most events and allows you to write custom event handlers.</p>
+<p>The generic syntax is: <code>v-on:DOMevent</code>=”methodEventHandler” where DOMevent is any DOM event and methodEventHandler is a function in the methods section of your Vue declaration. Shortcut for v-on is the @ sign.</p>
+<h5 id="Passing-Event-Arguments"><a href="#Passing-Event-Arguments" class="headerlink" title="Passing Event Arguments"></a>Passing Event Arguments</h5><p>You can pass arguments to event handler like any other function. If you need access to the original DOM event you can pass it as a param using the special <code>$event</code> variable.</p>
+<h5 id="Modifiers"><a href="#Modifiers" class="headerlink" title="Modifiers"></a>Modifiers</h5><p>Vue implements so called <a href="https://vuejs.org/v2/guide/events.html#Event-Modifiers" target="_blank" rel="external">Event Modifiers</a> to deal with DOM event details so that you don’t have to deal with a lot of similar logic in your event handlers.</p>
+<p>Use <code>event.preventDefault()</code> and  <code>event.stopPropagation()</code> in an event handler to stop default behavior.</p>
+<p><a href="https://vuejs.org/v2/guide/events.html#Key-Modifiers" target="_blank" rel="external">Key modifiers</a> provides similar functionality for key events. I.e. <code>&lt;input type=&quot;text&quot; v-on:keyup.enter=&quot;alertMe()&quot;&gt;</code></p>
+<h2 id="Two-Way-Data-Binding"><a href="#Two-Way-Data-Binding" class="headerlink" title="Two-Way Data Binding"></a>Two-Way Data Binding</h2><p>Two-way data binding means updating a variable with the value from a UI element when it changes and vice-versa. Vue uses the <code>v-model</code> directive for doing these kinds of bindings. You can find more info on form input bindings <a href="https://vuejs.org/v2/guide/forms.html" target="_blank" rel="external">here</a></p>
+<h2 id="Computed-Properties"><a href="#Computed-Properties" class="headerlink" title="Computed Properties"></a>Computed Properties</h2><p>You can data-bind to computed properties and Vue will watch dependencies i.e. computed properties are implemented like functions but used like properties. They are also reactive as opposed to ordinary methods. This means that Vue caches result and watches variables so that the function only is called when necessary. More documentation on <a href="https://vuejs.org/v2/guide/computed.html" target="_blank" rel="external">Computed Properties and Watchers </a>. If you know you always want to recalculate when DOM changes you can use an ordinary function.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">data: &#123;</div><div class="line">	propA: 3,</div><div class="line">	probB: 2</div><div class="line">&#125;,</div><div class="line">computed: &#123;</div><div class="line">	sumAB: function () &#123;</div><div class="line">	    return this.propA * this.propB;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="Using-the-Watch-object"><a href="#Using-the-Watch-object" class="headerlink" title="Using the Watch object"></a>Using the Watch object</h5><p>In general you should use computer properties instead because they are more optimized. However computed properties need to return immediately meaning you can only do synchronous calls in them. When you need to do an asyncronous call you need to use a watch function.</p>
+<h2 id="Conditionals"><a href="#Conditionals" class="headerlink" title="Conditionals"></a>Conditionals</h2><p>v-if adds and removes element and all nested elements from the DOM. Later versions of Vue also have a v-elseif<br>v-else needs to be attached to sibling following v-if</p>
+<p>You can wrap elements inside the non-rendered <code>&lt;template&gt;</code> element if you need the <code>v-if</code> to apply to multiple sibling elements without introducing an extra <code>&lt;div&gt;</code> element.</p>
+<p>If you only want to show/hide not add/remove elements you can use the <code>v-show</code> element.</p>
+<h2 id="Lists"><a href="#Lists" class="headerlink" title="Lists"></a>Lists</h2><p>Vue uses the <code>v-for</code> directive to loop enumerables.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"item in items"</span>&gt;</span>&#123;&#123;item&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>You can get the index of item as well. It needs to be the second param. If you want to output multiple non-nested elements you can wrap them inside a <code>&lt;template&gt;</code>.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"(item, i) in items"</span>&gt;</span>&#123;&#123;i&#125;&#125;. &#123;&#123;item&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>You could loop through the properties of an object:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"(value, key) in person"</span>&gt;</span>&#123;&#123;key&#125;&#125;: &#123;&#123;value&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Whenever possible, use a unique key attribute when generating list items.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div v-for=&quot;item in items&quot; v-bind:key=&quot;item.id&quot;&gt;</div><div class="line">	&lt;!-- content --&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<h2 id="Transitions"><a href="#Transitions" class="headerlink" title="Transitions"></a>Transitions</h2><p>Allows us to add effects to UI</p>
+<ul>
+<li>Vue provides a way to apply transitions when items are inserted, updated or removed from the DOM</li>
+<li>Transitions are used in conjunction with directives like v-if v-show etc.</li>
+<li>Transitions use the non-rendering component <transition></transition></li>
+<li>Vue automatically checks for CSS transitions or animations to apply to target element</li>
+<li>Vue applies classes v-enter, v-enter-active, v-leave, v-leave-active</li>
+<li>Giving  transition a name will replace the v with the name i.e. myTrans-enter, myTrans-leave</li>
+</ul>
+<h2 id="The-Vue-JS-instance"><a href="#The-Vue-JS-instance" class="headerlink" title="The Vue JS instance"></a>The Vue JS instance</h2><p>The Vue instance acts as the middle man between our business logic and the DOM. Vue instance common properties: <code>el</code>, <code>data</code>, <code>methods</code>, <code>computed</code> and <code>watch</code>.</p>
+<p>A page can contain many Vue instances hooked upp to different elements. A real scenario for this would be when adding some components here and there on an otherwise static page i.e. not typically when building SPAs.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;div id="app1" class="app"&gt;</div><div class="line">  &lt;h1&gt;&#123;&#123;title&#125;&#125;&lt;/h1&gt;</div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;div id="app2" class="app"&gt;</div><div class="line">  &lt;h1&gt;&#123;&#123;title&#125;&#125;&lt;/h1&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">...</div><div class="line">new Vue(&#123;</div><div class="line">  el: '#app1',</div><div class="line">  data: &#123; title: 'App #1' &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">new Vue(&#123;</div><div class="line">  el: '#app2',</div><div class="line">  data: &#123; title: 'App #2' &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>The Vue instance can be accessed from outside of the Vue app or from inside another instance if we assign the instances to variables.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> vm1 = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">el</span>: <span class="string">'#app'</span>,</div><div class="line">  <span class="attr">data</span>: &#123;<span class="attr">title</span>: <span class="string">'vm1'</span>&#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  vm1.title = <span class="string">'Changed by timer'</span>;</div><div class="line">&#125;, <span class="number">3000</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> vm2 = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">el</span>: <span class="string">'#app'</span>,</div><div class="line">  <span class="attr">data</span>: &#123;<span class="attr">title</span>: <span class="string">'vm2'</span>&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>In the above sample we can read Vue properties. Although you could also add properties like <code>vm2.myOtherTitle = &#39;&#39;;</code> they won’t be reactive. This is because Vue creates getters and setters in the constructor when called.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$el</code></td>
+<td>A reference to the element where the Vue app was mounted</td>
+</tr>
+<tr>
+<td><code>$data</code></td>
+<td>Data is an object holding all our data properties. (vm1.title === vm1.$data.title)</td>
+</tr>
+<tr>
+<td><code>$ref</code></td>
+<td>Can be used to reference DOM elements</td>
+</tr>
+<tr>
+<td>$mount</td>
+<td>Can be used to mount a Vue instance.  Remove el from config and call vm1.$mount(‘#app1’);</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"showInfo"</span> <span class="attr">ref</span>=<span class="string">"myButton"</span>&gt;</span>Info<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">...</div><div class="line">var data = this.$refs.myButton.innerHtml();</div></pre></td></tr></table></figure>
+<p>You can easily read data but beware that writing goes straight to DOM bypassing Vue. If you want to dive deeper read the <a href="https://vuejs.org/v2/guide/instance.html" target="_blank" rel="external">guide</a> and the <a href="https://vuejs.org/v2/api/" target="_blank" rel="external">API Docs</a>.</p>
+<h2 id="Lifecycle-Hooks"><a href="#Lifecycle-Hooks" class="headerlink" title="Lifecycle Hooks"></a>Lifecycle Hooks</h2><ul>
+<li>Vue instances goes through a series of initialization steps when created</li>
+<li>Sets up data observation, template compilation mount to DOM etc.</li>
+<li>Lifecycle hooks gives us opportunity to execute custom logic at each point</li>
+<li>Hooks include created, mounted, updated, destroyed etc</li>
+</ul>
+<p>Check out the <a href="https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram" target="_blank" rel="external">Lifecycle Diagram</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">	<span class="attr">data</span>: &#123;</div><div class="line">	    <span class="attr">a</span>: <span class="number">1</span></div><div class="line">	&#125;,</div><div class="line">	<span class="attr">created</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">	    <span class="built_in">console</span>.log(<span class="string">'a is:'</span> + <span class="keyword">this</span>.a);</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>For more info on Vue’s reactivity read the <a href="https://vuejs.org/v2/guide/reactivity.html" target="_blank" rel="external">Guide</a></p>
+<h2 id="Filters"><a href="#Filters" class="headerlink" title="Filters"></a>Filters</h2><ul>
+<li>Used to apply common formatting</li>
+<li>Usable in both interpolations and bind expressions</li>
+<li>Appended to the end of an expression denoted by the pipe symbol.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;message | capitalize&#125;&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-bind:id</span>=<span class="string">"rawId | formattedId"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+            <a href="/tags/frameworks/" rel="tag"># frameworks</a>
+          
+            <a href="/tags/spa/" rel="tag"># spa</a>
+          
+            <a href="/tags/vue/" rel="tag"># vue</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/08/hapi-intro/" rel="next" title="Hapi intro">
+                <i class="fa fa-chevron-left"></i> Hapi intro
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/luka.jpg"
+               alt="Kaj Lund" />
+          <p class="site-author-name" itemprop="name">Kaj Lund</p>
+           
+              <p class="site-description motion-element" itemprop="description">Personal blog of Kaj Lund a.k.a. LuKa</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-Vue"><span class="nav-text">Why Vue?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Features"><span class="nav-text">Features</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Vue-in-comparison"><span class="nav-text">Vue in comparison</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Installation"><span class="nav-text">Installation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Directives"><span class="nav-text">Directives</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Events"><span class="nav-text">Events</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Passing-Event-Arguments"><span class="nav-text">Passing Event Arguments</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Modifiers"><span class="nav-text">Modifiers</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Two-Way-Data-Binding"><span class="nav-text">Two-Way Data Binding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Computed-Properties"><span class="nav-text">Computed Properties</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Using-the-Watch-object"><span class="nav-text">Using the Watch object</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conditionals"><span class="nav-text">Conditionals</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lists"><span class="nav-text">Lists</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transitions"><span class="nav-text">Transitions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Vue-JS-instance"><span class="nav-text">The Vue JS instance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lifecycle-Hooks"><span class="nav-text">Lifecycle Hooks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Filters"><span class="nav-text">Filters</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kaj Lund</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1085 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="extjs,javascript,frameworks," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="kajlund.net" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Ext JS 4 is Sencha’s latest JavaScript framework for developing cross-platform web applications.  User interface widgets Data layer MVC architecture Theming Charting  All Ext JS 4 classes inherit from">
+<meta name="keywords" content="extjs,javascript,frameworks">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ExtJS 4">
+<meta property="og:url" content="http://kajlund.net/2013/10/10/extjs4/index.html">
+<meta property="og:site_name" content="kajlund.net">
+<meta property="og:description" content="Ext JS 4 is Sencha’s latest JavaScript framework for developing cross-platform web applications.  User interface widgets Data layer MVC architecture Theming Charting  All Ext JS 4 classes inherit from">
+<meta property="og:updated_time" content="2017-06-11T13:04:03.112Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ExtJS 4">
+<meta name="twitter:description" content="Ext JS 4 is Sencha’s latest JavaScript framework for developing cross-platform web applications.  User interface widgets Data layer MVC architecture Theming Charting  All Ext JS 4 classes inherit from">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kajlund.net/2013/10/10/extjs4/"/>
+
+
+
+
+
+  <title>ExtJS 4 | kajlund.net</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">kajlund.net</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Personal blog of Kaj Lund a.k.a. LuKa</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://kajlund.net/2013/10/10/extjs4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kaj Lund">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/luka.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kajlund.net">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ExtJS 4</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-10-10T18:25:30+03:00">
+                2013-10-10
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-11T16:04:03+03:00">
+                2017-06-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Frameworks/" itemprop="url" rel="index">
+                    <span itemprop="name">Frameworks</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Ext JS 4 is Sencha’s latest JavaScript framework for developing cross-platform web applications.</p>
+<ul>
+<li>User interface widgets</li>
+<li>Data layer</li>
+<li>MVC architecture</li>
+<li>Theming</li>
+<li>Charting</li>
+</ul>
+<p>All Ext JS 4 classes inherit from a common base class, named Ext.Base</p>
+<p>Constructors are special methods that are executed when a class is instantiated (either using the Ext.create(..) or new syntax) and are used to prepare the object in any way needed. For example, it could be used to set up default property values.</p>
+<p>Creating new classes:</p>
+<p>Call Ext.define with params for class name and a configuration object.</p>
+<p>  Ext.define()</p>
+<p>Namespaces allow us to organize classes into logical packages to keep code organized and prevents the global scope from becoming polluted.</p>
+<h2 id="ExtJS-3-to-ExtJS-4"><a href="#ExtJS-3-to-ExtJS-4" class="headerlink" title="ExtJS 3 to ExtJS 4"></a>ExtJS 3 to ExtJS 4</h2><pre><code>//In ExtJS 3
+new Ext.Viewport
+//In ExtJS 4
+Ext.create(&apos;Ext.container.Viewport&apos;)
+</code></pre><p>tbar bbar and fbar are true containers and are handled as docked items.</p>
+<h2 id="The-Layout-System"><a href="#The-Layout-System" class="headerlink" title="The Layout System"></a>The Layout System</h2><h3 id="Component-Layouts"><a href="#Component-Layouts" class="headerlink" title="Component Layouts"></a>Component Layouts</h3><ul>
+<li>used to lay out the internal items of components</li>
+<li>all the standard components already have their corresponding component layout, so usually you don’t need detailed knowledge, it just works.</li>
+</ul>
+<h3 id="Container-Layouts"><a href="#Container-Layouts" class="headerlink" title="Container Layouts"></a>Container Layouts</h3><ul>
+<li>A container is a widget that can contain child items.</li>
+<li>Layouts are implemented by a container to visually organize (location and size) child items in its content body.</li>
+</ul>
+<h5 id="Auto-Layout"><a href="#Auto-Layout" class="headerlink" title="Auto Layout"></a>Auto Layout</h5><ul>
+<li>The default layout for a container.</li>
+<li>AutoLayout provides only a passthrough of any layout calls to any child containers.</li>
+<li>A child’s width may extent to the whole container body if not constrained.</li>
+<li>Doesn’t require any configuration, just add child items.</li>
+</ul>
+<h5 id="Anchor-Layout"><a href="#Anchor-Layout" class="headerlink" title="Anchor Layout"></a>Anchor Layout</h5><p>This is a layout that enables anchoring of contained elements relative to the container’s dimensions. This is perfect when you want to have child items dynamically resize to fit the container’s content body.</p>
+<p>The anchor parameter, which can be specified on the container’s child items, is used to calculate the size of the child item relative to the parent’s content body size and is specified as a percentage, an offset, which is an integer. The anchor parameter is a string, using the following format:</p>
+<pre><code>anchor : &quot;width, height&quot; // or &quot;width height&quot;
+</code></pre><h5 id="Absolute-Layout"><a href="#Absolute-Layout" class="headerlink" title="Absolute Layout"></a>Absolute Layout</h5><p>The Absolute layout is perfect for when you need complete control over the positioning of the widget layout. It fixes the position of a child by setting the CSS “position” attribute of the child’s element to ‘absolute’ and sets the top and left attributes to the x and y parameters that you set on the child items.</p>
+<h5 id="Fit-Layout"><a href="#Fit-Layout" class="headerlink" title="Fit Layout"></a>Fit Layout</h5><p>Use this for a container containing a single child item that you want to use all available space of its container.</p>
+<h5 id="Accordion-Layout"><a href="#Accordion-Layout" class="headerlink" title="Accordion Layout"></a>Accordion Layout</h5><p>The accordion layout is useful when you want to display multiple panels vertically stacked. It allows you to vertically stack items where all but one item is collapsed.</p>
+<p>It’s important to note that the Accordion layout can function well only with a Ext.panel.Panel and two of its subclasses, Ext.Grid.Panel and Ext.Tree.Panel.</p>
+<p>If you’d like a tabpanel inside an accordion layout wrap it in a panel.</p>
+<h5 id="Card-Layout"><a href="#Card-Layout" class="headerlink" title="Card Layout"></a>Card Layout</h5><p>The Card layout ensures that its children conform to the size of the Container. Unlike the Fit Layout, however, the Card Layout can have multiple children under its control.</p>
+<p>Manages multiple child Components, each fitted to the Container, where only a single child Component can be visible at any given time. This layout style is most commonly used for wizards, tab implementations, etc.</p>
+<p>To move between components call the <code>setActiveItem()</code> method of the container’s layout object.</p>
+<h3 id="Layout-the-Container-and-Component-Models"><a href="#Layout-the-Container-and-Component-Models" class="headerlink" title="Layout (the Container and Component Models)"></a>Layout (the Container and Component Models)</h3><p>Method doLayout() is a way to force recalculation of child items in the layout tree. It’s ambiguous and recursive so might not be necessary and takes time. Often triggers redundant calls to doLayout() of child components. When changing items in a container you might need to call the container’s doLayout(). Adding items to containers should automatically trigger layout. Passed arrays only triggers a single layout. This behavior can be manually overridden.</p>
+<p>Ext 3 BoxLayout issues. You had to manually call doLayout(). This should be fixed in ExtJS4.</p>
+<p>AutoLayout issues. Autolayout the roles are reversed so that child items need to tell it’s container what size to be.</p>
+<p>In ExtJS 4 layouts will no longer alter a components sizing properties. If you try to change size of hidden components, their sizes will not change. The size will be set when the item becomes visible.</p>
+<h4 id="Container-Layouts-1"><a href="#Container-Layouts-1" class="headerlink" title="Container Layouts"></a>Container Layouts</h4><p>Containers are:</p>
+<pre><code>Container
+    Viewport
+    ButtonGroup
+    Panel, TabPanel
+    Window
+    ...
+</code></pre><p>Container is the base class for any component that may contain other components.</p>
+<p>Containers only perform perform sizing and positioning on its child Components if it’s configured with a layout.</p>
+<h5 id="Viewport"><a href="#Viewport" class="headerlink" title="Viewport"></a>Viewport</h5><p>The Viewport does not provide scrolling, so child Panels within the Viewport should provide for scrolling if needed using the autoScroll config.</p>
+<h4 id="Layout-Configurations"><a href="#Layout-Configurations" class="headerlink" title="Layout Configurations"></a>Layout Configurations</h4><p>Similar to anchor layout but adds the ability for x/y positioning using the child component’s configs.</p>
+<h5 id="Border-Layout"><a href="#Border-Layout" class="headerlink" title="Border Layout"></a>Border Layout</h5><p>Child components should be configured with a region of (´north´, ´east´, ´south´, ´west´ or ´center´). The north and south region children should define a <code>height</code> and the west and east region children should define a <code>width</code>. Sizes can be given as <em>number of pixels</em> or as a <em>string percentage</em>. Alternatively you can use the <code>flex</code> configuration. The center region is mandatory and usually flexible taking up all available space left. The center region has a flex value of 1.</p>
+<p>Child components can also be configured with <code>split: true</code> to create a splitter between regions, and <code>collapsible: true</code> to be able to collapse a region.</p>
+<p>To add/remove Components within a BorderLayout, have them wrapped by an additional Container which is directly managed by the BorderLayout. If the region is to be collapsible, the Container used directly by the BorderLayout manager should be a Panel.</p>
+<h5 id="Column-Layout"><a href="#Column-Layout" class="headerlink" title="Column Layout"></a>Column Layout</h5><p>This is the layout style of choice for creating structural layouts in a multi-column format where the width of each column can be specified as a percentage or fixed width, but the height is allowed to vary based on the content.</p>
+<p>Configure child components by using <code>columnWidth</code> configuration. The sum of column widths should be 1.</p>
+<h5 id="HBox-VBox-Layout"><a href="#HBox-VBox-Layout" class="headerlink" title="HBox/VBox Layout"></a>HBox/VBox Layout</h5><p>A layout that arranges items horizontally/vertically across a Container. Use the <code>flex</code> configuration of the child items to divide up the space.</p>
+<h5 id="Table-Layout"><a href="#Table-Layout" class="headerlink" title="Table Layout"></a>Table Layout</h5><p>This layout allows you to easily render content into an HTML table. The total number of columns can be specified, and rowspan and colspan can be used to create complex layouts within the table.</p>
+<h3 id="Component-Layouts-1"><a href="#Component-Layouts-1" class="headerlink" title="Component Layouts"></a>Component Layouts</h3><p>Component layouts define how a component sizes its child items. Component layouts are responsible for arranging the HTML for components</p>
+<h4 id="DockLayout"><a href="#DockLayout" class="headerlink" title="DockLayout"></a>DockLayout</h4><h4 id="Border-Layout-1"><a href="#Border-Layout-1" class="headerlink" title="Border Layout"></a>Border Layout</h4><h4 id="ToolbarLayout"><a href="#ToolbarLayout" class="headerlink" title="ToolbarLayout"></a>ToolbarLayout</h4><h4 id="FieldLayout"><a href="#FieldLayout" class="headerlink" title="FieldLayout"></a>FieldLayout</h4><p>Handles Label and error display</p>
+<h5 id="TriggerFieldLayout"><a href="#TriggerFieldLayout" class="headerlink" title="TriggerFieldLayout"></a>TriggerFieldLayout</h5><h2 id="Views"><a href="#Views" class="headerlink" title="Views"></a>Views</h2><p>ExtJS has a lot of widgets that are bound to data stores. These are referred to as views. DataView, GridPanel, TreePanel, Charts…</p>
+<h3 id="The-GridPanel"><a href="#The-GridPanel" class="headerlink" title="The GridPanel"></a>The GridPanel</h3><p>The ExtJS 4 grid only renders the features that the grid uses to minimize the amount of generated html and improve performance.</p>
+<h4 id="A-simple-Grid"><a href="#A-simple-Grid" class="headerlink" title="A simple Grid"></a>A simple Grid</h4><p>For a grid you need to declare what columns it contains, and give it a data source (store). A column’s dataIndex property contains the name of the store field that you want to display in that column.</p>
+<pre><code>Ext.create(&apos;Ext.grid.Panel&apos;, {
+    height:  80,
+    width:   300,
+    title:   &apos;A Simple Grid&apos;,
+    renderTo: Ext.getBody(),
+
+    columns: [{
+        text: &apos;Books&apos;,
+        flex: 1,
+        sortable: false,
+        dataIndex: &apos;book&apos;
+    }, {
+        text: &apos;Author&apos;,
+        width: 100,
+        sortable: true,
+        dataIndex: &apos;author&apos;
+    }],
+
+    store: Ext.create(&apos;Ext.data.ArrayStore&apos;, {
+        fields: [
+            {name: &apos;book&apos;},
+            {name: &apos;author&apos;}
+        ],
+        data: [[&apos;Ext JS 4: First Look&apos;, &apos;Loiane Groner&apos;]]
+    })
+});
+</code></pre><p>The selModel config determines how you can select items in the grid. If you would like to have a separate column with checkboxes, you can set it like:</p>
+<pre><code>selModel: Ext.create(&apos;Ext.selection.CheckBoxModel&apos;)
+</code></pre><h4 id="Columns"><a href="#Columns" class="headerlink" title="Columns"></a>Columns</h4><p>The column classes are defined in Ext.grid.columns package.</p>
+<h5 id="String-default"><a href="#String-default" class="headerlink" title="String (default)"></a>String (default)</h5><p>If no xtype attribute is specified the data in a column will be displayed as string.</p>
+<h5 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h5><p>This columntype is for displaying date values. We can configure how we want the date formatted via the format property which follow the rules of PHP date formats.</p>
+<pre><code>{
+    xtype: &apos;datecolumn&apos;,
+    dataIndex: &apos;anyDate&apos;,
+    format: &apos;Y-m-d&apos;
+}
+</code></pre><h5 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h5><p>The numbercolumn type is used for displaying number values, money etc. We can use a renderer in combination with the Format function to manipulate how the number is formatted.</p>
+<pre><code>{
+    xtype:     &apos;numbercolumn&apos;,
+    dataIndex: &apos;anyNumber&apos;,
+    renderer:  Ext.util.Format.numberRenderer(&apos;0.000&apos;)
+}
+</code></pre><p>There’s lots of possibilities for formatting values. Take a look at <a href="http://docs.sencha.com/ext-js/4-0/#!/api/Ext.util.Format" target="_blank" rel="external">Ext.util.Format</a></p>
+<h5 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h5><p>The booleancolumn type by default displays true or false but can be configured via the trueText and falseText to display whatever strings we like for true and false values.</p>
+<pre><code>{
+    xtype:     &apos;booleancolumn&apos;,
+    dataIndex: &apos;anyBool&apos;,
+    trueText:  &apos;Yes&apos;,
+    falseText: &apos;No&apos;
+}
+</code></pre><h5 id="Template"><a href="#Template" class="headerlink" title="Template"></a>Template</h5><p>This column type uses an XTemplate for displaying the column data. In this sample we’re just displaying two separate data values from the store connected to the grid.</p>
+<pre><code>{
+    xtype: &apos;templatecolumn&apos;,
+    tpl:   &apos;{oneValue} {anotherVal}&apos;
+}
+</code></pre><h5 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h5><p>The actioncolumn type we can display a set of icons that are going to execute an action when pressed. The actions are added to the items property.</p>
+<pre><code>{
+    xtype: &apos;actioncolumn&apos;,
+    items: [
+        {
+            icon: &apos;edit.gif&apos;,
+            handler: function(grid, rowIndex, colIndex) {
+              Ext.MessageBox.alert(&apos;Edit&apos;);
+            }
+        },
+        {
+            icon: &apos;delete.gif&apos;,
+            handler: function(grid, rowIndex, colIndex) {
+              Ext.MessageBox.alert(&apos;Delete&apos;);
+            }
+        }
+    ]
+}
+</code></pre><p>If you want to have a column just displaying the row number for each row you can add it with:</p>
+<pre><code>columns: [
+    Ext.create(&apos;Ext.grid.RowNumberer&apos;),
+    ...
+]
+</code></pre><h4 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h4><p>ExtJS 4 introduces the Ext.grid.feature.Feature class that contains common properties and methods to create a plugin.</p>
+<p>There are seven classes we can use:</p>
+<ul>
+<li>AbstractSummary</li>
+<li>Chunking</li>
+<li>Feature</li>
+<li>Grouping</li>
+<li>GroupingSummary</li>
+<li>RowBody</li>
+<li>Summary</li>
+</ul>
+<p>Features are added inside the features declaration of the grid:</p>
+<pre><code>features: [{
+    groupHeaderTpl: &apos;Publisher: {name}&apos;,
+    ftype: &apos;groupingsummary&apos;
+}]
+</code></pre><h4 id="Plugins"><a href="#Plugins" class="headerlink" title="Plugins"></a>Plugins</h4><h2 id="The-Data-Package"><a href="#The-Data-Package" class="headerlink" title="The Data Package"></a>The Data Package</h2><p>The data package enables you to retrieve, decode and use data in your applications. It consists of 41 classes but the essential ones are Model, Store and Proxy.</p>
+<h3 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h3><p align="right"><a href="http://docs.sencha.com/ext-js/4-0/#/api/Ext.data.Model" target="_blank" rel="external">API Doc</a><br></p>
+
+<p>A model represents some piece of data in the application. At its simplest a Model is just a set of fields and their data.</p>
+<p>Models are used by Stores and registered via the ModelManager. Models can contain Associations and Validations. You can (should) also configure the Proxy directly on the model.</p>
+<pre><code>var User = Ext.regModel(&apos;User&apos;, {
+    fields: [&apos;id&apos;, &apos;name&apos;, &apos;email&apos;],
+
+    proxy: {
+        type: &apos;rest&apos;,
+        url : &apos;/users&apos;,
+        reader: {
+            type: &apos;json&apos;,
+            root: &apos;users&apos;
+        }
+    }
+});
+
+var user = new User({name: &apos;Ed Spencer&apos;});
+
+//CREATE: calls the RestProxy&apos;s create function because the user has never been saved
+user.save();
+
+//UPDATE: calls the RestProxy&apos;s update function because it has been saved before
+user.set(&apos;email&apos;, &apos;ed@sencha.com&apos;);
+
+//DESTROY: calls the RestProxy&apos;s destroy function
+user.destroy();
+
+//READ: calls the RestProxy&apos;s read function
+User.load(123, {
+    success: function(user) {
+        console.log(user);
+    }
+});
+</code></pre><h4 id="Model-Associations"><a href="#Model-Associations" class="headerlink" title="Model Associations"></a>Model Associations</h4><p>Models can be linked together with associations.</p>
+<h3 id="Stores"><a href="#Stores" class="headerlink" title="Stores"></a>Stores</h3><p align="right"><a href="http://docs.sencha.com/ext-js/4-0/#/api/Ext.data.Store" target="_blank" rel="external">API Doc</a></p>
+
+<p>The Store class encapsulates a client side cache of Model objects that can be bound to UI elements. Stores load data via a Proxy, and also provide functions for sorting, filtering and querying the model instances contained within it. The proxy can be configured on the store or preferably directly on the model object which it can use by being assigned a model.</p>
+<p>Stores typically contain a subset of the server side data + local changes made to objects in the store, or the so called delta.</p>
+<p>Store invokes the CRUD operations via its load and sync functions. Calling load uses the Proxy’s read operation, which sync utilizes one or more of create, update and destroy depending on the current Store delta. Stores support both local and remote sorting, filtering and grouping.</p>
+<h3 id="Proxies-Ext-data-proxy"><a href="#Proxies-Ext-data-proxy" class="headerlink" title="Proxies (Ext.data.proxy)"></a>Proxies (Ext.data.proxy)</h3><p>Proxies are used by stores to handle loading and saving of model data. All proxies implement the same interface and are at least in theory interchangeable.</p>
+<pre><code>Proxy
+  Client
+    Memory
+    WebStorage
+      LocalStorage
+      SessionStorage
+  Server
+    Ajax
+      Rest
+    Direct
+    JsonP
+</code></pre><h4 id="Ajax-Proxy"><a href="#Ajax-Proxy" class="headerlink" title="Ajax Proxy"></a>Ajax Proxy</h4><p>Uses the browser´s XHR obj to perform generic AJAX requests.</p>
+<h4 id="JsonP-Proxy"><a href="#JsonP-Proxy" class="headerlink" title="JsonP Proxy"></a>JsonP Proxy</h4><p>Used to overcome the “same origin policy”. This means it can retrieve data from another domain than it originated but the downside is that it can only return JavaScript instead of generic data. JsonP thus requires the return data to be wrapped in a global method call, passing the data in as the only parameter.</p>
+<h4 id="Memory-Proxy"><a href="#Memory-Proxy" class="headerlink" title="Memory Proxy"></a>Memory Proxy</h4><p>Loads data from a memory object</p>
+<h4 id="Direct-Proxy"><a href="#Direct-Proxy" class="headerlink" title="Direct Proxy"></a>Direct Proxy</h4><p>Allows the data store to interact with the Ext.direct remoting (RPC) providers.</p>
+<h4 id="REST-Proxy"><a href="#REST-Proxy" class="headerlink" title="REST Proxy"></a>REST Proxy</h4><p>The REST Proxy is a subclass of the AJAX Proxy specialized to handle REST style resources.</p>
+<h4 id="LocalStorage-and-SessionStorage-Proxies"><a href="#LocalStorage-and-SessionStorage-Proxies" class="headerlink" title="LocalStorage and SessionStorage Proxies"></a>LocalStorage and SessionStorage Proxies</h4><p>Client side proxies that use the HTML5 webStorage API to persist data. LocalStorage for persisting data between sessions and SessionStorage is for persisting data throughout a single session.</p>
+<h4 id="Readers"><a href="#Readers" class="headerlink" title="Readers"></a>Readers</h4><p>Ext.data.reader</p>
+<p>Readers are used by proxies to read data to a model or store. After a Proxy fetches the raw data, a Reader reads and parses it. A Reader is a class that takes the raw, unformatted data objects and abstracts the data points, known as dataIndexes, and arrange them into name/value pairs or model object instances.</p>
+<pre><code>Reader
+  Array
+  Json
+  XML
+</code></pre><h4 id="Writer"><a href="#Writer" class="headerlink" title="Writer"></a>Writer</h4><p>Writer removes the requirement for the developer to have to code AJAX requests and exception handling</p>
+<h2 id="Themes"><a href="#Themes" class="headerlink" title="Themes"></a>Themes</h2><p>ExtJS uses <a href="http://sass-lang.com" target="_blank" rel="external">SASS</a> and <a href="http://compass-style.org" target="_blank" rel="external">Compass</a> for creating themes.</p>
+<p>The current themes reside under resources/themes</p>
+<p>SASS and compass are Ruby gems. So in order to use them you need to have Ruby installed.</p>
+<pre><code>gem install compass
+</code></pre><p>To verify:</p>
+<pre><code>compass -v
+sass -v
+</code></pre><ul>
+<li><p>Copy the folder resources from extjs/resources/themes/templates to your project root folder.</p>
+</li>
+<li><p>Open the file resources/sass/config.rb and check that the $ext_path variable points to your extjs directory</p>
+</li>
+<li><p>Compile file my-ext-theme.scss to verify everything is working. Open command line and go to projectdir/resources/sass</p>
+<p>  compass compile</p>
+</li>
+</ul>
+<h2 id="Sencha-SDK-Tools"><a href="#Sencha-SDK-Tools" class="headerlink" title="Sencha SDK Tools"></a>Sencha SDK Tools</h2><p><a href="http://www.sencha.com/products/sdk-tools/" target="_blank" rel="external">http://www.sencha.com/products/sdk-tools/</a></p>
+<h3 id="Creating-a-jsb3-file"><a href="#Creating-a-jsb3-file" class="headerlink" title="Creating a jsb3 file"></a>Creating a jsb3 file</h3><p>After installing the Sencha SDK tools we can use them to generate a build (jsb3) file. From the JS application root folder enter something like:</p>
+<pre><code>luka:UI LuKa$ sencha create jsb -a ~/UI/index.html -p IFA.jsb3
+</code></pre><ul>
+<li>-a The location of the html file containing scripts for build</li>
+<li>-p Output path for .jsb3 file</li>
+</ul>
+<h3 id="Building"><a href="#Building" class="headerlink" title="Building"></a>Building</h3><p>By default the created .jsb3 file will generate two “build files”. They are <code>all-classes.js</code> and <code>app-all.js</code>. They both consist of your app + references to all the ext.js classes needed for the application. They both contain the same thing but the first can be used for debugging while the other is compressed and meant to deploy in production. To generate these files you run the <code>sencha build</code> command:</p>
+<pre><code>luka:UI LuKa$ sencha build -p IFA.jsb3 -d ~/UI -v
+</code></pre><ul>
+<li>-p path to the .jsb3 file to build</li>
+<li>-d path to output directory</li>
+<li>-v Verbose output from the build process</li>
+</ul>
+<p>This should generate <code>all-classes.js</code> and app-all.js` to the chosen output folder.  Copy app-all.js to UI folder in the VM and check in.</p>
+<p>The deployed version of index.html should look something like:</p>
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;IFA&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;resources/css/ext-all-gray.css&quot;&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;extjs/ext.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;app-all.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    ....
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h2 id="Deployment"><a href="#Deployment" class="headerlink" title="Deployment"></a>Deployment</h2><p><a href="http://www.sencha.com/products/sdk-tools/" target="_blank" rel="external">Sencha SDK Tools</a></p>
+<h3 id="Files"><a href="#Files" class="headerlink" title="Files"></a>Files</h3><table>
+<thead>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ext-debug.js</td>
+<td>Minimum number of core classes during development</td>
+</tr>
+<tr>
+<td>ext.js</td>
+<td>Minified version of ext-debug.js</td>
+</tr>
+<tr>
+<td>ext-all-debug.js</td>
+<td>Debug version of entire library</td>
+</tr>
+<tr>
+<td>ext-all.js</td>
+<td>Minified version of ext-all-debug.js</td>
+</tr>
+</tbody>
+</table>
+<h3 id="JSBuilder"><a href="#JSBuilder" class="headerlink" title="JSBuilder"></a>JSBuilder</h3><p align="right"><a href="http://www.sencha.com/products/jsbuilder/" target="_blank" rel="external">JSBuilder site</a></p>
+
+<p>JSBuilder is an advanced JavaScript and CSS project build tool. It includes a tool for creating a dependencies file in the form of a JSB3-file. Navigate to the root folder of your application and run:</p>
+<pre><code>sencha create jsb -a index.html -p app.jsb3
+</code></pre><p>or if it’s behind a running web server:</p>
+<pre><code>sencha create jsb -a http://myapp/index.html -p app.jsb3
+</code></pre><p>This command scans the application and generates a .jsb3-file that we can use as a build file. To actually build you run:</p>
+<pre><code>sencha build -p app.jsb3 -d .
+</code></pre><p>This command should output 2 files:</p>
+<ul>
+<li><p>all-classes.js - This file contains all of your application’s classes unminified so it’s useful for debugging.</p>
+</li>
+<li><p>app-all.js - The minified build version of your application plus all of the Ext JS classes required to run it. This is the  production-ready version of all classes .js and app.js combined.</p>
+</li>
+</ul>
+<p>You should make a separate .html-file for the production version and include ext.js + app-all.js.</p>
+<h2 id="Sencha-RESTful-API"><a href="#Sencha-RESTful-API" class="headerlink" title="Sencha RESTful API"></a>Sencha RESTful API</h2><p>To fully utilize the possibilities that the Sencha client side tools (ExtJS+Sencha Touch) offer here are some requirements on a Server API:</p>
+<h3 id="Reading-Data"><a href="#Reading-Data" class="headerlink" title="Reading Data"></a>Reading Data</h3><h3 id="Create-Update-amp-Delete"><a href="#Create-Update-amp-Delete" class="headerlink" title="Create, Update &amp; Delete"></a>Create, Update &amp; Delete</h3><p>Sencha will behave differently depending on if you choose to communicate via the model or the store. To be able to use either-or on the client, the server should support handling a single object or a list of objects.</p>
+<ul>
+<li>REST style CRUD API supporting list of items. A PUT or POST could include a list of several items like:</li>
+</ul>
+<p>{“records”:[{“id”:6162315674,”owner”:”46992422@N08”,”secret”:”d94d1629f4”,”server”:6161,”farm”:7,”title”:”foo”}]}</p>
+<ul>
+<li><p>Support for arbitrary AJAX methods that doesn’t conform to standard CRUD</p>
+</li>
+<li><p>Sencha Clients expects the server to return the record or records that were sent for manipulation. For example, if you create a new record, the API should, after a successful save, return that record as part of the results. If you modify several records and save them, the API should return all the modified records if they saved correctly. The reason for this is that it’s possible that your API will make additional changes to the records that should be reflected in your JavaScript code. Returning the full records ensures that your JavaScript application stays up-to-date with any changes made by your API.</p>
+</li>
+<li><p>Success or failure is indicated by returning an appropriate HTTP status code. If you’re returning a successful message, simply outputting JSON will return an acceptable status code. To indicate failure, you would return an error code in the 400 or 500 range. <a href="http://restpatterns.org/" target="_blank" rel="external">http://restpatterns.org/</a> HTTP_Status_Codes</p>
+</li>
+</ul>
+<p>You’ll need to look up how to send HTTP response headers in the documentation for your preferred API programming language.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/extjs/" rel="tag"># extjs</a>
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+            <a href="/tags/frameworks/" rel="tag"># frameworks</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/03/26/jquery/" rel="next" title="jQuery">
+                <i class="fa fa-chevron-left"></i> jQuery
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/01/25/jquery-mobile/" rel="prev" title="jQuery Mobile">
+                jQuery Mobile <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/luka.jpg"
+               alt="Kaj Lund" />
+          <p class="site-author-name" itemprop="name">Kaj Lund</p>
+           
+              <p class="site-description motion-element" itemprop="description">Personal blog of Kaj Lund a.k.a. LuKa</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ExtJS-3-to-ExtJS-4"><span class="nav-text">ExtJS 3 to ExtJS 4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Layout-System"><span class="nav-text">The Layout System</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Component-Layouts"><span class="nav-text">Component Layouts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Container-Layouts"><span class="nav-text">Container Layouts</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Auto-Layout"><span class="nav-text">Auto Layout</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Anchor-Layout"><span class="nav-text">Anchor Layout</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Absolute-Layout"><span class="nav-text">Absolute Layout</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Fit-Layout"><span class="nav-text">Fit Layout</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Accordion-Layout"><span class="nav-text">Accordion Layout</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Card-Layout"><span class="nav-text">Card Layout</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Layout-the-Container-and-Component-Models"><span class="nav-text">Layout (the Container and Component Models)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Container-Layouts-1"><span class="nav-text">Container Layouts</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Viewport"><span class="nav-text">Viewport</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Layout-Configurations"><span class="nav-text">Layout Configurations</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Border-Layout"><span class="nav-text">Border Layout</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Column-Layout"><span class="nav-text">Column Layout</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HBox-VBox-Layout"><span class="nav-text">HBox/VBox Layout</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Table-Layout"><span class="nav-text">Table Layout</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Component-Layouts-1"><span class="nav-text">Component Layouts</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DockLayout"><span class="nav-text">DockLayout</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Border-Layout-1"><span class="nav-text">Border Layout</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ToolbarLayout"><span class="nav-text">ToolbarLayout</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FieldLayout"><span class="nav-text">FieldLayout</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#TriggerFieldLayout"><span class="nav-text">TriggerFieldLayout</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Views"><span class="nav-text">Views</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#The-GridPanel"><span class="nav-text">The GridPanel</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#A-simple-Grid"><span class="nav-text">A simple Grid</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Columns"><span class="nav-text">Columns</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#String-default"><span class="nav-text">String (default)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Date"><span class="nav-text">Date</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Number"><span class="nav-text">Number</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Boolean"><span class="nav-text">Boolean</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Template"><span class="nav-text">Template</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Action"><span class="nav-text">Action</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Features"><span class="nav-text">Features</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Plugins"><span class="nav-text">Plugins</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Data-Package"><span class="nav-text">The Data Package</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Model"><span class="nav-text">Model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Model-Associations"><span class="nav-text">Model Associations</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Stores"><span class="nav-text">Stores</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Proxies-Ext-data-proxy"><span class="nav-text">Proxies (Ext.data.proxy)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Ajax-Proxy"><span class="nav-text">Ajax Proxy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JsonP-Proxy"><span class="nav-text">JsonP Proxy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Memory-Proxy"><span class="nav-text">Memory Proxy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Direct-Proxy"><span class="nav-text">Direct Proxy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#REST-Proxy"><span class="nav-text">REST Proxy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LocalStorage-and-SessionStorage-Proxies"><span class="nav-text">LocalStorage and SessionStorage Proxies</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Readers"><span class="nav-text">Readers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Writer"><span class="nav-text">Writer</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Themes"><span class="nav-text">Themes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sencha-SDK-Tools"><span class="nav-text">Sencha SDK Tools</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Creating-a-jsb3-file"><span class="nav-text">Creating a jsb3 file</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Building"><span class="nav-text">Building</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deployment"><span class="nav-text">Deployment</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Files"><span class="nav-text">Files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSBuilder"><span class="nav-text">JSBuilder</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sencha-RESTful-API"><span class="nav-text">Sencha RESTful API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Reading-Data"><span class="nav-text">Reading Data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-Update-amp-Delete"><span class="nav-text">Create, Update & Delete</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kaj Lund</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

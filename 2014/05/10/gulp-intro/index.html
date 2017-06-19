@@ -1,0 +1,820 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="gulp,automation," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="kajlund.net" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Gulp is a task runner that can be used as an alternative to Grunt. Whereas Grunt is more declarative, Gulp might feel more natural to a Node.js programmer. It is a nodejs module that can help you auto">
+<meta name="keywords" content="gulp,automation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gulp intro">
+<meta property="og:url" content="http://kajlund.net/2014/05/10/gulp-intro/index.html">
+<meta property="og:site_name" content="kajlund.net">
+<meta property="og:description" content="Gulp is a task runner that can be used as an alternative to Grunt. Whereas Grunt is more declarative, Gulp might feel more natural to a Node.js programmer. It is a nodejs module that can help you auto">
+<meta property="og:updated_time" content="2017-06-11T13:03:26.173Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Gulp intro">
+<meta name="twitter:description" content="Gulp is a task runner that can be used as an alternative to Grunt. Whereas Grunt is more declarative, Gulp might feel more natural to a Node.js programmer. It is a nodejs module that can help you auto">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kajlund.net/2014/05/10/gulp-intro/"/>
+
+
+
+
+
+  <title>Gulp intro | kajlund.net</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">kajlund.net</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Personal blog of Kaj Lund a.k.a. LuKa</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://kajlund.net/2014/05/10/gulp-intro/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kaj Lund">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/luka.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kajlund.net">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Gulp intro</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-05-10T18:25:30+03:00">
+                2014-05-10
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-11T16:03:26+03:00">
+                2017-06-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Automation/" itemprop="url" rel="index">
+                    <span itemprop="name">Automation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="http://gulpjs.com/" target="_blank" rel="external">Gulp</a> is a task runner that can be used as an alternative to <em>Grunt</em>. Whereas Grunt is more declarative, Gulp might feel more natural to a Node.js programmer. It is a nodejs module that can help you automate and enhance your workflow in the areas of development, testing and Continuous Integration. Grunt is configuration over code and file based. Gulp is code over configuration, stream/memory-based, and it’s easier to use your own nodejs code directly.</p>
+<p>With Gulp you can automate things like:</p>
+<ul>
+<li>Lint sorce code (eslint, jshint, jscs…)</li>
+<li>Run unit tests</li>
+<li>Source Transpiling, Concatenation and Minification. Own or 3rd party</li>
+<li>Build distributables by minifying css/js</li>
+<li>CSS compilation like LESS to CSS including vendor prefix handling</li>
+<li>Copy/move files.</li>
+<li>Inject html files</li>
+<li>Angular Template Cache, ngAnnotate</li>
+<li>Bump package versions for npm and bower</li>
+<li>File revisions and versioning, Cache Busting</li>
+<li>Push git tags</li>
+<li>Watch your source to automatically trigger tasks when anything changes</li>
+<li>etc etc</li>
+</ul>
+<p>By default, Gulp tasks run asynchronously.</p>
+<blockquote>
+<p>Using gulp you can ensure code quality, automatically run tests and have an automated build pipeline. Develop - Analyze - Test - Build - Deploy</p>
+</blockquote>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p>Like with Grunt you need to install Gulp globally once, and also locally in each project folder:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install -g gulp</div><div class="line">npm install gulp --save-dev</div></pre></td></tr></table></figure>
+<p>The second command will add Gulp to the <code>node_modules</code> folder in your project directory and also add an entry in <code>package.json</code> in the <code>devDependencies</code> object.</p>
+<h2 id="The-Gulpfile"><a href="#The-Gulpfile" class="headerlink" title="The Gulpfile"></a>The Gulpfile</h2><p>You add a file in the project directory called <code>gulpfile.js</code>. This is where you instruct Gulp what to do. The so called <strong>default</strong> task is the task that will be run if you run Gulp without parameters. To actually do much you need to install a plugin for the task at hand.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'default'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="Running-Gulp"><a href="#Running-Gulp" class="headerlink" title="Running Gulp"></a>Running Gulp</h2><p>From the command line either just type <code>Gulp</code> to run the default task or add a task name as a parameter to run a specific task.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">gulp       #runs the task named default</div><div class="line">gulp build #runs the task named build</div></pre></td></tr></table></figure>
+<h2 id="The-Gulp-API"><a href="#The-Gulp-API" class="headerlink" title="The Gulp API"></a>The Gulp API</h2><p>Gulp uses node streams for gathering a source set of files as input and then pipe the input stream through a pipeline of different processes/functions and finally save the altered files to a destination.</p>
+<p>Only 4 APIs:</p>
+<ul>
+<li>gulp.task</li>
+<li>gulp.src</li>
+<li>gulp.dest</li>
+<li>gulp.watch</li>
+</ul>
+<h3 id="gulp-task-name-dep-fn"><a href="#gulp-task-name-dep-fn" class="headerlink" title="gulp.task(name, [,dep], fn)"></a>gulp.task(name, [,dep], fn)</h3><p>For defining a new task. Common task types are testing and linting code, optimizing files and running a server. Dependencies run <strong>in parallel before</strong> the task is run. The function always returns the stream.</p>
+<h3 id="gulp-src-glob-options"><a href="#gulp-src-glob-options" class="headerlink" title="gulp.src(glob [, options])"></a>gulp.src(glob [, options])</h3><p>For reading in the files to work with. Takes a file system glob (set of files).<br>Emits files that match. Any file you need to operate on need to be included in the src stream.<br>Optionally specify options to apply to the glob. Options.base defines how much of the path to retain.</p>
+<h3 id="gulp-dest-folder-options"><a href="#gulp-dest-folder-options" class="headerlink" title="gulp.dest(folder [,options])"></a>gulp.dest(folder [,options])</h3><p>You use <code>gulp.dest</code> when you want to write files from the input stream back to disk. You can write back to the same files or to new files.</p>
+<h3 id="gulp-watch-glob-options-tasks-cb"><a href="#gulp-watch-glob-options-tasks-cb" class="headerlink" title="gulp.watch(glob [, options], tasks|cb)"></a>gulp.watch(glob [, options], tasks|cb)</h3><p>To watch a set of files. Can be useful for restarting a server, running tests, doing code linting or comiling CSS.</p>
+<p>Watch files in glob pattern for any changes and call upon defined task(s) or alternatively call a callback function.</p>
+<h2 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h2><ul>
+<li>Install gulp as a global package for convenience <code>npm install -g gulp</code>.</li>
+<li>Install gulp locally in your project <code>npm install --save-dev gulp</code></li>
+<li>Install other dependent packages</li>
+<li>Code your tasks</li>
+<li>Run your tasks</li>
+</ul>
+<p>We want to save the dependencies to the <code>devDependencies</code> section in <code>package.json</code>.</p>
+<h2 id="Plugins"><a href="#Plugins" class="headerlink" title="Plugins"></a>Plugins</h2><p>Plugins are node gulp packages containing functionality ready to be used by gulp tasks. We’re not limited to just using plugins though. We can also write our own node functions and call them from our gulp tasks.</p>
+<p>To reduce the long list of required plugins you can also load them as you need them using a plugin called <a href="https://github.com/jackfranklin/gulp-load-plugins" target="_blank" rel="external">gulp-load-plugins</a>.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>),</div><div class="line">    plug = <span class="built_in">require</span>(<span class="string">'gulp-load-plugins'</span>)(&#123;<span class="attr">lazy</span>: <span class="literal">true</span>&#125;);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'vet'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> gulp</div><div class="line">        .src(<span class="string">'app/**/*.js'</span>)</div><div class="line">        .pipe(plug.if(args.verbose, plug.print()))</div><div class="line">        .pipe(plug.jscs())</div><div class="line">        .pipe(plug.jshint())</div><div class="line">        .pipe(plug.jshint.reporter(<span class="string">'jshint-stylish'</span>, &#123;<span class="attr">verbose</span>: <span class="literal">true</span>&#125;))</div><div class="line">        .pipe(plug.jshint.reporter(<span class="string">'fail'</span>));</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="Callbacks"><a href="#Callbacks" class="headerlink" title="Callbacks"></a>Callbacks</h2><p>When not returning a stream from a function use callbacks to end the stream:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'styles'</span>, [<span class="string">'clean-styles'</span>], <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    log(<span class="string">'Compiling LESS --&gt; CSS'</span>);</div><div class="line">...</div><div class="line"></div><div class="line">gulp.task(<span class="string">'clean-styles'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">done</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> files = config.temp + <span class="string">'**/*.css'</span>;</div><div class="line">    clean(files, done);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">clean</span>(<span class="params">path, done</span>) </span>&#123;</div><div class="line">    log(<span class="string">'Cleaning: '</span> + plug.util.colors.blue(path));</div><div class="line">    del(path, done);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Gulp-Watch"><a href="#Gulp-Watch" class="headerlink" title="Gulp Watch"></a>Gulp Watch</h2><p>The watch function is used to monitor file changes and trigger tasks as changes occur.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'less-watcher'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    gulp.watch([config.lessFiles], [<span class="string">'styles'</span>]);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="Handling-Errors"><a href="#Handling-Errors" class="headerlink" title="Handling Errors"></a>Handling Errors</h2><p>All compilation can of course fail because of syntax errors. To gracefully handle errors in a watch pipeline you can either handle an on error event or use something like gulp-plumber which will print a nice error message and end the watch. <code>npm install --save-dev gulp-plumber</code>.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'styles'</span>, [<span class="string">'clean-styles'</span>], <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    log(<span class="string">'Compiling LESS --&gt; CSS'</span>);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> gulp</div><div class="line">        .src(conf.lessFiles)</div><div class="line">        .pipe(plug.plumber())</div><div class="line">        .pipe(plug.less())</div><div class="line">        <span class="comment">//.on('error', errorLogger)</span></div><div class="line">        .pipe(plug.autoprefixer(&#123;<span class="attr">browsers</span>: [<span class="string">'last 2 versions'</span>, <span class="string">'&gt; 5%'</span>] &#125;))</div><div class="line">        .pipe(gulp.dest(conf.tempFolder));</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">errorLogger</span> (<span class="params">error</span>) </span>&#123;</div><div class="line">    log(<span class="string">'*** Start of Error ***'</span>);</div><div class="line">    log(error);</div><div class="line">    log(<span class="string">'*** End of Error'</span>);</div><div class="line">    <span class="keyword">this</span>.emit(<span class="string">'end'</span>); <span class="comment">//end the pipe</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Some-Resources"><a href="#Some-Resources" class="headerlink" title="Some Resources"></a>Some Resources</h2><ul>
+<li><a href="http://gulpjs.com/" target="_blank" rel="external">Gulp homepage</a></li>
+<li><a href="https://github.com/gulpjs/gulp" target="_blank" rel="external">Gulp Github page</a></li>
+<li><a href="https://github.com/gulpjs/gulp/tree/master/docs/recipes" target="_blank" rel="external">Gulp Recipes</a></li>
+<li><a href="http://gulpjs.com/plugins/" target="_blank" rel="external">Gulp Plugins</a></li>
+<li><a href="https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md" target="_blank" rel="external">Getting Started</a></li>
+<li><a href="https://github.com/gulpjs/gulp/blob/master/docs/API.md" target="_blank" rel="external">API Documentation</a></li>
+<li><a href="https://laracasts.com/lessons/gulp-this" target="_blank" rel="external">Laracasts video tutorial</a></li>
+<li><a href="https://ponyfoo.com/articles/my-first-gulp-adventure" target="_blank" rel="external">Pony Foo Blog Post</a></li>
+<li>JavaScript Build Automation @ PluralSight - <a href="https://github.com/johnpapa/pluralsight-gulp" target="_blank" rel="external">Github repo</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/gulp/" rel="tag"># gulp</a>
+          
+            <a href="/tags/automation/" rel="tag"># automation</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/05/03/bower/" rel="next" title="Bower">
+                <i class="fa fa-chevron-left"></i> Bower
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/05/17/qunit/" rel="prev" title="qUnit">
+                qUnit <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/luka.jpg"
+               alt="Kaj Lund" />
+          <p class="site-author-name" itemprop="name">Kaj Lund</p>
+           
+              <p class="site-description motion-element" itemprop="description">Personal blog of Kaj Lund a.k.a. LuKa</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Installation"><span class="nav-text">Installation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Gulpfile"><span class="nav-text">The Gulpfile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Running-Gulp"><span class="nav-text">Running Gulp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Gulp-API"><span class="nav-text">The Gulp API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#gulp-task-name-dep-fn"><span class="nav-text">gulp.task(name, [,dep], fn)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gulp-src-glob-options"><span class="nav-text">gulp.src(glob [, options])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gulp-dest-folder-options"><span class="nav-text">gulp.dest(folder [,options])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gulp-watch-glob-options-tasks-cb"><span class="nav-text">gulp.watch(glob [, options], tasks|cb)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Process"><span class="nav-text">Process</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Plugins"><span class="nav-text">Plugins</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Callbacks"><span class="nav-text">Callbacks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gulp-Watch"><span class="nav-text">Gulp Watch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Handling-Errors"><span class="nav-text">Handling Errors</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Some-Resources"><span class="nav-text">Some Resources</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kaj Lund</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

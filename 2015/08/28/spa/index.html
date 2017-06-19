@@ -1,0 +1,833 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="architecture,javascript,spa," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="kajlund.net" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="CategoriesYou could broadly categorize frameworks for building SPA’s into:  JavaScript only frameworks Thin JavaScript Layer frameworks HTML Integration frameworks  JavaScript only FrameworksWith this">
+<meta name="keywords" content="architecture,javascript,spa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Single Page Applications">
+<meta property="og:url" content="http://kajlund.net/2015/08/28/spa/index.html">
+<meta property="og:site_name" content="kajlund.net">
+<meta property="og:description" content="CategoriesYou could broadly categorize frameworks for building SPA’s into:  JavaScript only frameworks Thin JavaScript Layer frameworks HTML Integration frameworks  JavaScript only FrameworksWith this">
+<meta property="og:updated_time" content="2017-06-11T12:53:26.187Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Single Page Applications">
+<meta name="twitter:description" content="CategoriesYou could broadly categorize frameworks for building SPA’s into:  JavaScript only frameworks Thin JavaScript Layer frameworks HTML Integration frameworks  JavaScript only FrameworksWith this">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kajlund.net/2015/08/28/spa/"/>
+
+
+
+
+
+  <title>Single Page Applications | kajlund.net</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">kajlund.net</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Personal blog of Kaj Lund a.k.a. LuKa</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://kajlund.net/2015/08/28/spa/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kaj Lund">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/luka.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kajlund.net">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Single Page Applications</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-08-28T18:25:30+03:00">
+                2015-08-28
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-11T15:53:26+03:00">
+                2017-06-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Architecture/" itemprop="url" rel="index">
+                    <span itemprop="name">Architecture</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Categories"><a href="#Categories" class="headerlink" title="Categories"></a>Categories</h2><p>You could broadly categorize frameworks for building SPA’s into:</p>
+<ul>
+<li>JavaScript only frameworks</li>
+<li>Thin JavaScript Layer frameworks</li>
+<li>HTML Integration frameworks</li>
+</ul>
+<h3 id="JavaScript-only-Frameworks"><a href="#JavaScript-only-Frameworks" class="headerlink" title="JavaScript only Frameworks"></a>JavaScript only Frameworks</h3><p>With this approach you do pretty much all work using a JavaScript framework. You get a high level<br>of abstraction and don’t have to simultaneously have expert level knowledge on JavaScript, HTML<br>and CSS. On the other hand performance might suffer and your options in layout, widgets etc.<br>will be restricted by the framework used.</p>
+<p>The Ext.js and Sencha Touch frameworks use this approach.</p>
+<h3 id="Thin-JavaScript-Layer-Frameworks"><a href="#Thin-JavaScript-Layer-Frameworks" class="headerlink" title="Thin JavaScript Layer Frameworks"></a>Thin JavaScript Layer Frameworks</h3><p>This approach combines the traditional techniques of HTML, CSS and JavaScript. You have less<br>abstraction but probably better performance.</p>
+<p>This is perhaps the most common approach and it allows for great flexibility in choosing tools,<br>libraries, widgets etc. The downside of using this approach compared to JavaScript only frameworks<br>is that you apart from knowing JavaScript + libraries also need to know HTML and CSS.</p>
+<p>Using this approach the first library to enter the toolbox is typically jQuery. Be aware that if<br>you are building something non-trivial you’re going to want more than jQuery as the code base grows.<br>Typically you’d add some kind of client-side MVC framework for structure and maintainability.</p>
+<h3 id="HTML-Integration-Frameworks"><a href="#HTML-Integration-Frameworks" class="headerlink" title="HTML Integration Frameworks"></a>HTML Integration Frameworks</h3><p>This approach in contrast to the JavaScript only Frameworks tries to extend the HTML syntax to better<br>suit building applications. Typically you bind to HTML elements using special syntax (html5 data<br>attributes) and lean on dependency injection.</p>
+<p>AngularJS and jQuery Mobile use this approach.</p>
+<h2 id="Components-of-a-SPA-Framework"><a href="#Components-of-a-SPA-Framework" class="headerlink" title="Components of a SPA Framework"></a>Components of a SPA Framework</h2><p>There’s no end to the amount of libraries, widgets and different levels of frameworks available<br>for building SPA’s. Here’s some categories of stuff you’d be looking for sooner or later depending<br>on the size of your project.</p>
+<ul>
+<li>Languages</li>
+<li>Structure</li>
+<li>Routing</li>
+<li>Data model</li>
+<li>User Interface Handling</li>
+<li>Generic Libraries</li>
+<li>Tools<ul>
+<li>Package Management</li>
+<li>Syntax Checking</li>
+<li>ALM Tools</li>
+<li>Profiling</li>
+<li>Testing</li>
+</ul>
+</li>
+</ul>
+<h3 id="Languages"><a href="#Languages" class="headerlink" title="Languages"></a>Languages</h3><p>To build an application you’ll need a programming language. For client side web applications the only consistently available programming language in web browsers is JavaScript.</p>
+<p>That said, new languages that can be compiled to JavaScript become available all the time. Maybe the major ones at the time I write this are:</p>
+<ul>
+<li><a href="http://coffeescript.org/" target="_blank" rel="external">CoffeeScript</a></li>
+<li><a href="http://www.dartlang.org/" target="_blank" rel="external">Dart</a></li>
+<li><a href="http://www.typescriptlang.org/" target="_blank" rel="external">TypeScript</a></li>
+</ul>
+<p>I think that among the above mentioned TypeScript seems most interesting. The reason is that the philosophy is to provide what JS will eventually support plus optionally strong typing.</p>
+<h3 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h3><p>If you intend to build something non trivial you’d need to organize your code for maintainability.<br>Many of the client side frameworks provide some form of MVC or MVVM pattern for keeping things<br>under control.</p>
+<p>If you’re not using any particular framework, you should have a look at module handling using<br><a href="http://en.wikipedia.org/wiki/Asynchronous_module_definition" target="_blank" rel="external">AMD</a> like <a href="http://requirejs.org/" target="_blank" rel="external">Require.js</a><br>or <a href="http://en.wikipedia.org/wiki/CommonJS" target="_blank" rel="external">CommonJS</a> like <a href="http://browserify.org/" target="_blank" rel="external">Browserify</a>.</p>
+<p>Most of the SPA frameworks like will provide their own ideas on how to structure your application.</p>
+<h3 id="Routing"><a href="#Routing" class="headerlink" title="Routing"></a>Routing</h3><p>Routing is an important part of a SPA and concerns how to map URL changes in the browser to code in your<br>application.</p>
+<p>Some of the more popular client side SPA frameworks like AngularJS and ember.js contain functionality for<br>route handling.</p>
+<p>There are libraries that only do route handling that you could adapt as well.</p>
+<h3 id="Data-Model"><a href="#Data-Model" class="headerlink" title="Data Model"></a>Data Model</h3><p>Implementing client-side data models is one major thing that sets a library like jQuery apart from a<br>proper SPA framework like Angular.js and ember.js.</p>
+<p>Using jQuery your client side data model is often in the DOM. This is usually OK for simple scenarios but<br>starts to break down when you build more complex applications.</p>
+<p>Many frameworks allow you to define your objects and lists in your application and support data binding<br>for updates between UI and data model.</p>
+<p>Model-Collection-Sync</p>
+<h3 id="User-Interface-Handling"><a href="#User-Interface-Handling" class="headerlink" title="User Interface Handling"></a>User Interface Handling</h3><ul>
+<li>Grid Systems</li>
+<li>Layout/Styling (Bootstrap et. al.)</li>
+<li>View Templating (handlebars, underscore)</li>
+<li>Data binding</li>
+<li><p>Preprocessors (LESS/SASS)</p>
+</li>
+<li><p>Widgets (Typically based on jQuery)</p>
+</li>
+</ul>
+<p>The larger frameworks typically include routers and module handling capabilities as well. The functionality provided by the larger MVC frameworks can be pieced together using smaller frameworks like Backbone.js, Can.js, Knockout.js and many, many others.</p>
+<h3 id="Generic-Libraries"><a href="#Generic-Libraries" class="headerlink" title="Generic Libraries"></a>Generic Libraries</h3><ul>
+<li>jQuery, Zepto, underscore</li>
+<li>Polyfills (es5shim, modernizr)</li>
+</ul>
+<h3 id="Tools"><a href="#Tools" class="headerlink" title="Tools"></a>Tools</h3><h4 id="Package-Management"><a href="#Package-Management" class="headerlink" title="Package Management"></a>Package Management</h4><ul>
+<li><a href="https://github.com/bower/bower" target="_blank" rel="external">Bower</a></li>
+</ul>
+<h4 id="Syntax-Checkers"><a href="#Syntax-Checkers" class="headerlink" title="Syntax Checkers"></a>Syntax Checkers</h4><ul>
+<li>JsLint/JsHint</li>
+</ul>
+<h4 id="ALM-tools"><a href="#ALM-tools" class="headerlink" title="ALM tools"></a>ALM tools</h4><ul>
+<li>(Node.js + Grunt.js for minification, linting, concatenation and running tests)</li>
+</ul>
+<h4 id="Profiling"><a href="#Profiling" class="headerlink" title="Profiling"></a>Profiling</h4><ul>
+<li>YSlow</li>
+</ul>
+<h3 id="Unit-Testing"><a href="#Unit-Testing" class="headerlink" title="Unit Testing"></a>Unit Testing</h3><ul>
+<li>QUnit</li>
+<li>Mocha</li>
+<li>Jasmine</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/architecture/" rel="tag"># architecture</a>
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+            <a href="/tags/spa/" rel="tag"># spa</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/07/15/gulp-recipes/" rel="next" title="Gulp Recipes">
+                <i class="fa fa-chevron-left"></i> Gulp Recipes
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/08/31/mocha/" rel="prev" title="Mocha">
+                Mocha <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/luka.jpg"
+               alt="Kaj Lund" />
+          <p class="site-author-name" itemprop="name">Kaj Lund</p>
+           
+              <p class="site-description motion-element" itemprop="description">Personal blog of Kaj Lund a.k.a. LuKa</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Categories"><span class="nav-text">Categories</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript-only-Frameworks"><span class="nav-text">JavaScript only Frameworks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Thin-JavaScript-Layer-Frameworks"><span class="nav-text">Thin JavaScript Layer Frameworks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML-Integration-Frameworks"><span class="nav-text">HTML Integration Frameworks</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Components-of-a-SPA-Framework"><span class="nav-text">Components of a SPA Framework</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Languages"><span class="nav-text">Languages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Structure"><span class="nav-text">Structure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Routing"><span class="nav-text">Routing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-Model"><span class="nav-text">Data Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#User-Interface-Handling"><span class="nav-text">User Interface Handling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generic-Libraries"><span class="nav-text">Generic Libraries</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tools"><span class="nav-text">Tools</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Package-Management"><span class="nav-text">Package Management</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Syntax-Checkers"><span class="nav-text">Syntax Checkers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ALM-tools"><span class="nav-text">ALM tools</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Profiling"><span class="nav-text">Profiling</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unit-Testing"><span class="nav-text">Unit Testing</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kaj Lund</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,822 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="angular,routing," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="kajlund.net" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Course page on Pluralsight) ngRoute is the default router used by AngularJS and it is URL-based as opposed to the state based alternative UI-Router PreparationInstallationThere are a couple of ways to">
+<meta name="keywords" content="angular,routing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular Routing with ng-route">
+<meta property="og:url" content="http://kajlund.net/2015/09/28/angular-ng-route/index.html">
+<meta property="og:site_name" content="kajlund.net">
+<meta property="og:description" content="Course page on Pluralsight) ngRoute is the default router used by AngularJS and it is URL-based as opposed to the state based alternative UI-Router PreparationInstallationThere are a couple of ways to">
+<meta property="og:updated_time" content="2017-06-11T13:06:05.197Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Angular Routing with ng-route">
+<meta name="twitter:description" content="Course page on Pluralsight) ngRoute is the default router used by AngularJS and it is URL-based as opposed to the state based alternative UI-Router PreparationInstallationThere are a couple of ways to">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kajlund.net/2015/09/28/angular-ng-route/"/>
+
+
+
+
+
+  <title>Angular Routing with ng-route | kajlund.net</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">kajlund.net</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Personal blog of Kaj Lund a.k.a. LuKa</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://kajlund.net/2015/09/28/angular-ng-route/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kaj Lund">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/luka.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kajlund.net">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Angular Routing with ng-route</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-09-28T18:23:23+03:00">
+                2015-09-28
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-11T16:06:05+03:00">
+                2017-06-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AngularJS/" itemprop="url" rel="index">
+                    <span itemprop="name">AngularJS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="(http://www.pluralsight.com/courses/angular-routing-in-depth">Course page on Pluralsight</a>)</p>
+<p>ngRoute is the default router used by AngularJS and it is URL-based as opposed to the state based alternative UI-Router</p>
+<h2 id="Preparation"><a href="#Preparation" class="headerlink" title="Preparation"></a>Preparation</h2><h5 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h5><p>There are a couple of ways to install</p>
+<ul>
+<li>Install via package manager <code>bower install angular-route</code> or <code>npm install angular-route</code></li>
+<li>Using <a href="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-route.js" target="_blank" rel="external">Googles CDN</a> or <a href="https://cdnjs.com/libraries/angular.js" target="_blank" rel="external">CDNJS</a></li>
+<li>Download any version directly from the <a href="https://code.angularjs.org" target="_blank" rel="external">AngularJS site</a></li>
+</ul>
+<h5 id="Setup-ngRoute"><a href="#Setup-ngRoute" class="headerlink" title="Setup ngRoute"></a>Setup ngRoute</h5><p>Once you have access to the JavaScript file you need to add <code>ngRoute</code> as a module dependency and add the <code>ng-view</code> dircetive to your html.</p>
+<ul>
+<li>reference in html file: <code>&lt;script src=&quot;lib/angular-route.js&quot;&gt;&lt;/script&gt;</code></li>
+<li>add module dependency in app module: <code>angular.module(&#39;app&#39;, [&#39;ngRoute&#39;]);</code></li>
+<li>add ng-view directive to html page: <code>&lt;div ng-view&gt;&lt;/div&gt;</code></li>
+</ul>
+<h2 id="Configuring-Routes"><a href="#Configuring-Routes" class="headerlink" title="Configuring Routes"></a>Configuring Routes</h2><p>Services are configured via their providers inside a module config function. For ngRoute the provider is called $routeProvider.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">angular.module(<span class="string">'app'</span>, [<span class="string">'ngRoute'</span>]);</div><div class="line">angular.module(<span class="string">'app'</span>).config(<span class="function"><span class="keyword">function</span> (<span class="params">$logProvider, $routeProvider</span>) </span>&#123;</div><div class="line">    $logProvider.debugEnabled(<span class="literal">true</span>);</div><div class="line"></div><div class="line">    $routeProvider</div><div class="line">        .when(<span class="string">'/'</span>, &#123;</div><div class="line">            <span class="attr">controller</span>: <span class="string">'HomeController'</span>, <span class="comment">// alt 'HomeController as vm'</span></div><div class="line">            controllerAs: <span class="string">'vm'</span>,</div><div class="line">            <span class="comment">// template: '&lt;h1&gt;Hello World!&lt;/h1&gt;',</span></div><div class="line">            templateUrl: <span class="string">'app/home/home.html'</span>,</div><div class="line">            <span class="attr">caseInsesitiveMatch</span>: <span class="literal">true</span></div><div class="line">        &#125;)</div><div class="line">        .when(<span class="string">'/this'</span>, &#123; <span class="attr">redirectTo</span>: <span class="string">'/that'</span>&#125;)</div><div class="line">        .when(<span class="string">'/that/:id'</span>, &#123;</div><div class="line">            <span class="attr">redirectTo</span>: <span class="function"><span class="keyword">function</span> (<span class="params">params, currPath, currSearch</span>) </span>&#123;</div><div class="line">               <span class="built_in">console</span>.log(params);</div><div class="line">               <span class="built_in">console</span>.log(currPath);</div><div class="line">               <span class="built_in">console</span>.log(currSearch);</div><div class="line">               <span class="keyword">return</span> <span class="string">'/'</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line">        .otherwise(<span class="string">'/'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="Using-the-route-Service"><a href="#Using-the-route-Service" class="headerlink" title="Using the $route Service"></a>Using the $route Service</h2><h5 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h5><ul>
+<li>reload() -reloads the current route</li>
+<li>updateParams(newParams) - reload using new route params</li>
+</ul>
+<h5 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h5><ul>
+<li>current - can examine controller, scope and vars</li>
+<li>routes - contains all route definitions for the app</li>
+</ul>
+<h5 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h5><ul>
+<li>$routeChangeStart</li>
+<li>$routeChangeSuccess</li>
+<li>$routeChangeError</li>
+<li>$routeUpdate</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">angular.module(<span class="string">'app'</span>)</div><div class="line">    controller(<span class="string">'HomeController'</span>, HomeController);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">HomeController</span> (<span class="params">$route, $log</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> vm = <span class="keyword">this</span>;</div><div class="line"></div><div class="line">    vm.refresh = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        $log.debug($route.current);</div><div class="line">        $log.debug($route.routes);</div><div class="line">        $route.reload();</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">angular.module(<span class="string">'app'</span>)</div><div class="line">    run(<span class="function"><span class="keyword">function</span> (<span class="params">$rootScope, $log</span>) </span>&#123;</div><div class="line">        $rootScope.$on(<span class="string">'$routeChangeSuccess'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">event, current, previous</span>) </span>&#123;</div><div class="line">            $log.debug(<span class="string">'Successfully changed route'</span>);</div><div class="line">            $log.debug(event);</div><div class="line">            $log.debug(current);</div><div class="line">            $log.debug(previous);</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        $rootScope.$on(<span class="string">'$routeChangeError'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">event, current, previous, rejection</span>) </span>&#123;</div><div class="line">            $log.debug(<span class="string">'Error changing route'</span>);</div><div class="line">            $log.debug(event);</div><div class="line">            $log.debug(current);</div><div class="line">            $log.debug(previous);</div><div class="line">            $log.debug(rejection);  <span class="comment">// Why did it fail?</span></div><div class="line">        &#125;);</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<h2 id="Route-Parameters"><a href="#Route-Parameters" class="headerlink" title="Route Parameters"></a>Route Parameters</h2><p>The $routeParams service holds information on paramaters. You can have several and they can be optional by adding the question mark as a postfix.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// .when('/test/:myVar')</span></div><div class="line"><span class="comment">// .when('/test/:myVar/other/:that?')</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> myVar = $routeParams.myVar,</div><div class="line">    that = $routeParams.that;</div><div class="line"></div><div class="line"><span class="comment">// You can check for params if different routes share controller</span></div><div class="line"><span class="keyword">if</span> ($routeParams.that) &#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="The-Location-Service"><a href="#The-Location-Service" class="headerlink" title="The Location Service"></a>The Location Service</h5><p>Use to get or set values in address bar.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vm.search = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> newUrl = <span class="string">'/this/'</span> + vm.myVar + <span class="string">'/other/'</span> + $routeParams.that;</div><div class="line">    $location.url(newUrl);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="The-resolve-property"><a href="#The-resolve-property" class="headerlink" title="The resolve property"></a>The resolve property</h5><ul>
+<li>List of dependencies to inject into the controller</li>
+<li>If returning promise the promise must be resolved before transition can take place</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">.when(<span class="string">'/'</span>, &#123;</div><div class="line">    <span class="attr">controller</span>: <span class="string">'HomeController'</span>,</div><div class="line">    <span class="attr">controllerAs</span>: <span class="string">'vm'</span>,</div><div class="line">    <span class="attr">templateUrl</span>: <span class="string">'app/home.html'</span>,</div><div class="line">    <span class="attr">resolve</span>: &#123;</div><div class="line">        <span class="attr">dataList</span>: <span class="function"><span class="keyword">function</span> (<span class="params">dataService</span>) </span>&#123;</div><div class="line">            <span class="keyword">return</span> dataService.getAllData();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">HomeController</span> (<span class="params">dataList</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> vm = <span class="keyword">this</span>;</div><div class="line">        vm.dataList = dataList;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="URL-Formats"><a href="#URL-Formats" class="headerlink" title="URL Formats"></a>URL Formats</h2><p>Default mode is called hashbang mode and looks like <a href="http://localhost:3000/#/home" target="_blank" rel="external">http://localhost:3000/#/home</a>. Everything to the right of the hash symbol belongs to client side routing handled by Angular.</p>
+<p>The alternative is called HTML5 mode and looks like <a href="http://localhost:3000/home" target="_blank" rel="external">http://localhost:3000/home</a>. In HTML5 mode angular attempts to use the browser’s HTML5 History API. With some configuration Angular can handle url changes even without the hash sign.</p>
+<table>
+<thead>
+<tr>
+<th>Hashbang Mode</th>
+<th>HTML 5 Mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Default mode</td>
+<td>Must be configured with $locationProvider</td>
+</tr>
+<tr>
+<td>All URLs contain #</td>
+<td>No # sign except in older browsers not supporting HTML5 History API</td>
+</tr>
+<tr>
+<td>Links are not rewritten</td>
+<td>Links with # are rewritten without the # in modern browsers</td>
+</tr>
+<tr>
+<td>No server-side config</td>
+<td>Servers must rewrite links to application entry point</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">angular.module(<span class="string">'app'</span>)</div><div class="line">    .config(<span class="function"><span class="keyword">function</span> (<span class="params">$locationProvider</span>) </span>&#123;</div><div class="line">        <span class="comment">//$locationProvider.hashPrefix('!'); // True hashbang mode #!/</span></div><div class="line">        $locationProvider.html5Mode(<span class="literal">true</span>); <span class="comment">//or</span></div><div class="line">        $locationProvider.html5Mode(&#123;</div><div class="line">            <span class="attr">enabled</span>: <span class="literal">true</span>,</div><div class="line">            <span class="attr">requireBase</span>: <span class="literal">true</span>, <span class="comment">//require base tag in html head &lt;base href="/"&gt;</span></div><div class="line">            rewriteLinks: <span class="literal">true</span>  <span class="comment">//rewrite links as necessary</span></div><div class="line">        &#125;);</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<p>If you now type a bad URL in the address bar it won’t be handled by angular but by the web server unless the web server routes everything back to the index.html file.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/angular/" rel="tag"># angular</a>
+          
+            <a href="/tags/routing/" rel="tag"># routing</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/09/22/karma/" rel="next" title="The Karma Testrunner">
+                <i class="fa fa-chevron-left"></i> The Karma Testrunner
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/09/29/angular-ui-router/" rel="prev" title="Angular Routing with ui-router">
+                Angular Routing with ui-router <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/luka.jpg"
+               alt="Kaj Lund" />
+          <p class="site-author-name" itemprop="name">Kaj Lund</p>
+           
+              <p class="site-description motion-element" itemprop="description">Personal blog of Kaj Lund a.k.a. LuKa</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Preparation"><span class="nav-text">Preparation</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Installation"><span class="nav-text">Installation</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Setup-ngRoute"><span class="nav-text">Setup ngRoute</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Configuring-Routes"><span class="nav-text">Configuring Routes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-the-route-Service"><span class="nav-text">Using the $route Service</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Methods"><span class="nav-text">Methods</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Properties"><span class="nav-text">Properties</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Events"><span class="nav-text">Events</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Route-Parameters"><span class="nav-text">Route Parameters</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#The-Location-Service"><span class="nav-text">The Location Service</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#The-resolve-property"><span class="nav-text">The resolve property</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL-Formats"><span class="nav-text">URL Formats</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kaj Lund</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

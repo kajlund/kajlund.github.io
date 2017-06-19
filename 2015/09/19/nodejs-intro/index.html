@@ -1,0 +1,955 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,nodejs," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="kajlund.net" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="An intro to nodejs picked up from Sovelto course plus Introduction to Node.js and Node.js for .NET Developers Node.js is a server-side JavaScript platform introduced by Ryan Dahl at JSConf in 2009. Th">
+<meta name="keywords" content="javascript,nodejs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.js intro">
+<meta property="og:url" content="http://kajlund.net/2015/09/19/nodejs-intro/index.html">
+<meta property="og:site_name" content="kajlund.net">
+<meta property="og:description" content="An intro to nodejs picked up from Sovelto course plus Introduction to Node.js and Node.js for .NET Developers Node.js is a server-side JavaScript platform introduced by Ryan Dahl at JSConf in 2009. Th">
+<meta property="og:updated_time" content="2017-06-11T12:54:47.955Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Node.js intro">
+<meta name="twitter:description" content="An intro to nodejs picked up from Sovelto course plus Introduction to Node.js and Node.js for .NET Developers Node.js is a server-side JavaScript platform introduced by Ryan Dahl at JSConf in 2009. Th">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kajlund.net/2015/09/19/nodejs-intro/"/>
+
+
+
+
+
+  <title>Node.js intro | kajlund.net</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">kajlund.net</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Personal blog of Kaj Lund a.k.a. LuKa</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://kajlund.net/2015/09/19/nodejs-intro/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kaj Lund">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/luka.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kajlund.net">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Node.js intro</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-09-19T18:25:30+03:00">
+                2015-09-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-11T15:54:47+03:00">
+                2017-06-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NodeJS/" itemprop="url" rel="index">
+                    <span itemprop="name">NodeJS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>An intro to nodejs picked up from Sovelto course plus <a href="http://beta.pluralsight.com/courses/node-intro" target="_blank" rel="external">Introduction to Node.js</a> and <a href="http://beta.pluralsight.com/courses/nodejs-dotnet-developers" target="_blank" rel="external">Node.js for .NET Developers</a></p>
+<p>Node.js is a server-side JavaScript platform introduced by Ryan Dahl at JSConf in 2009.</p>
+<p>The Node.js platform consists of:</p>
+<ul>
+<li>libuv - High performance, cross-platform evented I/O library</li>
+<li>V8 - Google’s JavaScript engine</li>
+<li>libraries built in C++ and JS</li>
+</ul>
+<p>Node.js binaries and installers are available at <a href="http://nodejs.org/download" target="_blank" rel="external">http://nodejs.org/download</a></p>
+<p>There is also a multiple versions manager called <strong>nvm</strong> available at <a href="https://github.com/creationix/nvm" target="_blank" rel="external">https://github.com/creationix/nvm</a>.</p>
+<p>You can develop node apps using pretty much any text editor or use an online IDE like <a href="https://c9.io/" target="_blank" rel="external">Cloud9</a>.</p>
+<h5 id="A-Hello-World-Web-Server"><a href="#A-Hello-World-Web-Server" class="headerlink" title="A Hello World Web Server"></a>A Hello World Web Server</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</div><div class="line">http.createServer(<span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">  res.writeHead(<span class="number">200</span>, &#123;<span class="string">'Content-Type'</span>: <span class="string">'text/plain'</span>&#125;);</div><div class="line">  res.end(<span class="string">'hello world\n'</span>);</div><div class="line">&#125;).listen(<span class="number">8000</span>, <span class="string">"127.0.0.1"</span>);</div></pre></td></tr></table></figure>
+<p>To run it enter: <code>node server.js</code> and open the <a href="http://127.0.0.1:8000/" target="_blank" rel="external">web browser</a> to view it.</p>
+<h2 id="The-Event-Loop"><a href="#The-Event-Loop" class="headerlink" title="The Event Loop"></a>The Event Loop</h2><p>Node’s uses a non-blocking, event loop that constantly listens for events like internal events, timers or external events like tcp or http events.</p>
+<h2 id="Node’s-Programming-Model"><a href="#Node’s-Programming-Model" class="headerlink" title="Node’s Programming Model"></a>Node’s Programming Model</h2><p>Node depends on using asynchronous code which is a bit different to the synchronous model that most programmers are more familiar with.</p>
+<p>Since most calls in node are asynchronous execution often uses the <em>callback</em> pattern but you can also use the <em>publish-subscribe</em> pattern.</p>
+<h3 id="Callbacks"><a href="#Callbacks" class="headerlink" title="Callbacks"></a>Callbacks</h3><ul>
+<li>Callbacks use the <a href="http://en.wikipedia.org/wiki/Request-response" target="_blank" rel="external">request-response</a> communication pattern and returns an error or the result</li>
+<li>Does not return anything until all done.</li>
+<li>This method is often used because it is simpler compared to the options.</li>
+<li>By convention the callback is the last fuction param</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> handleResults = <span class="function"><span class="keyword">function</span>(<span class="params">err, results</span>) </span>&#123;</div><div class="line">    <span class="comment">//Check for error</span></div><div class="line">    <span class="comment">//Handle result returned in results var</span></div><div class="line">&#125;</div><div class="line">doStuff(param, handleResults);</div><div class="line"></div><div class="line">doStuff(param, <span class="function"><span class="keyword">function</span> (<span class="params">err, items</span>) </span>&#123;</div><div class="line">    <span class="comment">//Check for error</span></div><div class="line">    <span class="comment">//Handle result returned in items var</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>The callback function can be a named function or an anonymous function</li>
+<li>In node.js the function parameters generally look like:</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>(<span class="params">arguments, callback</span>);</span></div></pre></td></tr></table></figure>
+<ul>
+<li>The callback gererally consists of: <code>callback(err, returnvalues);</code></li>
+<li>The callback function can be defined separately or inline as an anonymous function.</li>
+</ul>
+<p>Using lots of callback tend to create the so called christmas tree problem resulting in code that is hard to debug and maintain.</p>
+<h3 id="Publish-Subscribe"><a href="#Publish-Subscribe" class="headerlink" title="Publish/Subscribe"></a>Publish/Subscribe</h3><ul>
+<li>Using the <a href="http://en.wikipedia.org/wiki/Publish/subscribe" target="_blank" rel="external">Publish/Subscribe</a> pattern you get the result in chunks and can start processing the result faster.</li>
+<li>You might end up with getting some OK data before an error occurs.</li>
+<li>The publish/subscribe model uses events for communicating results.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> result = doStuff(param);</div><div class="line">results.on(<span class="string">'item'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</div><div class="line">    <span class="comment">//Handle chunk of data sent</span></div><div class="line">&#125;);</div><div class="line">results.on(<span class="string">'done'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">//Done, no more data</span></div><div class="line">&#125;);</div><div class="line">results.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</div><div class="line">    <span class="comment">//Handle error</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="The-Module-System"><a href="#The-Module-System" class="headerlink" title="The Module System"></a>The Module System</h2><p>You use modules to bring in external functionality to your application. You use the <code>require</code> function to load a module and assign it to a variable for use. Modules can explicitly export functionality (variables, functions, objects) for use in other modules. You can also import a single function from a library.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> foo = <span class="built_in">require</span>(<span class="string">'foo'</span>);</div><div class="line"><span class="keyword">var</span> Bar = <span class="built_in">require</span>(<span class="string">'bar'</span>); <span class="comment">//Initial capital meant to be instantiated</span></div><div class="line"><span class="keyword">var</span> one = <span class="built_in">require</span>(<span class="string">'library'</span>).one;</div><div class="line"></div><div class="line"><span class="keyword">var</span> f = <span class="number">2</span> + foo.someValue;</div><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> Bar();</div><div class="line"><span class="built_in">console</span>.log(one());</div></pre></td></tr></table></figure>
+<h3 id="Types-of-Modules"><a href="#Types-of-Modules" class="headerlink" title="Types of Modules"></a>Types of Modules</h3><ul>
+<li><a href="http://nodejs.org/api" target="_blank" rel="external">Built-in Modules</a> (no need to require)</li>
+<li>pre-packaged modules (must use require like fs, http…)</li>
+</ul>
+<h2 id="Event-Emitters"><a href="#Event-Emitters" class="headerlink" title="Event Emitters"></a>Event Emitters</h2><p>In the Publish/Subscribe scenario you have the subscriber (sample above) that subscribes and reacts to emitted events by the publisher.</p>
+<p>The publisher is the part that emits events to the subscriber. The events are represented by strings. You can also send an arbitrary number of parameters with the event as needed.</p>
+<p>A typical event emitter is an object that extends the <a href="http://nodejs.org/api/events.html#events_class_events_eventemitter" target="_blank" rel="external">EventEmitter</a> class and publishes needed events.</p>
+<h2 id="Streams"><a href="#Streams" class="headerlink" title="Streams"></a>Streams</h2><p>A <a href="http://nodejs.org/api/stream.html" target="_blank" rel="external">stream</a> is an EventEmitter with an abstract interface. It is used throughout node for handling data flow scenarios like:</p>
+<ul>
+<li>Networking (http request/response, tcp socket)</li>
+<li>File I/O</li>
+<li>stdin/stdout/stderr</li>
+</ul>
+<p>A stream can be read-only (stream.Readable), write-only (stream.Writable) or both</p>
+<h2 id="The-Process-Object"><a href="#The-Process-Object" class="headerlink" title="The Process Object"></a>The Process Object</h2><ul>
+<li><a href="http://nodejs.org/api/process.html" target="_blank" rel="external">API Documentation</a></li>
+</ul>
+<h5 id="Streams-1"><a href="#Streams-1" class="headerlink" title="Streams"></a>Streams</h5><ul>
+<li>process.stdin</li>
+<li>process.stdout</li>
+<li>process.stderr</li>
+</ul>
+<h5 id="Event-Emitters-1"><a href="#Event-Emitters-1" class="headerlink" title="Event Emitters"></a>Event Emitters</h5><ul>
+<li>event ‘exit’</li>
+<li>event ‘uncaughtException’</li>
+<li>POSIX signal events (‘SIGINT’, etc )</li>
+</ul>
+<h5 id="Process-Info-like"><a href="#Process-Info-like" class="headerlink" title="Process Info like"></a>Process Info like</h5><ul>
+<li>process.env</li>
+<li>process.pid</li>
+<li>process.title</li>
+<li>process.uptime()</li>
+<li>process.memoryUsage</li>
+</ul>
+<h5 id="Process-Commands-Like"><a href="#Process-Commands-Like" class="headerlink" title="Process Commands Like"></a>Process Commands Like</h5><ul>
+<li>process.kill()</li>
+</ul>
+<h2 id="File-System"><a href="#File-System" class="headerlink" title="File System"></a>File System</h2><ul>
+<li>The <a href="http://nodejs.org/api/fs.html" target="_blank" rel="external">File System</a> support is based on POSIX functionality, both async and sync versions of functions available</li>
+<li>Streams<ul>
+<li>fs.createReadStream()</li>
+<li>fs.createWriteStream()</li>
+</ul>
+</li>
+<li>File events - fs.FSWatcher<ul>
+<li>watcher.close()</li>
+<li>Event: ‘change’</li>
+<li>Event: ‘error’</li>
+</ul>
+</li>
+</ul>
+<h2 id="Buffer"><a href="#Buffer" class="headerlink" title="Buffer"></a>Buffer</h2><ul>
+<li>Traditionally JavaScript has not been good at handling binary data but it is needed by fileSystem and communication classes in node.</li>
+<li>Buffer enables handling of binary data for these</li>
+<li>A buffer can be converted to/from strings using different encodings like ascii, utf8 (default), utf16le, ucs2, base64, binary and hex.</li>
+<li>Buffer thus also supports encoding and decoding strings to/from base64.</li>
+</ul>
+<h2 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h2><h3 id="Http-Request"><a href="#Http-Request" class="headerlink" title="Http Request"></a>Http Request</h3><p>The http protocol is supported by the <a href="http://nodejs.org/api/http.html" target="_blank" rel="external">http module</a>.</p>
+<pre><code>var http = require(&apos;http&apos;),
+    req = http.request(&apos;http://www.google.fi&apos;, function(resp) {
+        console.log(resp.statusCode);
+        console.log(&quot;headers: &quot;, resp.headers);
+        resp.pipe(process.stdout);
+    });
+req.end();
+</code></pre><ul>
+<li>The req variable will contain a http.ClientRequest object</li>
+<li>The resp variable will contain a http.ClientResponse object (ReadableStream)</li>
+<li>The request method can be called with a url string or with an options object as parameter</li>
+<li>Redirects will not be followed (use follow-redirects package)</li>
+<li>Get requests can be simplified by using the get verb</li>
+</ul>
+<h3 id="A-Simple-Web-Server"><a href="#A-Simple-Web-Server" class="headerlink" title="A Simple Web Server"></a>A Simple Web Server</h3><pre><code>var http = require(&apos;http&apos;),
+host = process.env.IP || &apos;127.0.0.1&apos;,
+port = process.env.PORT || 8080;
+
+http.createServer(function (req, res) {
+    res.writeHead(200, { &apos;Content-Type&apos;: &apos;text/plain&apos; });
+    res.end(&apos;Hello World\n&apos;);
+}).listen(port, host);
+console.log(&apos;Server running at &apos; + host + &apos;:&apos; + port);
+</code></pre><ul>
+<li>The req variable contains http.ServerRequest (ReadableStream)</li>
+<li>The res variable contains http.ServerResponse (WritableStream)</li>
+<li>The request can be handled in a callback as above or or using events</li>
+<li>You can also use https instead of using http</li>
+</ul>
+<h3 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h3><ul>
+<li>Two-way real time communication protocol</li>
+<li>Part of html5 W3C &amp; IETF standard</li>
+<li>Low latency</li>
+<li>Low bandwidth</li>
+</ul>
+<p>Supported on Windows for IE10+ .NET4.5, Win 8 Metro, Windows Server 2012. For .NET developers there is the SignalR framework.</p>
+<p>Browser support <a href="http://caniuse.com/websockets" target="_blank" rel="external">here</a></p>
+<ul>
+<li>Node supports it via <strong>socket.io</strong></li>
+</ul>
+<h4 id="WebSocket-Sample"><a href="#WebSocket-Sample" class="headerlink" title="WebSocket Sample"></a>WebSocket Sample</h4><h5 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> io = <span class="built_in">require</span>(<span class="string">'socket.io'</span>).listen(<span class="number">80</span>);</div><div class="line"></div><div class="line">io.sockets.on(<span class="string">'connection'</span>),</div><div class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">socket</span>) </span>&#123;</div><div class="line">        socket.emit(<span class="string">'data'</span>, &#123;<span class="attr">hello</span>: <span class="string">'World'</span>&#125;);</div><div class="line"></div><div class="line">        socket.on(<span class="string">'clientData'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(data);</div><div class="line">    &#125;);</div><div class="line"> );</div></pre></td></tr></table></figure>
+<h5 id="Client"><a href="#Client" class="headerlink" title="Client"></a>Client</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;socket.io.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    var s = io.connect(&apos;http://.&apos;);</div><div class="line">    s.on(&apos;data&apos;, function (data) &#123;</div><div class="line">        console.log(data);</div><div class="line">        s.emit(&apos;clientData&apos;, &#123;my: &apos;Data&apos;&#125;);</div><div class="line">    &#125;);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<h3 id="Frameworks"><a href="#Frameworks" class="headerlink" title="Frameworks"></a>Frameworks</h3><ul>
+<li>Most commonly used node web framework is <a href="http://expressjs.com/" target="_blank" rel="external">express</a></li>
+<li>For ORM there is <a href="http://sequelizejs.com" target="_blank" rel="external">Sequelize</a></li>
+<li>Using node with <a href="http://www.windowsazure.com/en-us/develop/nodejs/tutorials/web-site-with-sql-database/" target="_blank" rel="external">Windows Azure Database</a></li>
+</ul>
+<h2 id="Testing-Node-js"><a href="#Testing-Node-js" class="headerlink" title="Testing Node.js"></a>Testing Node.js</h2><ul>
+<li>Basic unit testing is built in using the assert module</li>
+<li>For BDD style testing you can use <a href="https://github.com/visionmedia/should.js/" target="_blank" rel="external">should.js</a> and <a href="http://visionmedia.github.io/mocha/" target="_blank" rel="external">Mocha</a></li>
+</ul>
+<h3 id="The-assert-Module"><a href="#The-assert-Module" class="headerlink" title="The assert Module"></a>The assert Module</h3><ul>
+<li>A built-in module for unit testing</li>
+<li>Test for (in)equality between expected and actual values</li>
+<li>Test whether a block of code throws (or doesn’t throw) an exception <code>throw new Error()</code></li>
+<li>Test for the “truthiness” of a value</li>
+<li>Test whether the “error” parameter was passed to a callback</li>
+<li>Each assertion can contain an output message on failure</li>
+</ul>
+<h5 id="Equality"><a href="#Equality" class="headerlink" title="Equality"></a>Equality</h5><ul>
+<li><code>assert.equal()</code> : shallow i.e. coercive equality(==)</li>
+<li><code>assert.strictEqual()</code> : strict equality (===)</li>
+<li><code>assert.deepEqual()</code> :<ul>
+<li>coercive equality</li>
+<li>Non-Objects are coercively tested</li>
+<li>Date objects must have same date/time</li>
+<li>Other objects (incl. Array). Same amount of properties, checking keys &amp; values plus that prototypes match.</li>
+</ul>
+</li>
+</ul>
+<h3 id="BDD-style-testing"><a href="#BDD-style-testing" class="headerlink" title="BDD style testing"></a>BDD style testing</h3><p>For BDD style testing you can use the should.js library and the <a href="http://visionmedia.github.io/mocha/" target="_blank" rel="external">Mocha</a> testrunner.</p>
+<ul>
+<li>Can run tests in specified order, both synch and asynch</li>
+<li>You can group tests into suites</li>
+<li>Tests are run using Mocha from the command line. You can run only a specified suite</li>
+</ul>
+<h3 id="should-js"><a href="#should-js" class="headerlink" title="should.js"></a>should.js</h3><p>should.js extends the assert module with <a href="http://en.wikipedia.org/wiki/Behavior-driven_development" target="_blank" rel="external">BDD</a> style testing</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> should = <span class="built_in">require</span>(<span class="string">'should'</span>),</div><div class="line">    user = &#123;<span class="attr">name</span>: <span class="string">'tj'</span>, <span class="attr">pets</span>: [<span class="string">'tobi'</span>, <span class="string">'loki'</span>, <span class="string">'jane'</span>, <span class="string">'bandit'</span>]&#125;;</div><div class="line"></div><div class="line">user.should.have.property(<span class="string">'name'</span>, <span class="string">'tj'</span>);</div><div class="line">user.should.have.property(<span class="string">'pets'</span>).with.lengthOf(<span class="number">4</span>);</div><div class="line"><span class="comment">// or without Object.prototype, for guys how did Object.create(null)</span></div><div class="line">should(user).have.property(<span class="string">'name'</span>, <span class="string">'tj'</span>);</div><div class="line">should(<span class="literal">true</span>).ok;</div><div class="line">someAsyncTask(foo, <span class="function"><span class="keyword">function</span>(<span class="params">err, result</span>) </span>&#123;</div><div class="line">    should.not.exist(err);</div><div class="line">    should.exist(result);</div><div class="line">    result.bar.should.equal(foo);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="Deployment-Environments"><a href="#Deployment-Environments" class="headerlink" title="Deployment Environments"></a>Deployment Environments</h2><p>Node.js runs in a single thread so multiple processor cores typically does not help. The solution is to use multiple node processes.</p>
+<ul>
+<li>The <code>spawn</code> command starts a new process</li>
+<li>The <code>exec</code> command runs in a command shell and takes callback</li>
+<li>execFile is like exec but for running a specific file</li>
+<li>In IIS use <a href="https://github.com/tjanczuk/iisnode" target="_blank" rel="external">iisnode</a></li>
+</ul>
+<h3 id="iisnode"><a href="#iisnode" class="headerlink" title="iisnode"></a>iisnode</h3><p>iisnode is a native IIS module that allows hosting of node.js applications in IIS on Windows.</p>
+<ul>
+<li><strong>Process management</strong>. The iisnode module takes care of lifetime management<br>of node.exe processes making it simple to improve overall reliability. You don’t<br>have to implement infrastructure to start, stop, and monitor the processes.</li>
+<li><p><strong>Side by side with other content types</strong>. The iisnode module integrates with IIS in<br>a way that allows a single web site to contain a variety of content types. For<br>example, a single site can contain a node.js application, static HTML and<br>JavaScript files, PHP applications, and ASP.NET applications. This enables<br>choosing the best tools for the job at hand as well progressive migration of<br>existing applications.</p>
+</li>
+<li><p><strong>Scalability on multi-core servers</strong>. Since node.exe is a single threaded process, it<br>only scales to one CPU core. The iisnode module allows creation of multiple<br>node.exe processes per application and load balances the HTTP traffic between<br>them, therefore enabling full utilization of a server’s CPU capacity without<br>requiring additional infrastructure code from an application developer.</p>
+</li>
+<li><p><strong>Integrated debugging</strong>. With iisnode integrated debugging you can debug<br>your node.js application deployed to IIS from a browser running on<br>Windows, Mac, or Linux. You get this support out of the box, no extra<br>configuration or installation is necessary. The solution is designed in a<br>way that is shared hosting, firewall, and proxy friendly. The integrated<br>debugging in iisnode uses node-inspector by Danny Coates.</p>
+</li>
+<li><p><strong>Auto-update</strong>. The iisnode module ensures that whenever the node.js<br>application is updated (i.e. the script file has changed), the node.exe<br>processes are recycled. Ongoing requests are allowed to gracefully finish<br>execution using the old version of the application, while all new requests<br>are dispatched to the new version of the app.</p>
+</li>
+<li><p><strong>Access to logs over HTTP</strong>. The iisnode module provides access the<br>output of the node.exe process (e.g. generated by console.log calls) via<br>HTTP. This facility is key in helping you debug node.js applications<br>deployed to remote servers.</p>
+</li>
+<li><p><strong>Minimal changes to node.js application code</strong>. The iisnode module<br>enables hosting of existing HTTP node.js applications with very minimal<br>changes. Typically all that is required is to change the listed address of<br>the HTTP server to one provided by the iisnode module via the<br>process.env.PORT environment variable.</p>
+</li>
+<li><p><strong>Integrated management experience</strong>. The issnode module is fully<br>integrated with IIS configuration system and uses the same tools and<br>mechanism as other IIS components for configuration and maintenance.</p>
+</li>
+<li><p><strong>Other IIS benefits</strong>. Port sharing, security, URL rewriting, compression,<br>caching, logging</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+            <a href="/tags/nodejs/" rel="tag"># nodejs</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/09/07/api-design/" rel="next" title="REST API Design">
+                <i class="fa fa-chevron-left"></i> REST API Design
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/09/22/karma/" rel="prev" title="The Karma Testrunner">
+                The Karma Testrunner <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/luka.jpg"
+               alt="Kaj Lund" />
+          <p class="site-author-name" itemprop="name">Kaj Lund</p>
+           
+              <p class="site-description motion-element" itemprop="description">Personal blog of Kaj Lund a.k.a. LuKa</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#A-Hello-World-Web-Server"><span class="nav-text">A Hello World Web Server</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Event-Loop"><span class="nav-text">The Event Loop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node’s-Programming-Model"><span class="nav-text">Node’s Programming Model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Callbacks"><span class="nav-text">Callbacks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Publish-Subscribe"><span class="nav-text">Publish/Subscribe</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Module-System"><span class="nav-text">The Module System</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Types-of-Modules"><span class="nav-text">Types of Modules</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Event-Emitters"><span class="nav-text">Event Emitters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Streams"><span class="nav-text">Streams</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Process-Object"><span class="nav-text">The Process Object</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Streams-1"><span class="nav-text">Streams</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Event-Emitters-1"><span class="nav-text">Event Emitters</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Process-Info-like"><span class="nav-text">Process Info like</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Process-Commands-Like"><span class="nav-text">Process Commands Like</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#File-System"><span class="nav-text">File System</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Buffer"><span class="nav-text">Buffer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web"><span class="nav-text">Web</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Http-Request"><span class="nav-text">Http Request</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Simple-Web-Server"><span class="nav-text">A Simple Web Server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WebSocket"><span class="nav-text">WebSocket</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#WebSocket-Sample"><span class="nav-text">WebSocket Sample</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Server"><span class="nav-text">Server</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Client"><span class="nav-text">Client</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Frameworks"><span class="nav-text">Frameworks</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Testing-Node-js"><span class="nav-text">Testing Node.js</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#The-assert-Module"><span class="nav-text">The assert Module</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Equality"><span class="nav-text">Equality</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BDD-style-testing"><span class="nav-text">BDD style testing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#should-js"><span class="nav-text">should.js</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deployment-Environments"><span class="nav-text">Deployment Environments</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#iisnode"><span class="nav-text">iisnode</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kaj Lund</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
